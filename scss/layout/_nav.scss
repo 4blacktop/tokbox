@@ -1,0 +1,213 @@
+/* NAV
+-------------------------------------------------*/
+.nav-container {
+    padding-left: 0;
+    padding-right: 0;
+
+    @include breakpoint(medium) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+nav.main-nav {
+    @extend %clearfix;
+    max-height: 0;
+    overflow: hidden;
+    border-top: solid 5px $colorBase;
+    transition: all 0.3s ease;
+
+    @include breakpoint(medium) {
+        position: absolute;
+        top: -47px;
+        max-height: none;
+        overflow: visible;
+        border-top: none;
+    }
+
+    .nav-trigger & {
+        max-height: 500px;
+    }
+
+    li {
+        display: inline-block;
+        list-style-type: none;
+
+        @include breakpoint(medium) {
+            float: left;
+        }
+
+        a {
+            display: block;
+            padding: 5px 15px;
+            color: $white;
+            background-color: transparent;
+            @include fontSize(20);
+            transition: background .2s;
+
+            @include breakpoint(medium) {
+                width: 160px; /* ((990 [wrapper width] - 30 [flags width]) / 6 [number of items]) */
+                height: 47px;
+                padding: 0;
+                line-height: 47px;
+                text-align: center;
+            }
+
+            &:hover,
+            &:focus {
+                background-color: $colorBase;
+                color: $logoBlue !important;
+            }
+        }
+
+        &.active a,
+        &.active a:visited,
+        &.active a:active {
+            color: $logoBlue;
+        }
+    }
+
+    margin-left: 170px; // [logo width & margin-right for subpage header]
+    &.home {
+        margin-left: 0;
+
+        li a {
+            background-color: rgba($colorBase, .9);
+        }
+    }
+    &.subpage {
+        li {
+            border-right: solid 1px #fff;
+            &:last-child,
+            &:nth-last-child(2) {
+                border-right: none;
+            }
+            a {
+                @include fontSize(18);
+
+                @include breakpoint(medium) {
+                    width: 131px; /* ((990 [wrapper width] - 30 [flags width] - 170 [logo width & margin-right]) / 6 [number of items]) */
+                }
+
+                &:hover,
+                &:focus {
+                    background-color: transparent;
+                }
+            }
+
+            ul li {
+                border-right: none;
+
+                a {
+                    background-color: $colorBase;
+                
+                    &:hover,
+                    &:focus {
+                        background-color: $colorBase;
+                    }
+                }
+            }
+        }
+    }
+
+    li {
+        &.langSelector {
+            a {
+                width: 30px;
+                height: 20px;
+                margin-bottom: 7px;
+                transition: .2s;
+                opacity: .8;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                &:hover, &:focus {
+                    opacity: 1;
+                }
+            }
+        }
+
+        ul {
+            display: none;
+        }
+        &:hover ul {
+            display: block;
+
+            li {
+                display: block;
+                float: none;
+
+                .userPic {
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 10px;
+                    margin-top: -3px;
+                    vertical-align: middle;
+                    @include rounded(0);
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+/* Nav button */
+.nav-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    background: none;
+    outline: 0;
+    
+    @include breakpoint(medium) {
+        display: none;
+    }
+
+    .nav-lines {
+        right: 9px;
+
+        .nav-trigger & {
+            width: 0;
+        }
+
+        &:before {
+            top: 10px;
+        }
+
+        &:after {
+            top: 20px;
+        }
+
+        .nav-trigger &:before, .nav-trigger &:after {
+            top: 10px;
+        }
+
+        .nav-trigger &:before {
+            transform: rotate(-45deg);
+        }
+
+        .nav-trigger &:after {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.nav-lines,
+.nav-lines:after,
+.nav-lines:before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 0;
+    width: 30px;
+    height: 5px;
+    background: $white;
+    transition: all 0.3s ease;
+}

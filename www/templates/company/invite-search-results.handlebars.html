@@ -1,0 +1,14 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+        <h2 class="i18n"><?=_('Search results');?></h2>
+        <div class="flipsnap" id="invite-members">
+        {{#each users}}
+            {{> user this}}
+        {{/each}}
+        </div>
+
+    </div>
+</main>
+<!-- End Main -->

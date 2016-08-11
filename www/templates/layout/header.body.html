@@ -1,0 +1,140 @@
+<div class="mobile_header">
+    <ul class="sideMenuButton" id="hamburger-button">
+		<li></li><li></li><li></li>
+	</ul>
+	<span class="unread-account-requests" style="display: none;"></span>
+
+	<a href="#" class="reload-icon" id="reload-icon"><span></span></a>
+
+    <div class="mobileLogo">
+        <span></span>
+        <h1 class="i18n"><?=_('Dapinqing');?></h1>
+    </div>
+</div>
+
+<div class="desktop_header">
+	<div class="headerWrapper">
+        <header class="main-header">
+            <div id="home-header">
+                <div id="flexslider" class="flexslider">
+                    <ul class="slides">
+                        <li><img src="img/hero/2.jpg" alt="."></li>
+                        <li><img src="img/hero/1.jpg" alt="."></li>
+                        <li><img src="img/hero/3.jpg" alt="."></li>
+                        <li><img src="img/hero/4.jpg" alt="."></li>
+                        <li><img src="img/hero/5.jpg" alt="."></li>
+                        <li><img src="img/hero/6.jpg" alt="."></li>
+                    </ul>
+                </div>
+                <div class="container">
+                    <div class="center-content">
+                        <div class="center-content-inner">
+                            <div class="logo">
+                                <a href="/">
+                                    <img src="img/logo-300w.png" alt="Dapinqing">
+                                    <h2 class="h1 site-title i18n"><?=_('Dapinqing');?></h2>
+                                    <span class="h3 i18n"><?=_('A video is worth more than a thousand words');?></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="subpage-header" style="display: none;">
+                <div class="container">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="img/logo-300w.png" alt="Dapinqing">
+                            <h2 class="i18n"><?=_('Dapinqing');?></h2>
+                            <div style="clear: left;"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <button id="nav-btn" class="nav-btn">
+            <span class="nav-lines"></span>
+        </button>
+        
+        <div class="nav-container container">
+            <nav class="main-nav">
+                <ul>
+                    <li class="nav-home"><a href="#home" class="i18n"><?=_('Home');?></a></li>
+                    <li class="nav-mentors only-students"><a href="#mentors" class="i18n"><?=_('Companies');?></a></li>
+                    <li class="nav-students not-students"><a href="#candidates" class="i18n"><?=_('Candidates');?></a></li>
+                    <li class="nav-videos"><a href="#videos" class="i18n"><?=_('Jobs');?></a></li>
+                    <li class="nav-about"><a href="#about" class="i18n"><?=_('How it Works');?></a></li>
+                    <li class="nav-contact"><a href="#contact" class="i18n"><?=_('Contact Us');?></a></li>
+                    <li class="nav-login logged-out"><a href="#login" class="i18n"><?=_('Log in');?></a></li>
+                    <li class="logged-in">
+                        <a href="#my-account" class="i18n"><?=_('My Account');?></a>
+                        <ul>
+                            <li><a href="#my-account"><span class="userPic" style="background-image: url('/assets/images/default-profile_pic.png');"></span><span class="i18n"><?=_('Edit');?></span></a></li>
+                            <li><a href="#my-videos" class="only-mentors i18n"><?=_('My Jobs');?></a></li>
+                            <li><a href="#create-video" class="only-mentors i18n"><?=_('Create job');?></a></li>
+                            <li><a href="#inbox"><span class="i18n"><?=_('Messages');?></span> <span class="unread-messages" style="display: none;"></span></a></li>
+                            <li><a href="#one-on-one-requests"><span class="i18n"><?=_('1-on-1 Chats');?></span> <span class="unread-chat-requests" style="display: none;"></span></a></li>
+                            <li class="admin-link" style="display: none;"><a href="" class="i18n" rel="external"><?=_('Admin');?></a></li>
+                            <li><a href="#logout" onclick="$.core.logout(); return false;" class="i18n"><?=_('Log Out');?></a></li>
+                        </ul>
+                    </li>
+                    <li class="langSelector">
+                        <a href="?lang=zh_CN" onclick="$.core.set_user_lang('zh_CN'); return false;" class="flag-zh_CN"></a>
+                        <a href="?lang=en_US" onclick="$.core.set_user_lang('en_US'); return false;" class="flag-en_US"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+<!--
+        <a href="#home" class="logo">
+            <span></span>
+            <h1 class="i18n"><?=_('Dapinqing');?></h1>
+        </a>
+		<div class="langSelector">
+			<a href="?lang=en_US" onclick="$.core.set_user_lang('en_US'); return false;" class="flag-en_US"></a>
+			<a href="?lang=zh_CN" onclick="$.core.set_user_lang('zh_CN'); return false;" class="flag-zh_CN"></a>
+		</div>
+		<nav class="mainNav">
+			<ul>
+                <li><a href="#about" class="i18n"><?=_('About Dapinqing');?></a></li>
+				<li><a href="#videos" class="i18n"><?=_('Jobs');?></a></li>
+				<li><a href="#mentors" class="i18n"><?=_('Mentors');?></a></li>
+				<li>
+                    <span class="unread-circle-requests" style="display: none;"></span>
+                    <a href="#circle" class="i18n"><?=_('Circle');?></a>
+                </li>
+				<li><a href="#contact" class="i18n"><?=_('Contact Us');?></a></li>
+				<li class="logged-in parent" data-display="inline-block">
+                    <span class="unread-account-requests" style="display: none;"></span>
+                    <a href="" class="i18n"><?=_('My Account');?></a>
+                    <ul>
+                        <li><a href="#my-account"><span class="userPic" style="background-image: url('/assets/images/default-profile_pic.png');"></span><span class="userName i18n"><?=_('My Account');?></span></a></li>
+                        <li><a href="#my-payment-history" class="i18n"><?=_('My payment history');?></a></li>
+                        <li><a href="#my-videos" class="i18n only-mentors"><?=_('My Jobs');?></a></li>
+                        <li><a href="#create-video" class="i18n only-mentors"><?=_('Create job');?></a></li>
+                        <li><a href="#my-company" class="i18n"><?=_('My Company');?></a></li>
+                        <li><a href="#inbox"><span class="i18n"><?=_('Messages');?></span> <span class="unread-messages" style="display: none;"></span></a></li>
+                        <li><a href="#one-on-one-requests"><span class="i18n"><?=_('1-on-1 Chats');?></span> <span class="unread-chat-requests" style="display: none;"></span></a></li>
+                        <li class="admin-link" style="display: none;"><a href="" class="i18n" rel="external"><?=_('Admin');?></a></li>
+                        <li><a href="#logout" class="i18n" onclick="$.core.logout(); return false;"><?=_('Log Out');?></a></li>
+                    </ul>
+                </li>
+				<li class="logged-out" data-display="inline-block" style="padding-top: 14px;"><a href="#login" class="i18n"><?=_('Log In');?></a></li>
+			</ul>
+		</nav>
+	</div>
+-->
+</div>
+
+<script>
+    // hamburger and reload inits
+    jQuery('#hamburger-button').click(function() {
+        $.core.hamburger_button_click();
+    });
+    jQuery('#reload-icon').click(function() {
+        $(this).addClass('loading');
+        $.core.show_loading();
+        $.core.reload();
+    });
+</script>

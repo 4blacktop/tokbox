@@ -1,0 +1,28 @@
+/* TOGGLE
+-------------------------------------------------*/
+.toggle-btn {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &.active {
+        i {
+            transform: rotate(45deg);
+            transition-delay: 0.2s;
+        }
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+.toggle-content {
+    position: absolute;
+    padding: 5px;
+    background: $white;
+    background-clip: padding-box;
+    border: solid 1px $colorBorder;
+    border-radius: 4px;
+    z-index: 1001;
+}

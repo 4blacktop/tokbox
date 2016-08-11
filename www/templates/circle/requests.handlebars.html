@@ -1,0 +1,36 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <div class="content">
+        <div class="content">
+            <h1 class="i18n"><?=_('Pending Requests');?></h1>
+        </div>
+
+        {{#if data}}
+        <div class="viewport circle-requests listView">
+            {{#each data}}
+            <div id="circle-request-{{id}}" class="item{{#if viewed_at}} read{{/if}}">
+                <a href="#mentor?id={{my_user_id}}"><div class="pic" style="background-image: url('{{my_profile_pic}}');"></div></a>
+                <div class="info">
+                    <div class="content">
+                        <a href="#mentor?id={{my_user_id}}"><div class="name">{{my_name}} <span class="i18n">{{#equal relationship_type 'mentor'}}<?=_('wants you to be their mentor');?>{{else}}<?=_('wants to be your friend');?>{{/equal}}</span>.</div></a>
+                        <div class="actions">
+                            <a href="#circle-requests" onclick="$.pages['circle.requests'].respond('accept', {{id}}); return false;" class="small-button i18n"><?=_('Accept'); ?></a>
+                            <a href="#circle-requests" onclick="$.pages['circle.requests'].respond('deny', {{id}}); return false;" class="small-button i18n"><?=_('Deny'); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div class="content">
+            <p class="no-results i18n"><?=_('No circle requests found.');?></p>
+        </div>
+        {{/if}}
+    </div>
+
+    </div>
+</main>
+<!-- End Main -->

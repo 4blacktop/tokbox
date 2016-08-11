@@ -1,0 +1,16 @@
+/* SECTION TITLE
+-------------------------------------------------*/
+.section-title {
+    margin: 0 0 30px;
+}
+
+.main-section-title {
+    padding-bottom: 30px;
+    margin-bottom: 60px;
+    border-bottom: dotted 1px $black;
+    text-align: center;
+
+    p {
+        font-weight: $fontWeightRegular;
+    }
+}

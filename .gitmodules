@@ -1,0 +1,4 @@
+[submodule "www/app-core"]
+	path = www/app-core
+	url = git@bitbucket.org:websolutionshack/mykongzi-app.git
+	branch = develop

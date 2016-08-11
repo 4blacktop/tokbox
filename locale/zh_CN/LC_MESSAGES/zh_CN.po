@@ -1,0 +1,669 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2016-04-05 08:27-1000\n"
+"PO-Revision-Date: 2016-04-05 08:29-1000\n"
+"Last-Translator: Matt Rabe <matt@websolutionshack.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ../../../www\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: companies.php:7
+msgid "Companies"
+msgstr "公司 "
+
+#: companies.php:17 jobs.php:33
+msgid "Search"
+msgstr "搜索"
+
+#: companies.php:31 companies.php:55 companies.php:137
+msgid "Place title here"
+msgstr ""
+
+#: companies.php:44 companies.php:68 companies.php:92 companies.php:109
+#: companies.php:126 jobs.php:56 jobs.php:73 jobs.php:90
+msgid ""
+"You can edit text on your website by double clicking on a text box on your "
+"website..."
+msgstr ""
+
+#: companies.php:79 companies.php:96 companies.php:113 jobs.php:43 jobs.php:60
+#: jobs.php:77
+msgid "Title Name"
+msgstr ""
+
+#: companies.php:150
+msgid ""
+"You can edit text on your website by double clicking on a text box on your "
+"website. Alternatively, when you select a text box a settings menu will "
+"appear. Selecting ‘Edit Text’ from this menu will ..."
+msgstr ""
+
+#: contact.php:7
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: contact.php:8
+msgid ""
+"If you have any questions, please do not hesitate to send us a message. We "
+"reply within 24 hours!"
+msgstr ""
+
+#: contact.php:16
+msgid "TEL"
+msgstr "联系方式"
+
+#: contact.php:17
+msgid "EMAIL"
+msgstr "电子邮箱"
+
+#: contact.php:28
+msgid "Send an Email"
+msgstr ""
+
+#: contact.php:35
+msgid "Name"
+msgstr "名"
+
+#: contact.php:40
+msgid "Email"
+msgstr "电子邮箱"
+
+#: contact.php:45
+msgid "Phone"
+msgstr ""
+
+#: contact.php:50
+msgid "Message"
+msgstr "信息"
+
+#: contact.php:55
+msgid "Submit"
+msgstr ""
+
+#: how-it-works.php:7
+msgid "How it Works"
+msgstr ""
+
+#: how-it-works.php:19 index.php:130
+msgid "Meeting your business needs."
+msgstr ""
+
+#: how-it-works.php:20 index.php:131
+msgid "You will feel unique and special!"
+msgstr ""
+
+#: how-it-works.php:33
+msgid ""
+"The Dapinqing website matches employers and applicants from all around the "
+"world. Providing the one-stop professional Human Resources services, "
+"including online recruitment, campus recruitment, headhunting service, "
+"enterprise training, talent assessment etc. We add the “Human Touch” to the "
+"job recruitment process by offering onlin video interviews and video "
+"résumés, to provide both job seekers and recruiters a real life connection."
+msgstr ""
+
+#: how-it-works.php:34
+msgid "Advantages of a video résumé"
+msgstr ""
+
+#: how-it-works.php:35
+msgid ""
+"Online video résumés are the latest technology in the recruitment industry. "
+"Many fortune 500 companies interview prospective executives by asking "
+"applicants to call into a data base where they answer specific questions "
+"while being videotaped. Dapinqing offers such a platform by allowing "
+"applicants to create their video résumés through our online platform. With "
+"an online video résumé, job seekers can make a five-minute self-introduction "
+"or showcase their talents and characteristics to the employer. Recruiters "
+"can understand the applicatns personalities, language competence, character "
+"features, and talents. This helps recruiters assess whether applicatns fit "
+"into the job they offer and the enterprise culture they have. There is an "
+"old saying, “a picture is worth a thousand words” - Imagine what a video "
+"résumé will allow you to do in communicating with your prospective employers!"
+msgstr ""
+
+#: how-it-works.php:36
+msgid "How to use our service"
+msgstr ""
+
+#: how-it-works.php:37
+msgid "Employers"
+msgstr ""
+
+#: how-it-works.php:39
+msgid "Register a company account"
+msgstr ""
+
+#: how-it-works.php:40
+msgid "Build a company profile"
+msgstr ""
+
+#: how-it-works.php:41
+msgid ""
+"Post job information on the website，the information includes the job title, "
+"job descriptions, the working place and the number of employees of the "
+"position that the company need."
+msgstr ""
+
+#: how-it-works.php:42
+msgid ""
+"Screen the profiles of all the job seekers through key words, such as "
+"location, industry，job title and work experience."
+msgstr ""
+
+#: how-it-works.php:43
+msgid "Receive and download resumes of job seekers"
+msgstr ""
+
+#: how-it-works.php:44
+msgid "Watch and download videos of job seekers"
+msgstr ""
+
+#: how-it-works.php:45
+msgid "Send out interview invitations to job seekers"
+msgstr ""
+
+#: how-it-works.php:46
+msgid ""
+"Send out rejection messages to job seekersA network interview with HR（just "
+"for long-distance job seekers, for example, a graduate in the U.S. who wants "
+"to apply for a job in china)."
+msgstr ""
+
+#: how-it-works.php:48
+msgid "Applicants"
+msgstr "申请人"
+
+#: how-it-works.php:50 how-it-works.php:61
+msgid "Register an account"
+msgstr ""
+
+#: how-it-works.php:51
+msgid "Submit a resume"
+msgstr ""
+
+#: how-it-works.php:52
+msgid "Submit a video resume"
+msgstr ""
+
+#: how-it-works.php:53
+msgid ""
+"Search for jobs through key words, such as location, industry, Sectors, Job "
+"title"
+msgstr ""
+
+#: how-it-works.php:54
+msgid "Apply for positions at target companies"
+msgstr ""
+
+#: how-it-works.php:55
+msgid ""
+"Get to know the state of the resume to see if the resume is checked by the HR"
+msgstr ""
+
+#: how-it-works.php:56
+msgid ""
+"Give the HR some tips to remind them to view the resume as quick as possible"
+msgstr ""
+
+#: how-it-works.php:57
+msgid "Review the interview invitation which is offered by the HR"
+msgstr ""
+
+#: how-it-works.php:59
+msgid "Extra services for applicants"
+msgstr ""
+
+#: how-it-works.php:62
+msgid "Browse the latest positions"
+msgstr ""
+
+#: how-it-works.php:63
+msgid "Get a ranking list of hottest jobs"
+msgstr ""
+
+#: how-it-works.php:64
+msgid "Browse the latest career news and Upcoming Events"
+msgstr ""
+
+#: how-it-works.php:78 index.php:147
+msgid "Business Specialists."
+msgstr ""
+
+#: how-it-works.php:79 index.php:148
+msgid ""
+"This area is fully editable and gives you the opportunity to go into more "
+"detail about your business, what you do and what sets you apart from the "
+"competition."
+msgstr ""
+
+#: how-it-works.php:80 index.php:149
+msgid ""
+"Remember to keep your wording friendly, approachable and easy to understand…"
+"as if you were talking to your customers."
+msgstr ""
+
+#: how-it-works.php:88 how-it-works.php:98 how-it-works.php:108 index.php:157
+#: index.php:167 index.php:177
+msgid "Business"
+msgstr ""
+
+#: how-it-works.php:89 how-it-works.php:99 how-it-works.php:109 index.php:158
+#: index.php:168 index.php:178 jobs.php:116 jobs.php:141 jobs.php:164
+#: jobs.php:189 jobs.php:214 jobs.php:239 jobs.php:264 jobs.php:291
+#: jobs.php:316 jobs.php:387
+#, php-format
+msgid ""
+"This area is 100% editable and can be used to promote your products and "
+"services."
+msgstr ""
+
+#: how-it-works.php:129 index.php:198
+msgid "The latest news and Upcoming events are here!"
+msgstr ""
+
+#: how-it-works.php:130 index.php:199
+msgid ""
+"You can edit text on your website by double clicking on a text box on your "
+"website. Alternatively, when you select a text box a settings menu will "
+"appear. Selecting ‘Edit Text’ from this menu will also allow you to edit the "
+"text within this text box."
+msgstr ""
+
+#: includes/header.php:41
+msgid "Holding a higher standard"
+msgstr ""
+
+#: index.php:10
+msgid "Welcome to our site"
+msgstr ""
+
+#: index.php:13
+msgid "For employers"
+msgstr ""
+
+#: index.php:14
+msgid "For employees"
+msgstr "寻"
+
+#: index.php:28
+msgid "Popular jobs"
+msgstr ""
+
+#: index.php:33 index.php:42 index.php:59 index.php:80 index.php:88
+#: index.php:104
+msgid "Job"
+msgstr ""
+
+#: index.php:36 index.php:53 index.php:69 jobs.php:110 jobs.php:135
+#: jobs.php:158 jobs.php:183 jobs.php:208 jobs.php:233 jobs.php:258
+#: jobs.php:285 jobs.php:310 jobs.php:335 jobs.php:358 jobs.php:381
+#: jobs.php:406
+msgid "By"
+msgstr ""
+
+#: index.php:37 index.php:54 index.php:70 jobs.php:16 jobs.php:111 jobs.php:136
+#: jobs.php:159 jobs.php:184 jobs.php:209 jobs.php:234 jobs.php:259
+#: jobs.php:286 jobs.php:311 jobs.php:336 jobs.php:359 jobs.php:382
+#: jobs.php:407
+msgid "Category"
+msgstr "分类"
+
+#: index.php:75
+msgid "Popular companies"
+msgstr ""
+
+#: index.php:222
+msgid ""
+"We only work with the best companies to ensure you end up in an incredible "
+"place."
+msgstr ""
+
+#: index.php:238 jobs.php:434
+msgid "Making your ideas a reality"
+msgstr ""
+
+#: jobs.php:7
+msgid "Our Jobs"
+msgstr ""
+
+#: jobs.php:8
+msgid "Which industries do we serve ?"
+msgstr ""
+
+#: jobs.php:24
+msgid "Region"
+msgstr "地区"
+
+#: jobs.php:100
+msgid "Accounting & Finance"
+msgstr ""
+
+#: jobs.php:118 jobs.php:166 jobs.php:191 jobs.php:216 jobs.php:241
+#: jobs.php:266 jobs.php:268 jobs.php:293 jobs.php:318 jobs.php:364
+#: jobs.php:389 jobs.php:412
+msgid ""
+"This area is fully editable and you can use it to promote your products, "
+"services and facilities.  You could also use it to introduce your team, "
+"their roles and why they are so important to your business."
+msgstr ""
+
+#: jobs.php:125
+msgid "Hospitality"
+msgstr ""
+
+#: jobs.php:148
+msgid "Office, Clerical & Administrative"
+msgstr ""
+
+#: jobs.php:173
+msgid "Call Center & Customer Service"
+msgstr ""
+
+#: jobs.php:198
+msgid "Industrial & Manufacturing"
+msgstr ""
+
+#: jobs.php:223
+msgid "Science"
+msgstr ""
+
+#: jobs.php:248
+msgid "Creative & Marketing"
+msgstr ""
+
+#: jobs.php:275
+msgid "Information Technology"
+msgstr ""
+
+#: jobs.php:300
+msgid "Transportation"
+msgstr ""
+
+#: jobs.php:325
+msgid "Engineering"
+msgstr ""
+
+#: jobs.php:341
+#, php-format
+msgid "This area is 100% editable and can be used to promote your products"
+msgstr ""
+
+#: jobs.php:348
+msgid "Medical"
+msgstr ""
+
+#: jobs.php:371
+msgid "Warehousing"
+msgstr ""
+
+#: jobs.php:396
+msgid "Only one column"
+msgstr ""
+
+#: jobs.php:422
+msgid "Show More"
+msgstr ""
+
+#: login.php:9 login.php:22
+msgid "Log in"
+msgstr "登录"
+
+#: login.php:25
+msgid "Forgot password"
+msgstr ""
+
+#: login.php:33 login.php:50
+msgid "Join now"
+msgstr "现在加入"
+
+#: video-tips.php:10
+msgid "Video Tips"
+msgstr "视频小建议"
+
+#: video-tips.php:19
+msgid ""
+"Do you want to shoot professional-looking videos on your own? While it may "
+"seem like the only way to produce a high-quality video at is to invest money "
+"into expensive equipment and time into courses and trainings, there are "
+"other solutions."
+msgstr ""
+"你想自己摄制专业的视频吗？花费大量的时间和精力去参加培训班，购买昂贵的器材真"
+"的是唯一的方法吗？不，你还有另外一种选择。"
+
+#: video-tips.php:20
+msgid ""
+"Sometimes the best camera for you to use is the one you already have. Follow "
+"the tips below and you'll be creating your own high-quality, professional "
+"grade videos at home in no time."
+msgstr ""
+"有时候，最好的相机就是你拥有的那一台。跟着以下的建议，你就会创造出属于你自己"
+"的高质量、专业的视频。"
+
+#: video-tips.php:22
+msgid "Great Videos Don't Require Professional Cameras"
+msgstr "好的视频不需要专业相机"
+
+#: video-tips.php:24
+msgid ""
+"What you shoot your video on doesn't matter too much, as long as you know "
+"how to use all of the setting available to you. Whether you use a phone or "
+"an actual video camera, be sure to shoot the video at the highest quality "
+"you possibly can."
+msgstr ""
+"其实，摄影器材并不那么重要，只要你懂得如何利用自己已有的资源。不管你是使用手"
+"机还是一个专业的摄像器材，都要保证你可以摄制出你能创造的最佳质量。"
+
+#: video-tips.php:25
+msgid ""
+"Before hitting record, check to make sure your settings are the best they "
+"can be. Depending on the camera you're using, these will differ. If they are "
+"available, aim to shoot at 24 frames per second (fps) or higher, with a "
+"resolution of at 1280x720 – this is also known as regular HD. If your camera "
+"has it, you can produce a video at full HD by choosing the resolution "
+"1920x1080. This is an even better option if your camera is equipped to do "
+"so. You will find all of these selections in the settings section of your "
+"camera."
+msgstr ""
+"在正式摄制前，请检查保证你的设备都处于最佳状态。当然不同的器材会有不同的标"
+"准，如果条件允许，请摄制每秒24帧或者更高的画质，分辨率能达到1280 x720.这也是"
+"一个普通高清HD标准。如果你的相机允许，你还可以打造一个全高清的分辨率，1920 "
+"x1080，这会是一个更好的选择。你可以在相机的设置里找到这些选项。"
+
+#: video-tips.php:27
+msgid "Light Your Subject"
+msgstr "打亮你的拍摄对象"
+
+#: video-tips.php:29
+msgid ""
+"It is important to have plenty of light when you shoot your video. If there "
+"isn't enough, the camera will not be able to pick up all of the subject "
+"matter, in the video. Natural light is always best, as it is more powerful "
+"than artificial light."
+msgstr ""
+"在拍摄视频时，足够的光源非常重要。如果光亮不够，相机就不能在视频中捕捉所有的"
+"物体。自然光线永远是最好的选择，比人工光亮要更具活力。"
+
+#: video-tips.php:30
+msgid ""
+"When shooting with natural light, have it face towards your subjects. Never "
+"place your subjects in front of the light source; this will cause them to "
+"become a big dark blob, with the background completely washed out. Instead, "
+"aim to naturally light up the object you are filming."
+msgstr ""
+"在自然光线下摄制物体时，要让光线正对你的拍摄对象。永远不要让拍摄对象背对光"
+"源，这样背景将完全看不见，形成一个黑色大点。相反，你应该试着正常的照亮你要摄"
+"影的物体。"
+
+#: video-tips.php:31
+msgid ""
+"If you realize you need an artificial light source, make sure it is powerful "
+"enough to brighten the frame. Avoid placing it too close to the subject, "
+"which will create a very bright part that is highlighted or overexposed, "
+"known as a \"hotspot.\""
+msgstr ""
+"如果你发现你需要一个人工自然光源，要保证它能照亮所有地方。要尽量避免离拍摄对"
+"象太近，这将导致过度曝光或过度提亮，也就是大家知道的“热点”状况。"
+
+#: video-tips.php:33
+msgid "Ready, Steady, Go"
+msgstr "检查，准备好，开始吧！"
+
+#: video-tips.php:35
+msgid ""
+"Have you ever watched a movie that was shaky the entire time? To prevent "
+"your viewers from experiencing motion sickness, it's important to keep your "
+"video as steady as you can. This can be done by using a tripod."
+msgstr ""
+"想一下，你有没有看过一个从头晃到尾的视频呢？为了不让你的观众也出现这种情况，"
+"你的摄像器材保持固定很重要，这可以通过使用三脚架实现。"
+
+#: video-tips.php:36
+msgid ""
+"Tripods are available to fit your phone or camera. While they can be "
+"expensive, there are plenty of good options available online. Using tripods "
+"with flexible arms are a great option to experiment with unique angles. Be "
+"sure that the tripod you choose can support the weight of the camera or "
+"phone you're using to avoid damage."
+msgstr ""
+"三脚架可以用来固定你的手机或者摄像机。这些摄像机可以很贵，但是网上还是有很多"
+"可用选择。使用有一个灵活支架的三脚架非常适合一些特别的角度。要确定你选择的三"
+"脚架能支撑相机或手机的重量，来避免损坏。"
+
+#: video-tips.php:37
+msgid ""
+"Don't have a tripod? Sometimes you find yourself in situations without a "
+"tripod, even when you really want – or need – to shoot video. A quick fix "
+"that can work in lieu of a tripod is to make yourself into one."
+msgstr ""
+"你有三脚架吗？有时候，你会发现你没有三脚架，虽然你很想要有或者需要用它来摄"
+"像。一个很快的获得三脚架的方法就是把你自己变成“三脚架”。"
+
+#: video-tips.php:38
+msgid ""
+"Stand with your legs apart in an \"A\" frame. Hold the camera at your chest "
+"and bend your elbows out towards your sides. Breathe slowly and evenly, "
+"keeping the camera still. This is the most stable way to keep film steady "
+"video without using a tripod."
+msgstr ""
+"首先，双脚打开，站成A字型。手持相机，贴住胸部，手肘向两侧弯曲。慢慢的平均的呼"
+"吸，保持相机静止状态。这是不使用三脚架来摄影的最稳妥的方法。"
+
+#: video-tips.php:40
+msgid "Frame Your Film"
+msgstr "设计你的视频"
+
+#: video-tips.php:42
+msgid ""
+"Once you're ready to shoot your video, there are a few things to keep in "
+"mind. Framing it just right can make all the difference."
+msgstr ""
+"当你完成了摄制视频的准备时，有一些事情要记住。设计你的视频可以带来很大的好"
+"处。"
+
+#: video-tips.php:43
+msgid ""
+"Shoot your video horizontally. This will make your life easier every step of "
+"the way."
+msgstr "摄影时，相机一定要水平摆正。这样子接下来一切事物都会变得更加容易。"
+
+#: video-tips.php:44
+msgid ""
+"The Rule of Thirds is a common rule in the photography and video worlds. The "
+"idea is that when you shoot video, you look at your screen as if it has two "
+"vertical lines intersecting two horizontal lines, all evenly spaced, cutting "
+"the frame into thirds. Some phones and cameras even have an option where you "
+"can turn this on in grid form so it's easier to visualize."
+msgstr ""
+"三分法是摄影界中的一个通用规律。即当你摄影时，你看着屏幕，假设它有两条垂直线"
+"和两条水平线，平均分割整个平面为三块。一些手机和相机甚至有这种切割画面的功"
+"能，所以会更方便视觉化。"
+
+#: video-tips.php:45
+msgid ""
+"When using the Rule of Thirds, try to position your subject along one of "
+"these lines. Interviewing a single person? Position them on the right or "
+"left hand side of your screen along one of these imaginary vertical lines. "
+"Filming an awesome landscape? Have the horizon of your frame land along the "
+"top or bottom horizontal line. Imagining your video in this way can take you "
+"from home videographer to professional."
+msgstr ""
+"当使用三分法时，要试着定位你的拍摄物体沿着其中某条线。采访一个单独的人物？那"
+"就将他们放在假设的垂直线左边或右边。拍摄一处绝佳的风景？沿着顶部或底部的水平"
+"线来放置你的镜头。想象一下，这样你就可以从一个业务摄影爱好者晋升专业之列。"
+
+#: video-tips.php:46
+msgid ""
+"Lastly, as enticing as it might seem, avoid using the zoom on your phone or "
+"camera while you are filming. If you have to zoom in, physically move "
+"yourself and/or your camera closer to the action. Certain zoom effects can "
+"also be achieved in editing after you're done shooting."
+msgstr ""
+"最后，虽然听起来非常诱人，但是在摄影时还是不要使用变焦。如果你需要变焦，那就"
+"请走进你要拍摄的对象。一些变焦效果也可以在你结束摄影之后进行编辑调整。"
+
+#: video-tips.php:48
+msgid "Clean It Up"
+msgstr "整理视频"
+
+#: video-tips.php:50
+msgid ""
+"Once you've shot your video, it's time to edit it. Some phones have the "
+"ability to edit a video clip on the phone itself. If you do this, be sure to "
+"make the edited clip into a new video; don't permanently edit the original. "
+"Once you cut something out of a video and delete it, there's no getting it "
+"back."
+msgstr ""
+"当你完成摄影后，现在就是编辑的事情了。一些手机可以直接进行视频的编辑。如果你"
+"这样做，请确认能将片段制成一个新视频，不要一直编辑着原来的版本。一旦你删除了"
+"某个片段，就没有机会再把它加回来了。"
+
+#: video-tips.php:51
+msgid ""
+"To edit your video more in-depth, use a program on the computer. Some "
+"computers may come with free video editing software, such as iMovie. These "
+"are great programs that can produce high-quality films. Easy to use for "
+"those who aren't experienced with editing, many of these come with how-to "
+"tutorials. These are a must for editing beginners."
+msgstr ""
+"如果想要更好的剪辑你的视频，就可以使用电脑上的视频编辑软件，比如iMovie.这些都"
+"是能剪辑高质量影片的好程序。对没有编辑视频经历的人来说，是非常好用的一款软"
+"件。这些软件都配有使用指南，初学者可以一读。"
+
+#: video-tips.php:52
+msgid ""
+"When editing your video, keep a few things in mind. Many times videos will "
+"start and end with a black screen. These act as \"bookends\" to your video. "
+"If you want, a title or introduction can give your movie some context."
+msgstr ""
+"剪辑视频时，要注意一些事情。许多时候，视频会以黑屏的形式开始和结束。这些就像"
+"是你的“书挡”，如果你需要，可以给你的视频加一些文字内容的介绍。"
+
+#: video-tips.php:53
+msgid ""
+"Switching in between video clips or segments should not be choppy; the ideal "
+"way to edit a video is to put some sort of transition in between one clip "
+"and the next. A clip should not abruptly stop and go into another scene; "
+"instead test out a few different transitions to see which one works best for "
+"the style of your video."
+msgstr ""
+"在视频片段之间切换的时候，不能画质变动太大。理想的方法就是编辑一个视频，然后"
+"在两个视频之间加上一些过度镜头。每个片段不应该突兀的停止，然后直接进入下一场"
+"景，你应该试一试不同的过度方式，来看看哪个最适合。"
+
+#: video-tips.php:54
+msgid ""
+"The more video you practice shooting, the better you'll get. By keeping "
+"framing, steadiness, good lighting and the Rule of Thirds in mind, you will "
+"be shooting video at home like a professional in no time."
+msgstr ""
+"当你摄制的视频数量越多，你就会变得越来越熟练。通过构架、稳定、好的灯光以及把"
+"握“三分法”原则，你就离一个专业摄影师不远了。"

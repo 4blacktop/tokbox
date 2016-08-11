@@ -1,0 +1,49 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if video}}
+    <div class="video-header" style="background-image: url('{{video.cover_pic}}');">
+        <div class="overlay">
+            <h1 class="title">{{video.title}}</h1>
+            <div class="difficulty"><p><span class="i18n"><?=_('Level');?></span> {{video.difficulty_level}}</p></div>
+            <div class="category i18n" data-i18n-zh_cn="{{video.category_name_zh}}">{{video.category_name_en}}</div>
+            <div class="posted">{{video.created_at_human}}</div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1 class="i18n">Reviews</h1>
+
+        <div class="bar-graph">
+            <div><span class="left i18n"><?=_('5 star');?></span><span class="bar"><span class="percent" style="width: {{video.percent_5star_reviews}}%;"></span></span><span class="right">{{video.percent_5star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('4 star');?></span><span class="bar"><span class="percent" style="width: {{video.percent_4star_reviews}}%;"></span></span><span class="right">{{video.percent_4star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('3 star');?></span><span class="bar"><span class="percent" style="width: {{video.percent_3star_reviews}}%;"></span></span><span class="right">{{video.percent_3star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('2 star');?></span><span class="bar"><span class="percent" style="width: {{video.percent_2star_reviews}}%;"></span></span><span class="right">{{video.percent_2star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('1 star');?></span><span class="bar"><span class="percent" style="width: {{video.percent_1star_reviews}}%;"></span></span><span class="right">{{video.percent_1star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('0 star');?></span><span class="bar"><span class="percent" style="width: {{video.percent_0star_reviews}}%;"></span></span><span class="right">{{video.percent_0star_reviews}}%</span></div>
+        </div>
+
+        <div class="viewport reviews listView">
+        {{#if reviews}}
+            {{#each reviews}}
+                <div class="review item">
+                    <div class="pic" style="background-image: url('{{this.by_user_profile_pic}}');"></div>
+                    <div class="info">
+                        <span class="stars">{{#for 0 5 1}}<span class="star_20{{#compare index "<" ../this.stars}} active{{/compare}}"></span>{{/for}}</span>
+                        <div class="by_name"><span class="i18n"><?=_('by');?> {{this.by_user_first_name}}</div>
+                        <div class="created_at">{{this.created_at_human}}</div>
+                        <p class="content">{{this.review}}</p>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <p class="no-results"><span class="i18n"><?=_('No reviews found.');?></span>{{#if enrollment.enrolled_at_human}} <a href="#rate-video?id={{video.id}}" class="i18n"><?=_('Write a review');?></a>.{{/if}}</p>
+        {{/if}}
+        </div>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

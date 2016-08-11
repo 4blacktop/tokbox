@@ -1,0 +1,371 @@
+<!-- Start Category-filter -->
+<nav class="category-filter sticky-bar">
+    <div class="filter-by"><span class="i18n"><?=_('Filter by category'); ?></span>:</div>
+    <div class="category-filter-nav">
+        <a href="#" data-cat="1">Category 1</a>
+        <a href="#" data-cat="2">Category 2</a>
+        <a href="#" data-cat="3">Category 3</a>
+        <a href="#" data-cat="4">Category 4</a>
+        <a href="#" data-cat="5">Category 5</a>
+        <a href="#" data-cat="6">Category 6</a>
+        <a href="#" data-cat="7">Category 7</a>
+        <a href="#" data-cat="8">Category 8</a>
+        <a href="#" data-cat="9">Category 9</a>
+        <a href="#" data-cat="10">Category 10</a>
+        <a href="#" data-cat="0" class="reset-filter i18n"><?=_('Reset filter'); ?></a>
+    </div>
+
+    <button id="category-filter" class="filter-btn">
+        <i class="fa fa-chevron-down"></i>
+    </button>
+</nav>
+<!-- End Category-filter -->
+
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <div class="content">
+        <h1 class="i18n" data-i18n-zh_cn="{{location.name_zh}}">{{location.name_en}}</h1>
+
+        <div data-template-filename="videos/search-form.handlebars.html"></div>
+
+        <div class="row banner-list">
+{{#if banner_ads.988x55}}
+        <!-- Start 988x55 banners -->
+    {{#each banner_ads.988x55}}
+            <!-- Start Full banner -->
+            <div class="full-col">
+                <div class="dropdown-container banner banner-full cat-1">
+                    <a href="#">
+                        <img src="{{uri}}" alt="..." />
+        {{#if videos}}
+                        <div class="banner-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+        {{/if}}
+                    </a>
+        {{#if videos}}
+                    <div class="dropdown">
+                        <!-- Start Dropdown body -->
+                        <div class="dropdown-bd">
+                            <div class="row">
+                                <div class="dropdown-links">
+                                    <ul>
+            {{#each videos}}
+                                        <li><a href="#video?id={{id}}">{{title}}</a></li>
+            {{/each}}
+                                    </ul>
+                                </div>
+            {{#if user_bio}}
+                                <div class="dropdown-info">
+                                    <p class="line-breaks" style="padding: 0;">{{user_bio}}</p>
+                                </div>
+            {{/if}}
+                            </div>
+                        </div>
+                        <!-- End Dropdown body -->
+
+                        <!-- Start Dropdown Footer -->
+                        <div class="dropdown-footer">
+                            <div class="row">
+                                <div class="dropdown-footer-col">
+                                    <a href="#videos?mentor_id={{user_id}}" class="read-more"><span class="i18n"><?=_('More jobs'); ?></span> <i class="fa fa-angle-right"></i></a>
+                                </div>
+                                <div class="dropdown-footer-col">
+                                    <a href="#mentor?id={{user_id}}" class="read-more"><span class="i18n"><?=_('Company profile'); ?></span> <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Dropdown Footer -->
+                    </div>    
+                </div>
+        {{/if}}
+            </div>
+            <!-- End Full banner -->
+    {{/each}}
+        <!-- End 988x55 banners -->
+{{/if}}
+
+{{#if banner_ads.322x55}}
+        <!-- Start 322x55 banners -->
+    {{#each banner_ads.322x55}}
+            <!-- Start One third banner -->
+            <div class="banner-three-col">
+                <div class="dropdown-container banner cat-4">
+                    <a href="#">
+                        <img src="{{uri}}" alt="..." />
+        {{#if videos}}
+                        <div class="banner-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+        {{/if}}
+                    </a>
+        {{#if videos}}
+                    <div class="dropdown">
+                        <!-- Start Dropdown body -->
+                        <div class="dropdown-bd">
+                            <div class="row">
+                                <div class="dropdown-links">
+                                    <ul>
+            {{#each videos}}
+                                        <li><a href="#video?id={{id}}">{{title}}</a></li>
+            {{/each}}
+                                    </ul>
+                                </div>
+            {{#if user_bio}}
+                                <div class="dropdown-info">
+                                    <p class="line-breaks" style="padding: 0;">{{user_bio}}</p>
+                                </div>
+            {{/if}}
+                            </div>
+                        </div>
+                        <!-- End Dropdown body -->
+
+                        <!-- Start Dropdown Footer -->
+                        <div class="dropdown-footer">
+                            <div class="row">
+                                <div class="dropdown-footer-col">
+                                    <a href="#videos?mentor_id={{user_id}}" class="read-more"><span class="i18n"><?=_('More jobs'); ?></span> <i class="fa fa-angle-right"></i></a>
+                                </div>
+                                <div class="dropdown-footer-col">
+                                    <a href="#mentor?id={{user_id}}" class="read-more"><span class="i18n"><?=_('Company profile'); ?></span> <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Dropdown Footer -->
+                    </div>
+        {{/if}}
+                </div>
+            </div>
+            <!-- End One third banner -->
+    {{/each}}
+        <!-- End 322x55 banners -->
+{{/if}}
+        </div>
+
+        <!-- Start Letters filter -->
+        <div class="search-filter">
+            <div class="dropdown-container box">
+                <div class="box-header">
+                    <h3><i class="fa fa-search"></i> <span class="i18n"><?=_('Filter by letter'); ?></span></h3>
+                </div>
+                <div class="box-bd">
+{{#each letters}}
+                    <div class="filter-letter">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{letter}}</a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-bd">
+                                <ul>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                    <li><a href="#">Some link</a></li>
+                                </ul>
+                            </div>
+                        </div>    
+                    </div>
+{{/each}}
+                </div>
+            </div>
+        </div>
+        <!-- End Letters filter -->
+
+{{#if banner_ads.155x55}}
+        <div class="row banner-list">
+        <!-- Start 155x55 banners -->
+    {{#each banner_ads.155x55}}
+            <!-- Start One sixth banner -->
+            <div class="banner-six-col dropdown-single">
+                <div class="dropdown-container banner cat-10">
+                    <a href="#">
+                        <img src="{{uri}}" alt="..." />
+        {{#if videos}}
+                        <div class="banner-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+        {{/if}}
+                    </a>
+        {{#if videos}}
+                    <div class="dropdown">
+                        <!-- Start Dropdown body -->
+                        <div class="dropdown-bd">
+                            <div class="row">
+                                <div class="dropdown-links">
+                                    <ul>
+            {{#each videos}}
+                                        <li><a href="#video?id={{id}}">{{title}}</a></li>
+            {{/each}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Dropdown body -->
+
+                        <!-- Start Dropdown Footer -->
+                        <div class="dropdown-footer">
+                            <div class="row">
+                                <div class="dropdown-footer-col">
+                                    <a href="#mentor?id={{user_id}}" class="read-more"><span class="i18n"><?=_('Company profile'); ?></span> <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Dropdown Footer -->
+                    </div>
+        {{/if}}
+                </div>
+            </div>
+            <!-- End One Sixth banner -->
+    {{/each}}
+        <!-- End 155x55 banners -->
+        </div>
+{{/if}}
+
+        <!-- Start City listing -->
+        <div class="city-listing">
+            <ul>
+{{#foreach regions}}
+    {{#isNotEmptyArray item}}
+                <li class="letter">{{key}}</li>
+            {{#foreach item}}
+                <li><a href="#region?id={{item.id}}" class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</a></li>
+            {{/foreach}}
+    {{/isNotEmptyArray}}
+{{/foreach}}
+            </ul>
+        </div>
+        <!-- End City listing -->
+
+
+    
+    
+
+
+
+        <h2><span class="i18n"><?=_('Members');?></span> ({{location.num_members}})</h2>
+        {{#if location.members}}
+        <div class="viewport users">
+            <div class="flipsnap" id="region-members">
+                {{#each location.members}}
+                <a href="#mentor?id={{id}}" class="item">
+                    <div class="pic" style="background-image: url('{{profile_pic}}');"></div>
+                    <div class="info">
+                        <div class="content">
+                            <div class="name">{{first_name}}</div>
+                            <div class="small reviews">{{num_reviews}} <span class="i18n">{{#equal num_reviews 1}}<?=_('review');?>{{else}}<?=_('reviews');?>{{/equal}}</span></div>
+                            {{#if num_reviews}}<div class="stars">{{#for 0 5 1}}<span class="star_10{{#compare index "<" ../avg_stars}} active{{/compare}}"></span>{{/for}}</div>{{/if}}
+                            <div class="small videosnumber">{{num_videos}} <span class="i18n">{{#equal num_videos 1}}<?=_('job'); ?>{{else}}<?=_('jobs'); ?>{{/equal}}</span></div>
+                            <div class="small followers">{{num_proteges}} <span class="i18n">{{#equal num_proteges 1}}<?=_('protégé'); ?>{{else}}<?=_('protégés'); ?>{{/equal}}</span></div>
+                        </div>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+        </div>
+        {{else}}
+        <p class="no-results i18n"><?=_('No members found.');?></p>
+        {{/if}}
+
+            {{#ifOrOr me.industry me.colleagues me.region}}
+            <!-- circle -->
+            <div class="viewport circles logged-in">
+                {{#if me.industry}}
+                <div class="circle_type">
+                    <h3 class="i18n"><?=_('Industry');?></h3>
+                    <a href="#industry?id={{me.industry.id}}">
+                        <div class="circle_pic"><img src="assets/images/circle-industry.png" alt=""></div>
+                        <div class="small name i18n" data-i18n-zh_cn="{{me.industry.name_zh}}">{{me.industry.name_en}}</div>
+                        <div class="small members"><span class="i18n"><?=_('Members');?></span><span class="i18n"><?=_(':');?></span> {{me.industry.num_members}}</div>
+                    </a>
+                </div>
+                {{/if}}
+                {{#if me.colleagues}}
+                <div class="circle_type">
+                    <h3 class="i18n"><?=_('Colleagues');?></h3>
+                    <a href="#colleagues">
+                        <div class="circle_pic"><img src="assets/images/circle-colleagues.png" alt=""></div>
+                        <div class="small name"></div>
+                        <div class="small members"><span class="i18n"><?=_('Peers');?></span><span class="i18n"><?=_(':');?></span> {{me.num_colleagues}}</div>
+                    </a>
+                </div>
+                {{/if}}
+                {{#if me.region}}
+                <div class="circle_type">
+                    <h3 class="i18n"><?=_('Region');?></h3>
+                    <a href="#region?id={{me.region.id}}">
+                        <div class="circle_pic"><img src="assets/images/circle-region.png" alt=""></div>
+                        <div class="small name i18n" data-i18n-zh_cn="{{me.region.name_zh}}">{{me.region.name_en}}</div>
+                        <div class="small members"><span class="i18n"><?=_('Members');?></span><span class="i18n"><?=_(':');?></span> {{me.region.num_members}}</div>
+                    </a>
+                </div>
+                {{/if}}
+
+                <div style="clear:both;"></div>
+            </div><!-- /circle -->
+            {{/ifOrOr}}
+
+            {{#if popular_videos}}
+            <!-- popular videos -->
+            <div class="viewport videos popular-videos">
+                <div class="actions right">
+                    <a href="#videos" class="small-button i18n"><?=_('More jobs');?></a>
+                    <a href="#create-video" class="small-button i18n only-mentors"><?=_('Create job');?></a>
+                </div>
+
+                <h2 class="i18n"><?=_('Popular Jobs');?></h2>
+                <div class="flipsnap" id="home-videos-popular">
+                    <ul>
+                    {{#each popular_videos}}
+                        {{> popular_video this}}
+                    {{/each}}
+                    </ul>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if popular_mentors}}
+            <!-- popular mentors -->
+            <div class="viewport mentors popular-mentors">
+                <div class="actions right">
+                    <a href="#mentors" class="small-button i18n"><?=_('More companies');?></a>
+                </div>
+
+                <h2 class="i18n"><?=_('Popular companies');?></h2>
+                <div class="flipsnap" id="home-mentors-popular">
+                    <ul>
+                    {{#each popular_mentors}}
+                        {{> popular_mentor this}}
+                    {{/each}}
+                    </ul>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if featured_videos}}
+            <!-- famous enterprise videos -->
+            <div class="viewport videos famous-enterprise-videos">
+                <div class="actions right">
+                    <a href="#videos" class="small-button i18n"><?=_('More jobs');?></a>
+                </div>
+
+                <h2 class="i18n"><?=_('Famous Enterprise Jobs');?></h2>
+                <div class="flipsnap" id="home-videos-featured">
+                    <ul>
+                        {{#each featured_videos}}
+                            {{> popular_video this}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            {{/if}}
+
+
+    </div>
+</main>
+<!-- End Main -->

@@ -1,0 +1,25 @@
+<div class="item">
+    <a href="#mentor?id={{id}}"><div class="pic" style="background-image: url('{{profile_pic}}');"></div></a>
+	<div class="info">
+		<div class="content">
+			<div class="name"><a href="#mentor?id={{id}}">{{first_name}}</a></div>
+            {{#if is_mentor}}
+                <div class="small reviews">{{num_reviews}} <span class="i18n">{{#equal num_reviews 1}}<?=_('review');?>{{else}}<?=_('reviews');?>{{/equal}}</span></div>
+                {{#if num_reviews}}<div class="stars">{{#for 0 5 1}}<span class="star_10{{#compare index "<" ../avg_stars}} active{{/compare}}"></span>{{/for}}</div>{{/if}}
+                <div class="small videosnumber">{{num_videos}} <span class="i18n">{{#equal num_videos 1}}<?=_('job'); ?>{{else}}<?=_('jobs'); ?>{{/equal}}</span></div>
+                <div class="small followers">{{num_proteges}} <span class="i18n">{{#equal num_proteges 1}}<?=_('protégé'); ?>{{else}}<?=_('protégés'); ?>{{/equal}}</span></div>
+            {{/if}}
+			<div style="margin-top: 5px;">
+            {{#if invitation_status}}
+                {{#equal invitation_status "pending"}}
+                    <a href="#mentor?id={{id}}" onclick="return false;" class="small-button disabled waiting br i18n"><?=_('Invited'); ?></a>
+                {{else}}
+                    <a href="#mentor?id={{id}}" onclick="return false;" class="small-button disabled company br i18n"><?=_('Member'); ?></a>
+                {{/equal}}
+            {{else}}
+                    <a href="#invite-to-company" onclick="$.pages['company.invite'].invite({{id}}); return false;" id="request-friend-{{id}}" class="small-button br checkmark i18n"><?=_('Invite');?></a>
+            {{/if}}
+            </div>
+        </div>
+	</div>
+</div>

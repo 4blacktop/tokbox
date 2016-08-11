@@ -1,0 +1,234 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+            <h1 class="i18n"><?=_('Create a job'); ?></h1>
+            <div id="vars"
+                data-timestamp="{{data.upload_token.timestamp}}"
+                data-token="{{data.upload_token.token}}"></div>
+
+            <form id="create-video-form" action="videos/" method="post" class="yamm" data-before-submit="return $.pages['videos.create'].before_submit(data);" data-after-submit="$.pages['videos.create'].create_video_cb(response);">
+                <h2 class="i18n"><?=_('Basic info'); ?></h2>
+                <label for="title" class="i18n"><?=_('Job title'); ?></label>
+                <div data-role="fieldcontainer">
+                    <input type="text" id="title" name="title" placeholder="<?=_('e.g. How to start a successful business'); ?>" class="i18n" data-required="true">
+                </div>
+                <label for="description" class="i18n"><?=_('Description'); ?></label>
+                <div data-role="fieldcontainer">
+                    <textarea id="description" name="description" rows="2" placeholder="<?=_('Write a paragraph or two about your video');?>" class="i18n"></textarea>
+                </div>
+
+                <h2 class="i18n"><?=_('Media'); ?></h2>
+                <label for="pdf" class="i18n"><?=_('PDF'); ?></label>
+                <div data-role="fieldcontainer">
+                    <button id="pdf_uri-select" class="i18n"><?=_('Select PDF'); ?></button>
+                    <input type="file" id="pdf" name="pdf" accept="image/*; capture=camera">
+                    <input type="hidden" id="pdf_uri" name="pdf_uri" />
+                    <progress max="100" value="0" id="pdf_uri-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="pdf_uri-upload-percentage">0</span>%</span>
+                </div>
+
+                <label for="raw_video_uri" class="i18n"><?=_('Select a video for this job'); ?></label>
+                <div data-role="fieldcontainer">
+                    <button id="raw_video_uri-select" class="i18n"><?=_('Select video'); ?></button>
+                    <input type="file" name="video" accept="video/*; capture=camera">
+                    <input type="hidden" id="raw_video_uri" name="raw_video_uri" />
+                    <progress max="100" value="0" id="raw_video_uri-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="raw_video_uri-upload-percentage">0</span>%</span>
+                </div>
+
+                <label for="cover_photo" class="i18n"><?=_('Select a cover photo'); ?></label>
+                <div data-role="fieldcontainer">
+                    <button id="cover_pic-select" class="i18n"><?=_('Select photo'); ?></button>
+                    <input type="file" name="cover_photo" accept="image/*; capture=camera">
+                    <input type="hidden" id="cover_pic" name="cover_pic" />
+                    <progress max="100" value="0" id="cover_pic-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="cover_pic-upload-percentage">0</span>%</span>
+                </div>
+
+                <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+                    <input type="text" name="position" class="autocomplete i18n" data-autocomplete-src="positions" placeholder="<?=_('Position');?>" tabindex="1">
+
+                    <div class="dropdown yamm-fw">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu search-form-dropdown positions">
+                            <li class="actions">
+                                <div class="row">
+                                    <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </li>
+{{#foreach positions}}
+                            <li>
+                                <div class="row">
+                                    <div class="four-col i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</div>
+    {{#foreach item.items}}
+                                    <div class="four-col item">
+                                        <a href="?" class="toggle-btn"><i class="fa fa-plus"></i> <span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span></a>
+                                        <div class="toggle-content">
+        {{#foreach item.items}}
+                                            <label>
+                                                <input type="radio" name="position_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+        {{/foreach}}
+                                        </div>
+                                    </div>
+    {{/foreach}}
+                                </div>
+                            </li>
+{{/foreach}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+                    <input type="text" name="industry" class="autocomplete i18n" data-autocomplete-src="industries" placeholder="<?=_('Industry');?>" value="{{search_industry}}" tabindex="2">
+
+                    <div class="dropdown yamm-fw">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu search-form-dropdown industries">
+                            <li class="actions">
+                                <div class="row">
+                                    <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </li>
+{{#foreach industries}}
+                            <li>
+                                <div class="row">
+                                    <div class="three-col group" class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</div>
+    {{#foreach item.items}}
+                                    <div class="three-col item">
+                                        <label>
+                                            <input type="radio" name="industry_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                        </label>
+                                    </div>
+    {{/foreach}}
+                                </div>
+                            </li>
+{{/foreach}}
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+                    <input type="text" name="location" class="autocomplete i18n" data-autocomplete-src="regions" placeholder="<?=_('Location');?>" value="{{search_location}}" tabindex="3">
+
+                    <div class="dropdown yamm-fw">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu search-form-dropdown locations">
+                            <li class="actions">
+                                <div class="row">
+                                    <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+{{#foreach regions}}
+{{#isNotEmptyArray item}}
+{{#foreach item}}
+                                    <div class="four-col">
+                                        <label>
+                                            <input type="radio" name="region_id" value="{{item.id}}" data-role="none" class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}
+                                        </label>
+                                    </div>
+{{/foreach}}
+{{/isNotEmptyArray}}
+{{/foreach}}
+                                </div>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+
+                <div class="create-video-container">
+                    <select name="wage_range_id">
+                        <option class="i18n" value=""><?=_('Wage');?></option>
+{{#select post.q_wage_range}}
+    {{#each wage_ranges}}
+                            <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}"{{#equal post.q_wage_range id}} selected="selected"{{/equal}}>{{name_en}}</option>
+    {{/each}}
+{{/select}}
+                    </select>
+                </div> 
+
+                <h2 class="i18n"><?=_('Details'); ?></h2>
+                <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+                    <div class="dropdown no-input yamm-fw">
+                        <div class="dropdown-toggle" data-toggle="dropdown">
+                            <input type="text" name="experience_requirement" class="i18n" placeholder="<?=_('Experience Required');?>" value="{{search_experience_name}}">
+                            <a href="#"><i class="fa fa-angle-down"></i></a>
+                        </div>
+                        <ul class="dropdown-menu fit search-form-dropdown experience_requirement">
+                            <li class="actions">
+                                <div class="row">
+                                    <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </li>
+{{#foreach experience_requirements}}
+                            <li>
+                                <div class="row">
+                                    <label>
+                                        <input type="radio" name="experience_requirement_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                    </label>
+                                </div>
+                            </li>
+{{/foreach}}
+                        </ul>
+                    </div> 
+                </div>
+
+                <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+                    <div class="dropdown no-input yamm-fw">
+                        <div class="dropdown-toggle" data-toggle="dropdown">
+                            <input type="text" name="education_requirement" class="i18n" placeholder="<?=_('Education Background');?>" value="{{search_education_requirement}}">
+                            <a href="#"><i class="fa fa-angle-down"></i></a>
+                        </div>
+                        <ul class="dropdown-menu fit search-form-dropdown education_requirement">
+                            <li class="actions">
+                                <div class="row">
+                                    <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </li>
+{{#foreach education_requirements}}
+                            <li>
+                                <div class="row">
+                                    <label>
+                                        <input type="radio" name="education_requirement_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                    </label>
+                                </div>
+                            </li>
+{{/foreach}}
+                        </ul>
+                    </div> 
+                </div>
+
+                <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+                    <div class="dropdown no-input yamm-fw">
+                        <div class="dropdown-toggle" data-toggle="dropdown">
+                            <input type="text" name="employment_type" class="i18n" placeholder="<?=_('Employment Type');?>" value="{{search_employment_type}}">
+                            <a href="#"><i class="fa fa-angle-down"></i></a>
+                        </div>
+                        <ul class="dropdown-menu fit search-form-dropdown employment_type">
+                            <li class="actions">
+                                <div class="row">
+                                    <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </li>
+{{#foreach employment_types}}
+                            <li>
+                                <div class="row">
+                                    <label>
+                                        <input type="radio" name="employment_type_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                    </label>
+                                </div>
+                            </li>
+{{/foreach}}
+                        </ul>
+                    </div> 
+                </div>
+
+                <div data-role="fieldcontainer">
+                    <input type="submit" value="<?=_('Save'); ?>" class="i18n">
+                </div>
+            </form>
+
+    </div>
+</main>
+<!-- End Main -->

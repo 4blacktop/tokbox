@@ -1,0 +1,59 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if i_am_company_admin}}
+    <h1 class="i18n"><?=_('Edit Company');?></h1>
+
+    <div class="company-header" style="background-image: url('{{profile_pic}}');">
+        <div class="overlay">
+            <div class="progress-container">
+                <input type="file" id="cover_photo" name="cover_photo" accept="image/*; capture=camera">
+                <progress max="100" value="0" id="profile_pic-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="profile_pic-upload-percentage">0</span>%</span>
+            </div>
+
+            <a href="#" id="edit-company-profile_pic" class="edit-profile_pic"><span class="i18n">Edit</span><img class="profile_pic" src="{{profile_pic}}" /></a>
+            <div class="info">
+                <h1 class="title">{{name}}</h1>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="i18n"><?=_('Basic info');?></h2>
+    <form action="companies/mine" method="put" data-after-submit="$.pages['company.edit'].update_cb(response);">
+        <input type="hidden" id="profile_pic" name="profile_pic" value="{{profile_pic}}" />
+
+        <div>
+            <label for="name" class="i18n"><?=_('Name'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="text" id="name" name="name" placeholder="<?=_('e.g. CompuGlobalHyperMegaNet'); ?>" value="{{name}}" class="i18n" data-required="true">
+            </div>
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Save basic info'); ?>" class="i18n">
+        </div>
+    </form>
+
+    <hr />
+
+    <div class="actions right">
+        <a href="#invite-to-company" class="small-button i18n"><?=_('Invite member');?></a>
+    </div>
+    <h2 class="i18n"><?=_('Members');?></h2>
+    {{#if members}}
+    <div class="viewport mentors bottom-divider">
+        <div class="flipsnap" id="edit-company-members">
+        {{#each members}}
+            {{> member this}}
+        {{/each}}
+        </div>
+    </div>
+    {{else}}
+    <p class="i18n"><?=_('No members found.');?></p>
+    {{/if}}
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

@@ -1,0 +1,46 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <div data-template-filename="mentors/search-form.handlebars.html"></div>
+
+    <div class="content">
+        <h1 class="i18n"><?=_('Companies');?></h1>
+
+        {{#if popular}}
+        <h2 class="i18n"><?=_('Popular companies');?></h2>
+        <div class="viewport mentors">
+            <div class="flipsnap" id="mentors-popular">
+                {{#each popular}}
+                    {{> mentor this}}
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if recommended}}
+        <h2 class="i18n"><?=_('Recommended companies');?></h2>
+        <div class="viewport mentors">
+            <div class="flipsnap" id="mentors-recommended">
+                {{#each recommended}}
+                    {{> mentor this}}
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if new}}
+        <h2 class="i18n"><?=_('New companies');?></h2>
+        <div class="viewport mentors">
+            <div class="flipsnap" id="mentors-new">
+                {{#each new}}
+                    {{> mentor this}}
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+    </div>
+
+    </div>
+</main>
+<!-- End Main -->

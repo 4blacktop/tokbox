@@ -1,0 +1,78 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+            <div class="register-blurb">
+                <p class="color-shakespear i18n" style="font-size: 70px; line-height: 1em;"><?=_('Dapinqing');?></p>
+                <p class="color-shakespear">
+                    <span style="font-size: 40px;"><span class="i18n"><?=_('A');?></span> <span class="color-salomie i18n"><?=_('video');?></span></span><br>
+                    <span style="font-size: 40px;"><span class="i18n"><?=_('is worth more than');?></span></span><br>
+                    <span style="font-size: 50px;"><span class="i18n"><?=_('a thousand');?></span> <span class="color-salomie i18n"><?=_('words');?></span><br>
+                </p>
+            </div>
+            <div class="register-login-form">
+                <h2 class="i18n"><?=_('Already have an account?');?></h2>
+                <p class="i18n" style="margin-top: 0;"><?php echo _('Log in'); ?></p>
+                <div class="login-form" data-template-filename="login/login.form.handlebars.html"></div>
+            </div>
+            <div style="clear: both;"></div>
+
+            <ul class="register-icons">
+                <li>
+                    <img src="/img/register-video.png" alt="">
+                    <span class="i18n"><?=_('Video résumé'); ?></span>
+                </li>
+                <li>
+                    <img src="/img/register-online.png" alt="">
+                    <span class="i18n"><?=_('Online interview'); ?></span>
+                </li>
+                <li>
+                    <img src="/img/register-efficient.png" alt="">
+                    <span class="i18n"><?=_('More efficient'); ?></span>
+                </li>
+            </ul>
+
+            <h1 class="i18n"><?php echo _('Join now'); ?></h1>
+            <p class="i18n"><?=_('Create an account and find a better job today!');?></p>
+            <div class="register-form">
+                <form id="register-employees_form" action="users/" method="post" data-validate="{'rules': {'password_confirm': {'equalTo': '#password'}},'messages': {'password_confirm': {'equalTo': 'Your passwords must match.'}}}" data-before-submit="return $.pages['user.register-employees'].before_submit(data);" data-after-submit="$.pages['user.register-employees'].register_cb(response);">
+                    <label for="full_name" class="i18n"><?=_('Name'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <input type="text" id="full_name" name="full_name" class="i18n" placeholder="<?php echo _('e.g. John Doe'); ?>" data-required="true" tabindex="1">
+                    </div>
+
+                    <label for="email" class="i18n"><?=_('Email address'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <input type="email" id="email" name="email" class="i18n" placeholder="<?php echo _('e.g. johndoe@gmail.com'); ?>" data-required="true" tabindex="2">
+                    </div>
+                    <label for="phone_number" class="i18n"><?=_('Phone number'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <input type="tel" id="phone_number" name="phone_number" class="i18n" placeholder="<?php echo _('e.g. 555-555-1212'); ?>" tabindex="3">
+                    </div>
+
+                    <label for="password" class="i18n"><?=_('Select a password'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <input type="password" id="password" name="password" class="i18n" placeholder="<?php echo _('Enter a password'); ?>" data-required="true" tabindex="4">
+                    </div>
+                    <div data-role="fieldcontainer">
+                        <input type="password" id="password_confirm" name="password_confirm" class="i18n" placeholder="<?php echo _('Re-enter your password'); ?>" tabindex="5">
+                    </div>
+
+                    <label for="lang" class="i18n"><?=_('Language'); ?></label>
+                    <div class="dropdown-container" data-role="fieldcontainer">
+                        <select id="lang" name="lang" data-required="true" tabindex="6">
+                            {{#select me.lang}}
+                            <option value="zh_CN">中文 - Chinese</option>
+                            <option value="en_US">English - 英文</option>
+                            {{/select}}
+                        </select>
+                    </div>
+
+                    <br>
+                    <input type="submit" class="i18n" value="<?php echo _('Join now'); ?>" tabindex="7">
+                </form>
+            </div>
+
+    </div>
+</main>
+<!-- End Main -->

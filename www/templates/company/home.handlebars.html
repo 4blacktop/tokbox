@@ -1,0 +1,79 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+<h1 class="i18n"><?=_('My Company');?></h1>
+{{#if id}}
+    <div class="company-header" style="background-image: url('{{profile_pic}}');">
+        <div class="overlay">
+            <img class="profile_pic" src="{{profile_pic}}" />
+            <div class="info">
+                <h1 class="title">{{name}}</h1>
+            </div>
+        </div>
+    </div>
+    {{#if i_am_company_admin}}
+        <div><a href="#edit-company" class="small-button write i18n"><?=_('Edit company');?></a></div>
+    {{/if}}
+
+    {{#if videos}}
+    <div class="actions right">
+        <a href="#create-video" class="small-button i18n only-mentors"><?=_('Create job');?></a>
+    </div>
+    <h2 class="i18n"><?=_('Jobs');?></h2>
+    <div class="viewport videos">
+        <div class="flipsnap" id="my-company-videos">
+        {{#each videos}}
+            {{> video this}}
+        {{/each}}
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if members}}
+        {{#if i_am_company_admin}}
+        <div class="actions right">
+            <a href="#invite-to-company" class="small-button i18n"><?=_('Invite member');?></a>
+        </div>
+        {{/if}}
+    <h2 class="i18n"><?=_('Members');?></h2>
+    <div class="viewport mentors bottom-divider">
+        <div class="flipsnap" id="my-company-members">
+        {{#each members}}
+            {{> member this}}
+        {{/each}}
+        </div>
+    </div>
+    {{/if}}
+{{else}}
+    <p class="i18n"><?=_('You are not a member of any company.');?></p>
+    <p><a href="#create-company" class="small-button company i18n"><?=_('Create company');?></a></p>
+
+    {{#isNotEmptyArray data}}
+    <h2 class="i18n"><?=_('Invitations');?></h2>
+    <p class="i18n"><?=_('These companies have invited you to join:');?></p>
+    <ul class="viewport companies listView">
+        {{#each data}}
+        <li class="item" id="company-invitation-{{invitation_id}}">
+            <a href="#company?id={{id}}"><div class="pic" style="background-image: url('{{profile_pic}}');"></div></a>
+            <div class="info">
+                <div class="content">
+                    <div class="name"><a href="#company?id={{id}}">{{name}}</a></div>
+                    <div class="small created_at"><span class="i18n"><?=_('Joined');?></span> {{created_at_human}}</div>
+                    <div class="small num_members">{{num_members}} <span class="i18n">{{#equal num_members 1}}<?=_('member');?>{{else}}<?=_('members');?>{{/equal}}</span></div>
+                    <div class="small videosnumber">{{num_videos}} <span class="i18n">{{#equal num_videos 1}}<?=_('job'); ?>{{else}}<?=_('jobs'); ?>{{/equal}}</span></div>
+                    <div class="small-button br" style="margin-top: 5px;">
+                        <a href="#company?id={{id}}" onclick="$.pages['company.home'].respond_to_invite('accept', {{invitation_id}}); return false;" class="small-button checkmark i18n"><?=_('Join');?></a>
+                        <a href="#company?id={{id}}" onclick="$.pages['company.home'].respond_to_invite('deny', {{invitation_id}}); return false;" class="small-button x i18n"><?=_('Decline');?></a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{/isNotEmptyArray}}
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

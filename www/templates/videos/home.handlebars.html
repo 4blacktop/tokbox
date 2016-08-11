@@ -1,0 +1,78 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <div data-template-filename="videos/search-form.handlebars.html"></div>
+
+    <div class="content">
+        <div class="actions right">
+            <a href="#create-video" class="small-button i18n only-mentors"><?=_('Create job');?></a>
+        </div>
+        <h1 class="i18n"><?=_('Jobs');?></h1>
+
+{{#if is_search}}
+        <h2 class="i18n"><?=_('Search results');?></h2>
+        <div class="viewport videos listView">
+            {{#if videos.data}}
+            <div>
+                {{#each videos.data}}
+                    {{> video this}}
+                {{/each}}
+            </div>
+            {{else}}
+            <p class="no-results i18n"><?=_('No jobs found.');?></p>
+            {{/if}}
+        </div>
+        {{#compare videos.meta.NumRecordsAvailable '>' videos.meta.EndRecord}}
+        <div class="show-more"><a href="#videos?{{qs}}&append_results=1&startrecord={{nextrecord}}" onclick="$.pages['videos.home'].append_results('{{qs}}', {{nextrecord}}); return false;">Show more</a></div>
+        {{/compare}}
+{{else}}
+        {{#if videos.popular}}
+        <h2 class="i18n"><?=_('Popular jobs');?></h2>
+        <div class="viewport videos">
+            <div class="flipsnap" id="videos-popular">
+            {{#each videos.popular}}
+                {{> video this}}
+            {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if videos.recommended}}
+        <h2 class="i18n"><?=_('Recommended jobs');?></h2>
+        <div class="viewport videos">
+            <div class="flipsnap" id="videos-recommended">
+            {{#each videos.recommended}}
+                {{> video this}}
+            {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if videos.viewed}}
+        <h2 class="i18n"><?=_('Watch it again');?></h2>
+        <div class="viewport videos">
+            <div class="flipsnap" id="videos-viewed">
+            {{#each videos.viewed}}
+                {{> video this}}
+            {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if viewed}}
+        <h2 class="i18n"><?=_('New jobs');?></h2>
+        <div class="viewport videos">
+            <div class="flipsnap" id="videos-new">
+            {{#each new}}
+                {{> video this}}
+            {{/each}}
+            </div>
+        </div>
+        {{/if}}
+{{/if}}
+    </div>
+
+    </div>
+</main>
+<!-- End Main -->

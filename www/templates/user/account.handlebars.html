@@ -1,0 +1,322 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if me}}
+    <h1 class="i18n"><?=_('My Account');?></h1>
+
+    <div class="user-header" style="background-image: url('{{me.profile_pic}}');">
+        <div class="overlay">
+            <div class="progress-container">
+                <input type="file" id="cover_photo" name="cover_photo" accept="image/*; capture=camera">
+                <progress max="100" value="0" id="profile_pic-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="profile_pic-upload-percentage">0</span>%</span>
+            </div>
+
+            <a href="#" id="edit-user-profile_pic" class="edit-profile_pic"><span class="i18n">Edit</span><img class="profile_pic" src="{{me.profile_pic}}" /></a>
+            <div class="info">
+                <h1 class="title">{{me.first_name}}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="subpage-tabs">
+        <a href="#my-account" id="my-account-personal-info-tab" onclick="$('#account-mentor-info-form').hide(); $('#account-student-info-form').hide(); $('#account-employment-info-form').hide(); $('#account-personal-info-form').show(); $(this).siblings('a').removeClass('current'); $(this).addClass('current'); return false;" data-role="button" class="i18n" style="width: 30%; float: left;"><?=_('Account info');?></a>
+        <a href="#my-account-mentor-info" id="my-account-mentor-info-tab" onclick="$('#account-personal-info-form').hide(); $('#account-student-info-form').hide(); $('#account-employment-info-form').hide(); $('#account-mentor-info-form').show(); $(this).siblings('a').removeClass('current'); $(this).addClass('current'); return false;" data-role="button" class="only-mentors i18n" style="width: 30%; float: left; margin-left: 10px;"><?=_('Company info');?></a>
+        <a href="#my-account-student-info" id="my-account-student-info-tab" onclick="$('#account-personal-info-form').hide(); $('#account-mentor-info-form').hide(); $('#account-employment-info-form').hide(); $('#account-student-info-form').show(); $(this).siblings('a').removeClass('current'); $(this).addClass('current'); return false;" data-role="button" class="only-students i18n" style="width: 30%; float: left; margin-left: 10px;"><?=_('Personal info');?></a>
+        <a href="#my-account-employment-info" id="my-account-employment-info-tab" onclick="$('#account-personal-info-form').hide(); $('#account-mentor-info-form').hide(); $('#account-student-info-form').hide(); $('#account-employment-info-form').show(); $(this).siblings('a').removeClass('current'); $(this).addClass('current'); return false;" data-role="button" class="only-students i18n" style="width: 30%; float: left; margin-left: 10px;"><?=_('Employment info');?></a>
+        <div style="clear: left;"></div>
+    </div>
+
+    <form id="account-personal-info-form" action="users/" method="put" data-validate="{'rules': {'password_confirm': {'equalTo': '#password_new'}},'messages': {'password_confirm': {'equalTo': 'Your new passwords must match.'}}}" data-before-submit="return $.pages['user.account'].before_submit(data);" data-after-submit="$.pages['user.account'].update_cb(response);">
+        <input type="hidden" id="profile_pic" name="profile_pic" value="{{me.profile_pic}}" />
+
+        <h2 class="i18n"><?=_('Account info'); ?></h2>
+        <div>
+            <label for="full_name" class="i18n"><?=_('Name'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="text" id="full_name" name="full_name" class="i18n" placeholder="<?php echo _('e.g. John Doe'); ?>" value="{{me.display_name}}" data-required="true">
+            </div>
+        </div>
+        <div>
+            <label for="email" class="i18n"><?=_('Email'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="email" id="email" name="email" placeholder="<?=_('e.g. johndoe@gmail.com'); ?>" value="{{me.email}}" class="i18n" data-required="true">
+            </div>
+        </div>
+        <div>
+            <label for="phone_number" class="i18n"><?=_('Phone number'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="tel" id="phone_number" name="phone_number" placeholder="<?php echo _('e.g. 555-555-1212'); ?>" value="{{me.phone_number}}" class="i18n">
+            </div>
+        </div>
+
+        <label for="password" class="i18n"><?=_('Change your password'); ?></label>
+        <div data-role="fieldcontainer">
+            <input type="password" id="password" name="password" class="i18n" placeholder="<?php echo _('Enter your current password'); ?>" data-human-name="Old password">
+        </div>
+        <div data-role="fieldcontainer">
+            <input type="password" id="password_new" name="password_new" class="i18n" placeholder="<?php echo _('Enter a new password'); ?>" data-human-name="New password">
+        </div>
+        <div data-role="fieldcontainer">
+            <input type="password" id="password_confirm" name="password_confirm" class="i18n" placeholder="<?php echo _('Re-enter your new password'); ?>" data-human-name="Confirm new password">
+        </div>
+
+        <label for="password" class="i18n"><?=_('Language'); ?></label>
+        <div data-role="fieldcontainer">
+            <select id="lang" name="lang" data-required="true">
+                {{#select me.lang}}
+                <option value="zh_CN">中文 - Chinese</option>
+                <option value="en_US">English - 英文</option>
+                {{/select}}
+            </select>
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Save'); ?>" class="i18n">
+        </div>
+    </form>
+
+    <form id="account-mentor-info-form" style="display: none;" action="users/" method="put" data-before-submit="return $.pages['user.account'].before_submit(data);" data-after-submit="$.pages['user.account'].update_cb(response);">
+        <h2 class="i18n"><?=_('Current package');?></h2>
+        <p class="i18n"><?=_('Your current package plan has the following credits remaining:');?></p>
+        <ul style="padding-left: 20px;">
+            <li><b class="i18n"><?=_('Job posts');?></b>: {{#if me.num_posts_remaining}}{{me.num_posts_remaining}}{{else}}0{{/if}}</li>
+            <li><b class="i18n"><?=_('New candidate contacts/résumé downloads');?></b>: {{#if me.num_contacts_remaining}}{{me.num_contacts_remaining}}{{else}}0{{/if}}</li>
+        </ul>
+        <p><span class="i18n"><?=_('To purchase more, please');?></span> <a href="#contact" class="i18n" style="text-decoration: underline;"><?=_('contact us');?></a>.</p>
+
+        <h2><span class="i18n"><?=_('Company introduction'); ?></span> <span class="i18n"><?=_('PDF');?></span></h2>
+        {{#if me.resume_uri}}
+        <a href="{{me.resume_uri}}" onclick="window.open('{{me.resume_uri}}', '_blank', 'location=no,enableViewportScale=yes'); return false;" class="small-button br pdf"><span class="i18n"><?=_('View My Company Introduction');?></span> ({{#isNull me.resume_approved_at}}<span class="i18n"><?=_('NOT APPROVED YET');?></span>{{else}}<span class="i18n"><?=_('Approved');?></span> {{me.resume_approved_at_human}}{{/isNull}})</a>
+        {{/if}}
+        <label for="resume" class="i18n"><?=_('Upload a company introduction pdf'); ?></label>
+        <div data-role="fieldcontainer">
+            <button id="resume_uri-select" class="i18n"><?=_('Select image or PDF'); ?></button>
+            <input type="file" id="resume" name="resume" accept="image/*; capture=camera">
+            <input type="hidden" id="resume_uri" name="resume_uri" value="{{me.resume_uri}}" />
+            <progress max="100" value="0" id="resume_uri-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="resume_uri-upload-percentage">0</span>%</span>
+        </div>
+
+        <h2><span class="i18n"><?=_('Company introduction'); ?></span> <span class="i18n"><?=_('Video');?></span></h2>
+        {{#if me.video_uri}}
+        <div class="account-video-container video-container"></div>
+        {{else}}
+            {{#if me.raw_video_uri}}
+        <div class="account-video-container video-container">
+            <p class="processing i18n"><?=_('Your video is still processing...');?></p>
+        </div>
+            {{/if}}
+        {{/if}}
+        <label for="raw_video_uri" class="i18n"><?=_('Upload a company introduction video'); ?></label>
+        <div data-role="fieldcontainer">
+            <button id="raw_video_uri-select" class="i18n"><?=_('Select video'); ?></button>
+            <input type="file" name="video" accept="video/*; capture=camera">
+            <input type="hidden" id="raw_video_uri" name="raw_video_uri" />
+            <progress max="100" value="0" id="raw_video_uri-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="raw_video_uri-upload-percentage">0</span>%</span>
+        </div>
+
+        <h2 class="i18n"><?=_('Company info'); ?></h2>
+        <div>
+            <label for="first_name" class="i18n"><?=_('Company name'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="text" id="first_name" name="first_name" placeholder="<?=_('e.g. Premier Business Solutions'); ?>" value="{{me.first_name}}" class="i18n" data-required="true">
+            </div>
+        </div>
+
+        <div>
+            <label for="bio" class="i18n"><?=_('Company description'); ?></label>
+            <div data-role="fieldcontainer">
+                <textarea id="bio" name="bio" rows="2" placeholder="<?=_('Write a paragraph or two about your company');?>" class="i18n">{{me.bio}}</textarea>
+            </div>
+        </div>
+
+        <label for="industry_id" class="i18n"><?=_('Industry'); ?></label>
+        <div data-role="fieldcontainer">
+            <select id="industry_id" name="industry_id" data-required="true">
+                <option value="" class="i18n"><?=_('Select an industry...');?></option>
+                {{#select me.industry_id}}
+                    {{#each industries}}
+                    <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+
+        <label for="region_id" class="i18n"><?=_('Location'); ?></label>
+        <div data-role="fieldcontainer">
+            <select id="region_id" name="region_id" data-required="true">
+                <option value="" class="i18n"><?=_('Select a region...');?></option>
+                {{#select me.region_id}}
+                    {{#each regions}}
+                    <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+
+        <label for="company_type_id" class="i18n"><?=_('Company Type'); ?></label>
+        <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+            <div class="dropdown no-input yamm-fw">
+                <div class="dropdown-toggle" data-toggle="dropdown">
+                    <input type="text" name="company_type" class="i18n" placeholder="<?=_('Select your company type...');?>" value="{{me.company_type_name_en}}" data-i18n-zh_cn="{{me.company_type_name_zh}}">
+                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                </div>
+                <ul class="dropdown-menu fit search-form-dropdown company_type">
+                    <li class="actions">
+                        <div class="row">
+                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </li>
+{{#foreach company_types}}
+                    <li>
+                        <div class="row">
+                            <label>
+                                <input type="radio" id="company_type_id" name="company_type_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                            </label>
+                        </div>
+                    </li>
+{{/foreach}}
+                </ul>
+            </div> 
+        </div>
+
+        <label for="company_size_id" class="i18n"><?=_('Company Size'); ?></label>
+        <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+            <div class="dropdown no-input yamm-fw">
+                <div class="dropdown-toggle" data-toggle="dropdown">
+                    <input type="text" name="company_size" class="i18n" placeholder="<?=_('Select your company size...');?>" value="{{me.company_size_name_en}}" data-i18n-zh_cn="{{me.company_size_name_zh}}">
+                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                </div>
+                <ul class="dropdown-menu fit search-form-dropdown company_size">
+                    <li class="actions">
+                        <div class="row">
+                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </li>
+{{#foreach company_sizes}}
+                    <li>
+                        <div class="row">
+                            <label>
+                                <input type="radio" id="company_size_id" name="company_size_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                            </label>
+                        </div>
+                    </li>
+{{/foreach}}
+                </ul>
+            </div> 
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Save'); ?>" class="i18n">
+        </div>
+    </form>
+
+    <form id="account-student-info-form" style="display: none;" action="users/" method="put" data-before-submit="return $.pages['user.account'].before_submit(data);" data-after-submit="$.pages['user.account'].update_cb(response);">
+        <h2 class="i18n"><?=_('Your résumé'); ?></h2>
+        {{#if me.resume_uri}}
+        <a href="{{me.resume_uri}}" onclick="window.open('{{me.resume_uri}}', '_blank', 'location=no,enableViewportScale=yes'); return false;" class="small-button br pdf"><span class="i18n"><?=_('View My Résumé');?></span> ({{#isNull me.resume_approved_at}}<span class="i18n"><?=_('NOT APPROVED YET');?></span>{{else}}<span class="i18n"><?=_('Approved');?></span> {{me.resume_approved_at_human}}{{/isNull}})</a>
+        {{/if}}
+        <label for="resume" class="i18n"><?=_('Upload a résumé'); ?></label>
+        <div data-role="fieldcontainer">
+            <button id="resume_uri-select" class="i18n"><?=_('Select image or PDF'); ?></button>
+            <input type="file" id="resume" name="resume" accept="image/*; capture=camera">
+            <input type="hidden" id="resume_uri" name="resume_uri" value="{{me.resume_uri}}" />
+            <progress max="100" value="0" id="resume_uri-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="resume_uri-upload-percentage">0</span>%</span>
+        </div>
+
+        <h2><span class="i18n"><?=_('Your video résumé');?></span></h2>
+        {{#if me.video_uri}}
+        <div class="account-video-container video-container"></div>
+        {{else}}
+            {{#if me.raw_video_uri}}
+        <div class="account-video-container video-container">
+            <p class="processing i18n"><?=_('Your video résumé is still processing...');?></p>
+        </div>
+            {{/if}}
+        {{/if}}
+        <label for="raw_video_uri" class="i18n"><?=_('Upload a video résumé'); ?></label>
+        <div data-role="fieldcontainer">
+            <button id="raw_video_uri-select" class="i18n"><?=_('Select video'); ?></button>
+            <input type="file" name="video" accept="video/*; capture=camera">
+            <input type="hidden" id="raw_video_uri" name="raw_video_uri" />
+            <progress max="100" value="0" id="raw_video_uri-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="raw_video_uri-upload-percentage">0</span>%</span>
+        </div>
+
+        <h2 class="i18n"><?=_('Details about you'); ?></h2>
+        <div>
+            <label for="bio" class="i18n"><?=_('About you'); ?></label>
+            <div data-role="fieldcontainer">
+                <textarea id="bio" name="bio" rows="2" placeholder="<?=_('Write a paragraph or two about yourself');?>" class="i18n">{{me.bio}}</textarea>
+            </div>
+        </div>
+
+        <label for="region_id" class="i18n"><?=_('Location'); ?></label>
+        <div data-role="fieldcontainer">
+            <select id="region_id" name="region_id" data-required="true">
+                <option value="" class="i18n"><?=_('Select your location...');?></option>
+                {{#select me.region_id}}
+                    {{#each regions}}
+                    <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+
+        <label for="gender" class="i18n"><?=_('Gender'); ?></label>
+        <div data-role="fieldcontainer">
+            <select id="gender" name="gender" data-required="true">
+                <option value="" class="i18n"><?=_('Select your gender...');?></option>
+                <option value="M" class="i18n"{{#equal me.gender 'M'}} selected="selected"{{/equal}}><?=_('Male');?></option>
+                <option value="F" class="i18n"{{#equal me.gender 'F'}} selected="selected"{{/equal}}><?=_('Female');?></option>
+            </select>
+        </div>
+
+        <label for="education" class="i18n"><?=_('Education'); ?></label>
+        <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+            <div class="dropdown no-input yamm-fw">
+                <div class="dropdown-toggle" data-toggle="dropdown">
+                    <input type="text" name="education" class="i18n" placeholder="<?=_('Select your level of education...');?>" value="{{me.education_name_en}}" data-i18n-zh_cn="{{me.education_name_zh}}">
+                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                </div>
+                <ul class="dropdown-menu fit search-form-dropdown education">
+                    <li class="actions">
+                        <div class="row">
+                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </li>
+{{#foreach education_requirements}}
+                    <li>
+                        <div class="row">
+                            <label>
+                                <input type="radio" name="education_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                            </label>
+                        </div>
+                    </li>
+{{/foreach}}
+                </ul>
+            </div> 
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Save'); ?>" class="i18n">
+        </div>
+    </form>
+
+    <form id="account-employment-info-form" style="display: none;" action="users/" method="put" data-before-submit="return $.pages['user.account'].before_submit(data);" data-after-submit="$.pages['user.account'].update_cb(response);">
+        <h2 class="i18n"><?=_('Employment info'); ?></h2>
+        <div>
+            <label for="bio" class="i18n"><?=_('About you'); ?></label>
+            <div data-role="fieldcontainer">
+                <textarea id="bio" name="bio" rows="2" placeholder="<?=_('Write a paragraph or two about yourself');?>" class="i18n">{{me.bio}}</textarea>
+            </div>
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Save'); ?>" class="i18n">
+        </div>
+    </form>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

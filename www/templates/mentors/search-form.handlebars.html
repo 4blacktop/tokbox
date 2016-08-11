@@ -1,0 +1,12 @@
+    <!-- Search form -->
+    <form id="mentors-search-form" action="#mentors-search" method="get" class="search-top" data-ajax-submit="false" data-before-submit="$.pages['mentors.search-form'].before_submit();" data-at-submit="$.pages['mentors.search-form'].at_submit();">
+        <input type="search" name="q" placeholder="<?=_('Search');?>" value="{{search_q}}" class="i18n">
+
+        <div class="search-fields" style="display: none;">
+            <div class="search-spacer">.</div>
+
+            <div data-role="fieldcontainer">
+                <input type="submit" value="<?=_('Search'); ?>" class="i18n">
+            </div>
+        </div>
+    </form>

@@ -1,0 +1,32 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if company.i_am_company_admin}}
+    <h1 class="i18n"><?=_('Invite member');?></h1>
+    <div class="company-header" style="background-image: url('{{company.profile_pic}}');">
+        <div class="overlay">
+            <img class="profile_pic" src="{{company.profile_pic}}" />
+            <div class="info">
+                <h1 class="title">{{company.name}}</h1>
+            </div>
+        </div>
+    </div>
+
+    <form id="invite-to-company-form" action="#" method="post" data-before-submit="return $.pages['company.invite'].before_submit($(this));">
+        <label for="q" class="i18n"><?=_('Find a user'); ?></label>
+        <div data-role="fieldcontainer">
+            <input type="search" id="q" name="q" placeholder="<?=_('Name/email/cell phone/username'); ?>" class="i18n" data-required="true">
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Search'); ?>" class="i18n">
+        </div>
+    </form>
+
+    <div id="invite-to-company-search-results" style="display: none;" class="viewport mentors"></div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

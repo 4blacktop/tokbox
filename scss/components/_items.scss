@@ -1,0 +1,104 @@
+/* ITEMS
+-------------------------------------------------*/
+
+/* Popular
+-------------------------------*/
+.popular-items {
+    @extend %space;
+    
+    .item {
+        @extend %three-col;
+        margin-bottom: 30px;
+    }
+}
+
+/* List items
+-------------------------------*/
+.list-items {
+    .list-item {
+        width: 100%;
+        padding-bottom: 30px;
+        border-bottom: dotted 1px $black;
+    }
+
+    img {
+        margin-top: 30px;
+    }
+}
+
+/* Specialist
+-------------------------------*/
+.specialist {
+
+    .media-img {
+        float: left;
+
+        @include breakpoint(xsmall) {
+            float: none;
+        }
+    }
+
+    .media-bd {
+        margin-top: 10px;
+    }
+}
+
+/* Info
+-------------------------------*/
+.item-info {
+    @extend %noBullet;
+
+    li {
+        @include fontSize(15);
+        line-height: $headingLineHeight;
+    }
+}
+
+.star {
+    display: inline-block;
+    overflow: hidden;
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+    background-image: url('../img/star-sprite.png');
+    background-position: 0 -10px;
+    background-size: 10px;
+    background-repeat: no-repeat;
+    text-align: center;
+
+    &.active {
+        background-position: 0 0;
+    }
+}
+
+.register-blurb {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.register-login-form {
+    width: 40%;
+    float: right;
+}
+.register-icons {
+    text-align: center;
+
+    li {
+        display: inline-block;
+        padding: 0 50px;
+        border-right: solid 1px $shakespear;
+
+        &:last-of-type {
+            border-right: none;
+        }
+
+        img {
+            display: block;
+            width: 81px;
+        }
+        span {
+            font-size: 14px;
+            color: $shakespear;
+        }
+    }
+}

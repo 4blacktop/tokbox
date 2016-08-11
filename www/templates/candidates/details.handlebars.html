@@ -1,0 +1,148 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if user}}
+    <div class="user-header" style="background-image: url('{{user.profile_pic}}');">
+        <div class="overlay">
+            <img class="profile_pic" src="{{user.profile_pic}}" />
+            <div class="info">
+                <h1 class="title">{{user.display_name}}</h1>
+                <div class="contact-candidate small-button br" style="{{#if user.circle.protege.status}}{{else}}display: none;{{/if}}">
+                    <a href="{{user.resume_uri}}" onclick="window.open('{{user.resume_uri}}', '_blank', 'location=no,enableViewportScale=yes'); return false;" class="small-button pdf i18n"><?=_('View PDF résumé');?></a>
+                    <div class="small-button br">
+                        <a href="#compose-message?to_id={{user.id}}" class="small-button write i18n"><?=_('Send message'); ?></a>
+                    </div>
+                </div>
+                {{#if user.circle.protege.status}}{{else}}
+                <div class="small-button br">
+                    <a href="#candidate?id={{user.id}}" onclick="$.pages['candidates.details'].request('protege', {{user.id}}); return false;" id="request-protege" class="small-button write i18n"><?=_('Contact this candidate'); ?></a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="user-video-container video-container">
+    {{#if user.video_uri}}
+    {{else}}
+        {{#if user.raw_video_uri}}
+        <p class="processing i18n"><?=_('The video résumé for this candidate is still processing...');?></p>
+        {{/if}}    
+    {{/if}}
+    </div>
+
+    <div class="content">
+        <div class="info-tiles">
+            <div class="info-tile">
+                <div class="info-tile-content{{#if user.num_reviews}} reviews{{/if}}">
+                    <a href="#candidate-reviews?id={{user.id}}">
+                        <span>{{user.num_reviews}}</span>
+                        <h2 class="i18n">{{#equal user.num_reviews 1}}<?=_('Review');?>{{else}}<?=_('Reviews');?>{{/equal}}</h2>
+                        {{#if user.num_reviews}}<span class="stars">{{#for 0 5 1}}<span class="star_15{{#compare index "<" ../user.avg_stars}} active{{/compare}}"></span>{{/for}}</span>{{/if}}
+                    </a>
+                </div>
+            </div>
+{{#if user.education_name_en}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Education');?></h2>
+                    <span class="i18n" data-i18n-zh_cn="{{user.education_name_zh}}">{{user.education_name_en}}</span>
+                </div>
+            </div>
+{{/if}}
+{{#if user.experience_name_en}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Work experience');?></h2>
+                    <span class="i18n" data-i18n-zh_cn="{{user.experience_name_zh}}">{{user.experience_name_en}}</span>
+                </div>
+            </div>
+{{/if}}
+{{#if user.availability_name_en}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Availability');?></h2>
+                    <span class="i18n" data-i18n-zh_cn="{{user.availability_name_zh}}">{{user.availability_name_en}}</span>
+                </div>
+            </div>
+{{/if}}
+{{#if user.desired_wage_range_name_en}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Desired wage');?></h2>
+                    <span class="i18n" data-i18n-zh_cn="{{user.desired_wage_range_name_zh}}">{{user.desired_wage_range_name_en}}</span>
+                </div>
+            </div>
+{{/if}}
+{{#if user.desired_industries}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Industries interested in');?></h2>
+    {{#each user.desired_industries}}
+                    <span class="i18n comma-list-item" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</span>
+    {{/each}}
+                </div>
+            </div>
+{{/if}}
+{{#if user.desired_positions}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Positions interested in');?></h2>
+    {{#each user.desired_positions}}
+                    <span class="i18n comma-list-item" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</span>
+    {{/each}}
+                </div>
+            </div>
+{{/if}}
+{{#if user.desired_regions}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Locations interested in');?></h2>
+    {{#each user.desired_regions}}
+                    <span class="i18n comma-list-item" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</span>
+    {{/each}}
+                </div>
+            </div>
+{{/if}}
+
+{{#if user.current_company_name}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Current company');?></h2>
+                    <span>{{user.current_company_name}}</span>
+                </div>
+            </div>
+{{/if}}
+{{#if user.current_industry_name_en}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Current industry');?></h2>
+                    <span class="i18n" data-i18n-zh_cn="{{user.current_industry_name_zh}}">{{user.current_industry_name_en}}</span>
+                </div>
+            </div>
+{{/if}}
+{{#if user.current_position_name_en}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Current position');?></h2>
+                    <span class="i18n" data-i18n-zh_cn="{{user.current_position_name_zh}}">{{user.current_position_name_en}}</span>
+                </div>
+            </div>
+{{/if}}
+{{#if user.current_region_name_en}}
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <h2 class="i18n"><?=_('Current location');?></h2>
+                    <span class="i18n" data-i18n-zh_cn="{{user.current_region_name_zh}}">{{user.current_region_name_en}}</span>
+                </div>
+            </div>
+{{/if}}
+
+        </div>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

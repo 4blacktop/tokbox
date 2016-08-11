@@ -1,0 +1,40 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if id}}
+    <h1 class="i18n">Rate {{title}}</h1>
+    <div class="video-header" style="background-image: url('{{cover_pic}}');">
+        <div class="overlay">
+            <h1 class="title">{{title}}</h1>
+            <div class="difficulty"><p><span class="i18n"><?=_('Level');?></span> {{difficulty_level}}</p></div>
+            <div class="category i18n" data-i18n-zh_cn="{{category_name_zh}}">{{category_name_en}}</div>
+            <div class="posted">{{created_at_human}}</div>
+        </div>
+    </div>
+
+    <form id="rate-video-form" action="video-reviews/{{id}}" method="post" data-after-submit="$.pages['videos.rate'].cb(response);">
+        <input type="hidden" id="video_id" name="video_id" value="{{id}}">
+
+        <label for="stars" class="i18n"><?=_('Choose 0 to 5 stars');?></label>
+        <div data-role="fieldcontainer" style="margin-bottom: 10px;">
+            <input type="hidden" id="stars" name="stars" data-human-name="Stars">
+            {{#for 0 6 1}}
+                <a href="?" onclick="$('input#stars').val({{index}}); for (i = 1; i < 6; i++) { if (i <= {{index}}) { $('#star-'+i).addClass('active'); }else{ $('#star-'+i).removeClass('active'); } } return false;"><span id="star-{{index}}" class="star_32 i18n">{{index}}</span></a>
+            {{/for}}
+        </div>
+
+        <label for="review" class="i18n"><?=_('Write a review');?></label>
+        <div data-role="fieldcontainer">
+            <textarea id="review" name="review" cols="30" rows="5" placeholder="<?=_('Write a paragraph or two about this video');?>" class="i18n" data-required="true" data-human-name="Review"></textarea>
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Rate');?>" class="i18n">
+        </div>
+    </form>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

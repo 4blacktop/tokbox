@@ -1,0 +1,97 @@
+/* BOX
+-------------------------------------------------*/
+.box {
+    border: solid 1px $colorBorderLight;
+    background: $colorBgLight;
+
+    .box-header {
+        background: $white;
+        padding: 5px 15px;
+
+        h3 {
+            margin: 0;
+            @include fontSize(18);
+        }
+
+        i {
+            margin-right: 5px;
+        }
+    }
+    
+    .box-bd {
+        padding: 15px;
+
+        .dropdown-bd {
+            a {
+                color: $colorLink;
+
+                &:hover, &:focus {
+                    color: $colorBase;
+                }
+            }
+        }
+
+        &.box-lines {
+            position: relative;
+            overflow: hidden;
+        }
+    }
+
+    .media-object {
+        margin: 0;
+
+        @include breakpoint(small) {
+            text-align: center;
+        }
+
+        @include breakpoint(medium) {
+            text-align: left;
+        }
+    }
+
+    .media-img {
+        float: left;
+
+        @include breakpoint(small) {
+            float: none;
+        }
+
+        @include breakpoint(medium) {
+            float: left;
+        }
+    }
+}
+
+.box-lines {
+    @include breakpoint(small) {
+        &:before, &:after {
+            position: absolute;
+            top: 0;
+            left: 33.333%;
+            content: '';
+            width: 1px;
+            height: 100%;
+            background: $white;
+        }
+
+        &:after {
+            left: 66%;
+        }
+    }
+}
+
+/* News
+-------------------------------*/
+.news-box {
+    img {
+        max-width: 80px;
+    }
+
+    ul {
+        @extend %noBullet;
+
+        a {
+            @include fontSize(14);
+        }
+    }
+}

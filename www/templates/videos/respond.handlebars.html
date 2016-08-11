@@ -1,0 +1,78 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if video.id}}
+    <div class="video-header" style="background-image: url('{{video.cover_pic}}');">
+        <div class="overlay">
+            <h1 class="title">{{video.title}}</h1>
+            <div class="posted">{{video.created_at_human}}</div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1><span class="i18n"><?=_('Apply for job');?></span>: {{video.title}}</h1>
+
+        <form id="video-respond-form" action="video-responses/" method="post" data-after-submit="$.pages['videos.respond'].after_submit(response);">
+            <input type="hidden" name="video_id" value="{{video.id}}">
+
+            <label class="i18n"><?=_('Your profile'); ?></label>
+            <div class="userInfo" style="margin-bottom: 10px;">
+                <div class="userHeadshot" style="background-image: url('{{me.profile_pic}}');"></div>
+                <div class="userDetails">
+                    <p><span class="i18n">{{me.display_name}}</p>
+                    <a href="#candidate?id={{me.id}}" class="small-button profile i18n"><?=_('View Your Profile');?></a>
+                </div>
+            </div>
+
+            <label for="message" class="i18n"><?=_('Write about yourself'); ?></label>
+            <div data-role="fieldcontainer">
+                <textarea id="message" name="message" rows="2"></textarea>
+            </div>
+
+            <div class="info-tiles">
+                <div class="info-tile" style="height: 400px;">
+                    <div class="info-tile-content">
+                        {{#if me.resume_uri}}
+                        <h2 class="i18n"><?=_('Your PDF résumé will be included with this application.');?></h2>
+                        <a href="{{me.resume_uri}}" onclick="window.open('{{me.resume_uri}}', '_blank', 'location=no,enableViewportScale=yes'); return false;" style="display: block; width: 200px; margin: 0 auto 50px auto;"><img src="/img/pdf.png"></a>
+                        {{else}}
+                        <h2><span class="i18n"><?=_('You have not submitted a PDF résumé.');?></span></h2>
+                        <p><span class="i18n"><?=_('For the best chance of getting hired');?></span>, <a href="#my-account-student-info" class="i18n"><?=_('upload a résumé now');?></span>.</p>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="info-tile" style="height: 400px;">
+                    <div class="info-tile-content">
+                        {{#if me.video_uri}}
+                        <h2 class="i18n"><?=_('Your video résumé will be included with this application.');?></h2>
+                        <div class="response-video-container video-container"></div>
+                        {{else}}
+                            {{#if me.raw_video_uri}}
+                        <div class="response-video-container video-container">
+                            <p class="processing i18n"><?=_('Your video résumé is still processing...');?></p>
+                        </div>
+                            {{else}}
+                        <h2><span class="i18n"><?=_('You have not submitted a video résumé.');?></span></h2>
+                        <p><span class="i18n"><?=_('For the best chance of getting hired');?></span>, <a href="#my-account-student-info" class="i18n"><?=_('upload a résumé now');?></span>.</p>
+                            {{/if}}    
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+
+            <label for="private" class="i18n"><?=_('Make this application private'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="checkbox" name="private" id="private" value="1">
+            </div>
+
+            <div data-role="fieldcontainer">
+                <input type="submit" value="<?=_('Save'); ?>" class="i18n">
+            </div>
+        </form>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

@@ -1,0 +1,40 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if id}}
+    <div class="content">
+        <h1 class="i18n">1-on-1 with {{#equal my_id mentor_id}}{{user_name}}{{else}}{{mentor_name}}{{/equal}}</h1>
+        <div id="vars" data-id="{{id}}"></div>
+    </div>
+
+    <div id="chat">
+    {{#if messages}}
+        {{#each messages}}
+        <div class="message {{#equal ../my_id from_id}}mine{{else}}theirs{{/equal}}" data-time="{{created_at}}">{{message}}</div>
+        {{/each}}
+    {{else}}
+        <div class="message" data-time="0" style="display: none;"><!-- dummy HTML for duplication via JS when a message is created //--></div>
+    {{/if}}
+
+        <div class="clear-div" style="clear: both;"></div>
+    </div>
+
+    <div class="messageReply above-tab-bar" data-position="fixed">
+        <form id="chat-form" action="1-on-1-messages/" method="post" data-before-submit="return $.pages['chat.chat'].before_submit();" data-after-submit="$.pages['chat.chat'].after_submit(response);">
+            <input type="hidden" name="session_id" value="{{id}}">
+
+            <label for="message"></label>
+            <div data-role="fieldcontainer" style="float: left; width: 79%;">
+                <textarea id="message" name="message" cols="30" placeholder="<?=_('Message');?>" class="i18n" rows="1"></textarea>
+            </div>
+            <div data-role="fieldcontainer" style="float: right; width: 20%; margin-top: 8px;">
+                <input type="submit" value="<?=_('Send');?>" class="i18n">
+            </div>
+        </form>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

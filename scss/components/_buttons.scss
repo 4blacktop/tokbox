@@ -1,0 +1,53 @@
+/* BUTTONS
+-------------------------------------------------*/
+.btn {
+    @extend %btn;
+}
+
+.btn-large {
+    padding: 12px 30px;
+    @include fontSize(20);
+    text-transform: uppercase;
+}
+
+.btn-small {
+    padding: 10px 25px;
+    @include fontSize(16);
+}
+
+.btn-primary {
+    color: $colorBase;
+    background: rgba($white, 0.7);
+
+    &:hover, &:focus {
+        background: $salomie;
+    }
+}
+
+.btn-secondary {
+    color: $white;
+    background: $colorBase;
+
+    &:hover, &:focus {
+        background: $greyLightAlt;
+    }
+}
+
+.read-more {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+        i {
+            right: -15px;
+        }
+    }
+    
+    i {
+        content: '';
+        position: absolute;
+        top: 5px;
+        right: -10px;
+        transition: all 0.3s;
+    }
+}

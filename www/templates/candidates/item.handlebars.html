@@ -1,0 +1,12 @@
+        <a href="#candidate?id={{id}}" class="item">
+            <div class="pic" style="background-image: url('{{profile_pic}}');"></div>
+            <div class="info">
+                <div class="content">
+                    <div class="name">{{display_name}}</div>
+                    <div class="category i18n" data-i18n-zh_cn="{{current_industry_name_zh}}">{{current_industry_name_en}}</div>
+                    <div class="category i18n" data-i18n-zh_cn="{{current_position_name_zh}}">{{current_position_name_en}}</div>
+                    <div class="small reviews">{{num_reviews}} <span class="i18n">{{#equal num_reviews 1}}<?=_('review'); ?>{{else}}<?=_('reviews') ;?>{{/equal}}</span></div>
+                    {{#if num_reviews}}<div class="stars">{{#for 0 5 1}}<span class="star_10{{#compare index "<" ../avg_stars}} active{{/compare}}"></span>{{/for}}</div>{{/if}}
+                </div>
+            </div>
+        </a>

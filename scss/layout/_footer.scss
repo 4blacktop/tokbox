@@ -1,0 +1,30 @@
+/* FOOTER
+-------------------------------------------------*/
+.main-footer {
+    padding: 15px 0;
+    background: $colorBgLight;
+    text-align: center;
+
+    .footer-nav {
+        margin-bottom: 15px;
+
+        @include breakpoint(small) {
+            float: left;
+            margin-bottom: 0;
+        }
+
+        a {
+            margin-left: 15px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .copyright {
+        @include breakpoint(small) {
+            float: right;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+/* MEDIA OBJECT
+-------------------------------------------------*/
+.media-object {
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    .media-img {
+        margin-right: 15px;
+        margin-bottom: 10px;
+
+        @include breakpoint(small) {
+            float: left;
+        } 
+    }
+
+    .media-bd {
+        overflow: hidden;
+    }
+}
+
+.media-object-large {
+    .media-img {
+        margin-right: 30px;
+    }
+
+    .media-bd {
+        @include breakpoint(small) {
+            margin-top: 40px;
+        }
+    }   
+}

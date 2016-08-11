@@ -1,0 +1,45 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+<div class="actions right">
+    <a href="#create-video" class="small-button i18n only-mentors"><?=_('Create job');?></a>
+</div>
+<h1 class="i18n"><?=_('My Jobs');?></h1>
+
+{{#if mine}}
+<h2 class="i18n"><?=_('Jobs by me');?></h2>
+<div class="viewport videos">
+    <div class="flipsnap" id="my-videos-mine">
+    {{#each mine}}
+        {{> video this}}
+    {{/each}}
+    </div>
+</div>
+{{/if}}
+
+{{#if viewed}}
+<h2 class="i18n"><?=_('Recently viewed jobs');?></h2>
+<div class="viewport videos">
+    <div class="flipsnap" id="my-videos-viewed">
+    {{#each viewed}}
+        {{> video this}}
+    {{/each}}
+    </div>
+</div>
+{{/if}}
+
+{{#if enrolled}}
+<h2 class="i18n"><?=_('Enrolled jobs');?></h2>
+<div class="viewport videos">
+    <div class="flipsnap" id="my-videos-enrolled">
+    {{#each enrolled}}
+        {{> video this}}
+    {{/each}}
+    </div>
+</div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

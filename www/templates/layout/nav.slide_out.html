@@ -1,0 +1,25 @@
+<nav class="sideMenu" id="sideMenu">
+    <ul class="sideMainNav">
+        <li class="logged-out"><a href="#login" class="i18n"><?=_('Log In');?></a></li>
+        <li class="logged-in"><a href="#my-account" class="i18n"><?=_('My Account');?></a></li>
+        <li class="logged-in"><a href="#my-payment-history" class="i18n"><?=_('My payment history');?></a></li>
+        <li class="logged-in"><a href="#my-videos" class="i18n"><?=_('My Jobs');?></a></li>
+        <li class="logged-in"><a href="#create-video" class="i18n only-mentors"><?=_('Create job');?></a></li>
+        <li class="logged-in"><a href="#inbox"><span class="i18n"><?=_('Messages');?></span> <span class="unread-messages" style="display: none;"></span></a></li>
+        <li class="logged-in"><a href="#one-on-one-requests"><span class="i18n"><?=_('1-on-1 Chats');?></span> <span class="unread-chat-requests" style="display: none;"></span></a></li>
+        <li class="admin-link" style="display: none;"><a href="" class="i18n" rel="external"><?=_('Admin');?></a></li>
+        <li class="logged-in"><a href="#logout" class="i18n" onclick="$.core.logout(); return false;"><?=_('Log Out');?></a></li>
+    </ul>
+    <ul class="sideMainNav">
+        <li><a href="#about" class="i18n"><?=_('About Dapinqing');?></a></li>
+        <li><a href="#contact" class="i18n"><?=_('Contact Us');?></a></li>
+        <li><a href="#video-tips" class="i18n"><?=_('Video Tips');?></a></li>
+        <li><a href="#privacy" class="i18n"><?=_('Privacy');?></a></li>
+    </ul>
+    <ul class="sideMainNav">
+        <li class="langSelector">
+            <a href="?lang=en_US" onclick="$.core.set_user_lang('en_US'); $.core.close_menu(); return false;" class="flag-en_US" style="display: inline-block;">English</a>
+            <a href="?lang=zh_CN" onclick="$.core.set_user_lang('zh_CN'); $.core.close_menu(); return false;" class="flag-zh_CN" style="display: inline-block;">中文</a>
+        </li>
+    </ul>
+</nav>

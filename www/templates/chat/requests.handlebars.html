@@ -1,0 +1,79 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <div class="content">
+        <div class="content">
+            <h1 class="i18n"><?=_('1-on-1 Chat Requests');?></h1>
+        </div>
+
+        {{#if data}}
+        <div class="viewport chat-requests listView">
+            {{#each data}}
+            <div id="one-on-one-request-{{id}}" class="item{{#if i_am_mentor}}{{#if viewed_at}} read{{/if}}{{else}} read{{/if}}">
+                <a href="#mentor?id={{their_id}}"><div class="pic" style="background-image: url('{{their_profile_pic}}');"></div></a>
+                <div class="info">
+                    <div class="content">
+                    {{#if i_am_mentor}}
+                        {{#equal accepted_status 'Y'}}
+                        <a href="#mentor?id={{their_id}}"><div class="name">{{#equal accepted_status 'Y'}}<span class="i18n"><?=_('You have a chat scheduled with');?></span> <span class="name">{{their_name}}</span>{{/equal}}</div></a>
+                        {{else}}
+                        <a href="#mentor?id={{their_id}}"><div class="name"><span class="name">{{their_name}}</span> <span class="i18n"><?=_('wants to chat with you');?></span></div></a>
+                        {{/equal}}
+                    {{else}}
+                        {{#equal accepted_status 'Y'}}
+                        <a href="#mentor?id={{their_id}}"><div class="name">{{#equal accepted_status 'Y'}}<span class="i18n"><?=_('You scheduled a chat with');?></span> <span class="name">{{their_name}}</span>{{/equal}}</div></a>
+                        {{else}}
+                        <a href="#mentor?id={{their_id}}"><div class="name"><span class="i18n"><?=_('You requested a chat with');?></span> <span class="name">{{their_name}}</span></div></a>
+                        {{/equal}}
+                    {{/if}}
+                        <a href="#mentor?id={{their_id}}"><div class="time"><b><span class="i18n"><?=_('Start time');?></span></b>: {{start_time_human}}</div></a>
+                        <a href="#mentor?id={{their_id}}"><div class="time"><b><span class="i18n"><?=_('End time');?></span></b>: {{end_time_human}}</div></a>
+                        <a href="#mentor?id={{their_id}}"><div class="price"><b><span class="i18n"><?=_('Price');?></span></b>: ¥ {{price_rmb}}</div></a>
+                        <div class="actions">
+                        {{#if i_am_mentor}}
+                            {{#if accepted_at}}
+                                {{#if payment_id}}
+                                    {{#compare current_time '>=' opening_time}}
+                                        <a href="#one-on-one?id={{id}}" class="small-button accepted i18n"><?=_('Join now'); ?></a>
+                                    {{else}}
+                                        <a href="#one-on-one-requests" class="small-button waiting disabled i18n"><?=_('Chat opens at'); ?> {{opening_time_human}}</a>
+                                    {{/compare}}
+                                {{else}}
+                                    <a href="#one-on-one-requests" class="small-button waiting disabled i18n"><?=_('Waiting for payment'); ?></a>
+                                {{/if}}
+                            {{else}}
+                                <a href="#one-on-one-requests" onclick="$.pages['chat.requests'].respond('accept', {{id}}); return false;" class="small-button pending i18n" style="{{#if accepted_at}}display: none;{{/if}}"><?=_('Accept'); ?></a>
+                                <a href="#one-on-one-requests" onclick="$.pages['chat.requests'].respond('deny', {{id}}); return false;" class="small-button pending i18n" style="{{#if accepted_at}}display: none;{{/if}}"><?=_('Deny'); ?></a>
+                            {{/if}}
+                        {{else}}
+                            {{#equal accepted_status 'Y'}}
+                                {{#if payment_id}}
+                                    {{#compare current_time '>=' opening_time}}
+                                        <a href="#one-on-one?id={{id}}" class="small-button accepted i18n"><?=_('Join now'); ?></a>
+                                    {{else}}
+                                        <a href="#one-on-one-requests" class="small-button waiting disabled i18n"><?=_('Chat opens at'); ?> {{opening_time_human}}</a>
+                                    {{/compare}}
+                                {{else}}
+                                    <a href="#one-on-one-pay?id={{id}}" class="small-button accepted i18n"><?=_('Pay now'); ?></a>
+                                {{/if}}
+                            {{else}}
+                                <a href="#one-on-one-requests" class="small-button waiting disabled i18n"><?=_('Waiting for acceptance'); ?></a>
+                            {{/equal}}
+                        {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div class="content">
+            <p class="no-results i18n"><?=_('No chat requests found.');?></p>
+        </div>
+        {{/if}}
+    </div>
+
+    </div>
+</main>
+<!-- End Main -->

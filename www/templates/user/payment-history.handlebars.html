@@ -1,0 +1,68 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+<h1 class="i18n"><?=_('My payment history');?></h1>
+
+{{#ifOr made.length received.length}}
+    {{#if made.length}}
+    <h2 class="i18n"><?=_('Payments made');?></h2>
+    <ul class="payments made">
+        <li class="th">
+            <div class="type i18n"><?=_('Type');?></div>
+            <div class="name i18n"><?=_('Item');?></div>
+            <div class="method i18n"><?=_('Method');?></div>
+            <div class="amount i18n"><?=_('RMB');?></div>
+            <div class="status"></div>
+            <div class="updated i18n"><?=_('Date');?></div>
+        </li>
+        {{#each made}}
+        <li class="item">
+            <div class="type i18n">{{for_type_human}}</div>
+            <div class="name">{{#if for_name}}
+                {{#equal for_type 'video'}}
+                    {{#compare for_id '>' 0}}
+                <a href="#video?id={{resource.id}}">{{/compare}}{{for_name}}{{#compare for_id '>' 0}}</a>
+                    {{/compare}}
+                {{/equal}}
+                {{#equal for_type 'one-on-one-session'}}
+                {{for_name}}
+                {{/equal}}
+            {{else}}
+            [unknown]
+            {{/if}}</div>
+            <div class="method">{{method}}</div>
+            <div class="amount">¥{{amount}}</div>
+            <div class="status {{status}}"></div>
+            <div class="updated">{{updated_at_human}}</div>
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    {{#if received.length}}
+    <h2 class="i18n"><?=_('Payments received');?></h2>
+    <ul class="payments received">
+        <li class="th">
+            <div class="method i18n"><?=_('Method');?></div>
+            <div class="amount i18n"><?=_('RMB');?></div>
+            <div class="status"></div>
+            <div class="updated i18n"><?=_('Date');?></div>
+        </li>
+        {{#each received}}
+        <li class="item">
+            <div class="method">{{method}}</div>
+            <div class="amount">¥{{amount}}</div>
+            <div class="status {{status}}"></div>
+            <div class="updated">{{updated_at_human}}</div>
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+{{else}}
+    <p class="no-results i18n">No payments found.</p>
+{{/ifOr}}
+
+    </div>
+</main>
+<!-- End Main -->

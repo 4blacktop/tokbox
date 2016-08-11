@@ -1,0 +1,105 @@
+/* HEADER
+-------------------------------------------------*/
+.main-header {
+    position: relative;
+    overflow: hidden;
+
+    @include breakpoint(small) {
+        max-height: 350px;
+
+        .center-content-inner {
+            vertical-align: top;
+            padding: 0;
+            padding-top: 25px;
+        }
+    }
+
+    /*@include breakpoint(medium) {
+        max-height: 320px;
+    }*/
+
+    @include breakpoint(large) {
+        max-height: 400px;
+
+        .center-content-inner {
+            vertical-align: middle;
+            padding: 0;
+        }
+    }
+
+    /*@include breakpoint(xlarge) {
+        max-height: 590px;
+    }*/
+
+    .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+
+        .logo {
+            text-shadow: 0 0 1px #000;
+
+            a {
+                color: $white;
+            }
+
+            img {
+                width: 170px;
+                padding: 10px;
+                @include rounded(20px);
+                background-color: #fff;
+                @include box-shadow(0px, 0px, 2px, $grey);
+
+                @include breakpoint(xsmall) {
+                    max-width: 90px;
+                }
+            }
+
+            h2 {
+                @include breakpoint(xsmall) {
+                    @include fontSize(50);
+                    margin: 0;
+                }
+
+                margin: 0 0 15px;
+                letter-spacing: 0px;
+            }
+
+            .h3 {
+                @include breakpoint(xsmall) {
+                    @include fontSize(18);
+                }
+            }
+        }
+    }
+
+    #subpage-header {
+        height: 123px;
+
+        background-color: $grey;
+
+        .container {
+            padding-top: 10px;
+            .logo {
+                img {
+                    float: left;
+                    margin-right: 20px;
+
+                    width: 150px;
+                    background-color: transparent;
+                    @include rounded(0);
+                }
+
+                h2 {
+                    @include fontSize(25);
+                    color: $silver;
+                }
+            }
+        }
+    }
+}
+

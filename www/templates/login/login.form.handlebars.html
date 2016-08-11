@@ -1,0 +1,15 @@
+                <form action="authenticate/" method="post" data-validate="{'rules': {'login': {'required': true},'password': {'required': true}},'messages': {'login': {'required': 'Please enter your email address, cell phone number, or username'},'password': {'required': 'Please enter your password'}}}" data-before-submit="$.core.show_loading(); return true;" data-after-submit="login_cb">
+                    <div data-role="fieldcontainer">
+                        <input type="text" name="login" class="i18n" placeholder="<?php echo _('Email/cell phone/username'); ?>">
+                    </div>
+                    <div data-role="fieldcontainer">
+                        <input type="password" name="password" class="i18n" placeholder="<?php echo _('Please enter your password'); ?>">
+                    </div>
+
+                    <p>
+                        <input type="submit" class="i18n" value="<?php echo _('Log in'); ?>">
+                        <div class="small">
+                            <a href="#forgot-password"><span class="i18n"><?php echo _('Forgot your password'); ?></span>?</a>
+                        </div>
+                    </p>
+                </form>

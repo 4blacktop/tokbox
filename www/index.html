@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Dapinqing</title>
+
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Allow AJAX -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * dapinqing:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' * data:;">
+
+    <!-- jquery mobile -->
+    <script src="app-core/assets/js/libs/jquery-2.1.1.min.js"></script>
+	<link rel="stylesheet" href="app-core/assets/stylesheets/animate.css" />
+	<link rel="stylesheet" href="app-core/assets/js/libs/jquery.mobile-1.4.5.min.css" />
+	<script src="app-core/assets/js/libs/jquery.mobile-1.4.5.min.js"></script>
+	<script src="app-core/assets/js/libs/jquery.mobile.page-params.js"></script>
+	<script src="app-core/assets/js/libs/jquery.validate-1.14.0.min.js"></script>
+	<script src="app-core/assets/js/libs/jquery.cookie-1.4.1.min.js"></script>
+	<script src="app-core/assets/js/app-core.js"></script>
+	<script src="app-core/assets/js/jquery.mobile.loader.js"></script>
+	<script src="app-core/assets/js/libs/handlebars-v4.0.5.js"></script>
+    <script src="app-core/assets/js/libs/flipsnap.min.js"></script>
+    <script src="app-core/assets/js/libs/jquery.noty.packaged.js"></script>
+    <script src="app-core/assets/js/handlebars.loader.js"></script>
+	<script src="app-core/assets/js/jquery.i18n.js"></script>
+
+    <!-- less -->
+	<link rel="stylesheet/less" type="text/css" href="app-core/assets/stylesheets/stylesheet.less">
+	<script src="app-core/assets/js/less.js" type="text/javascript"></script>
+
+	<!-- flexslider -->
+	<script src="app-core/assets/js/libs/jquery.flexslider-min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="app-core/assets/stylesheets/flexslider.css">
+
+    <!-- fonts -->
+    <link href='app-core/assets/stylesheets/googlefonts.css' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="app-core/assets/js/uploadifive-v1/uploadifive.css" />
+	<script type="text/javascript" src="app-core/assets/js/uploadifive-v1/jquery.uploadifive.min.js"></script>
+
+    <!-- app scripts -->
+	<script src="js/all.min.js"></script>
+
+    <!-- Dapinqing specific style -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="main sideMenuPush">
+    <div id="background"></div>
+    <div id="loading-indicator"><canvas width="27" height="27"></canvas></div>
+    <div id="content-overlay" style="display: none;"></div>
+    <div id="noty-wrapper"><div id="noty-container"></div></div>
+
+    <div data-role="header" data-position="fixed" class="sideMenuDiv" data-enhance="false"></div>
+    <div data-role="header" data-position="fixed" class="header_wrapper" data-enhance="false"></div>
+
+    <!--  HOMEPAGE -->
+    <div data-role="page" id="home">
+        <div data-role="content" class="mainContent" data-template-filename="home/home.handlebars.html" data-template-partials="{'popular_video': 'videos/item.handlebars.html', 'popular_mentor': 'mentors/item.handlebars.html'}"></div>
+    </div>
+
+    <!-- LOGIN PAGE -->
+	<div data-role="page" id="login">
+        <div data-role="content" class="mainContent" data-template-filename="login/login.handlebars.html"></div>
+	</div>
+
+    <!-- FORGOT PASSWORD -->
+    <div data-role="page" id="forgot-password">
+        <div data-role="content" class="mainContent" data-template-filename="login/forgot-password.handlebars.html"></div>
+    </div>
+
+    <!-- RESET PASSWORD -->
+    <div data-role="page" id="reset-password" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="login/reset-password.handlebars.html"></div>
+    </div>
+
+    <!-- REGISTER -->
+    <div data-role="page" id="register">
+        <div data-role="content" class="mainContent" data-template-filename="user/register.handlebars.html"></div>
+    </div>
+    <div data-role="page" id="register-employers">
+        <div data-role="content" class="mainContent" data-template-filename="user/register-employers.handlebars.html"></div>
+    </div>
+    <div data-role="page" id="register-employers-2">
+        <div data-role="content" class="mainContent" data-template-filename="user/register-employers-2.handlebars.html"></div>
+    </div>
+    <div data-role="page" id="register-employees">
+        <div data-role="content" class="mainContent" data-template-filename="user/register-employees.handlebars.html"></div>
+    </div>
+    <div data-role="page" id="register-employees-2">
+        <div data-role="content" class="mainContent" data-template-filename="user/register-employees-2.handlebars.html"></div>
+    </div>
+    <div data-role="page" id="register-employees-3">
+        <div data-role="content" class="mainContent" data-template-filename="user/register-employees-3.handlebars.html"></div>
+    </div>
+
+    <!-- MY ACCOUNT - PERSONAL INFO -->
+    <div data-role="page" id="my-account" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="user/account.handlebars.html" data-always-reload="true"></div>
+    </div>
+    <!-- MY ACCOUNT - MENTOR INFO -->
+    <div data-role="page" id="my-account-mentor-info" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="user/account.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- MY PAYMENT HISTORY -->
+    <div data-role="page" id="my-payment-history">
+        <div data-role="content" class="mainContent" data-template-filename="user/payment-history.handlebars.html"></div>
+    </div>
+
+    <!-- MY VIDEOS -->
+    <div data-role="page" id="my-videos" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="user/my-videos.handlebars.html" data-template-partials="{'video': 'videos/item.handlebars.html'}" data-always-reload="true"></div>
+    </div>
+
+    <!-- COMPANY DETAILS -->
+    <div data-role="page" id="company" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="company/details.handlebars.html" data-always-reload="true" data-template-partials="{'member': 'mentors/item.handlebars.html', 'video': 'videos/item.handlebars.html'}"></div>
+    </div>
+
+    <!-- MY COMPANY -->
+    <div data-role="page" id="my-company" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="company/home.handlebars.html" data-always-reload="true" data-template-partials="{'member': 'mentors/item.handlebars.html', 'video': 'videos/item.handlebars.html'}"></div>
+    </div>
+
+    <!-- EDIT COMPANY -->
+    <div data-role="page" id="edit-company" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="company/edit.handlebars.html" data-always-reload="true" data-template-partials="{'member': 'company/members-item-edit.handlebars.html'}"></div>
+    </div>
+
+    <!-- CREATE COMPANY / ORGANIZATION PROFILE -->
+    <div data-role="page" id="create-company" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="company/create.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- INVITE USER TO JOIN COMPANY -->
+    <div data-role="page" id="invite-to-company">
+        <div data-role="content" class="mainContent" data-template-filename="company/invite.handlebars.html" data-template-partials="{'user': 'company/members-item-invite.handlebars.html'}"></div>
+    </div>
+
+    <!-- PAY FOR VIDEO -->
+    <div data-role="page" id="video-pay" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="videos/pay.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- MENTORS LIST -->
+    <div data-role="page" id="mentors">
+        <div data-role="content" class="mainContent" data-template-filename="mentors/home.handlebars.html" data-template-partials="{'mentor': 'mentors/item.handlebars.html'}"></div>
+    </div>
+
+    <!-- MENTORS SEARCH -->
+    <div data-role="page" id="mentors-search" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="mentors/search.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- MENTOR DETAIL -->
+    <div data-role="page" id="mentor" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="mentors/details.handlebars.html" data-template-partials="{'video': 'videos/item.handlebars.html'}" data-always-reload="true"></div>
+    </div>
+
+    <!-- RATE MENTOR -->
+    <div data-role="page" id="rate-mentor" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="mentors/rate.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- MENTOR REVIEWS -->
+    <div data-role="page" id="mentor-reviews" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="mentors/reviews.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- CANDIDATES LIST -->
+    <div data-role="page" id="candidates">
+        <div data-role="content" class="mainContent" data-template-filename="candidates/home.handlebars.html" data-template-partials="{'candidate': 'candidates/item.handlebars.html'}"></div>
+    </div>
+
+    <!-- CANDIDATE DETAIL -->
+    <div data-role="page" id="candidate" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="candidates/details.handlebars.html" data-template-partials="{'video': 'videos/item.handlebars.html'}" data-always-reload="true"></div>
+    </div>
+
+    <!-- RATE CANDIDATE -->
+    <div data-role="page" id="rate-candidate" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="candidates/rate.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- CANDIDATE REVIEWS -->
+    <div data-role="page" id="candidate-reviews" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="candidates/reviews.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- VIDEOS LIST -->
+    <div data-role="page" id="videos">
+        <div data-role="content" class="mainContent" data-template-filename="videos/home.handlebars.html" data-template-partials="{'video': 'videos/item.handlebars.html'}"></div>
+    </div>
+
+    <!-- VIDEO DETAIL -->
+    <div data-role="page" id="video" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="videos/details.handlebars.html" data-template-partials="{'video': 'videos/item.handlebars.html'}" data-always-reload="true"></div>
+    </div>
+
+    <!-- VIDEO RESPOND -->
+    <div data-role="page" id="video-respond" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="videos/respond.handlebars.html" data-template-partials="{'video': 'videos/item.handlebars.html'}" data-always-reload="true"></div>
+    </div>
+
+    <!-- CREATE VIDEO -->
+    <div data-role="page" id="create-video">
+        <div data-role="content" class="mainContent" data-template-filename="videos/create.handlebars.html"></div>
+    </div>
+
+    <!-- RATE VIDEO -->
+    <div data-role="page" id="rate-video" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="videos/rate.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- VIDEO REVIEWS -->
+    <div data-role="page" id="video-reviews" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="videos/reviews.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- CIRCLE -->
+    <div data-role="page" id="circle">
+        <div data-role="content" class="mainContent" data-template-filename="circle/home.handlebars.html" data-template-partials="{'profile': 'circle/item.handlebars.html'}"></div>
+    </div>
+
+    <!-- CIRCLE REQUESTS -->
+    <div data-role="page" id="circle-requests" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="circle/requests.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- CIRCLE SEARCH -->
+    <div data-role="page" id="circle-search" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="circle/search.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- INBOX -->
+    <div data-role="page" id="inbox">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="messages/inbox.handlebars.html" data-template-partials="{'message': 'messages/item.handlebars.html'}"></div>
+    </div>
+
+    <!-- MESSAGE DETAIL -->
+    <div data-role="page" id="message" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="messages/message.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- COMPOSE MESSAGE -->
+    <div data-role="page" id="compose-message" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="messages/compose.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- REQUEST ONE-ON-ONE CHAT SESSION -->
+    <div data-role="page" id="request-one-on-one" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="chat/request.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- ONE-ON-ONE CHAT SESSION REQUESTS -->
+    <div data-role="page" id="one-on-one-requests" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="chat/requests.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- PAY FOR ONE-ON-ONE CHAT SESSION -->
+    <div data-role="page" id="one-on-one-pay" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="chat/pay.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- ONE-ON-ONE CHAT SESSION -->
+    <div data-role="page" id="one-on-one" data-always-reload="true">
+        <div data-role="content" class="mainContent fullWidth" data-template-filename="chat/chat.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- INDUSTRY DETAIL -->
+    <div data-role="page" id="industry" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="industries/details.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- REGION DETAIL -->
+    <div data-role="page" id="region" data-always-reload="true">
+        <div data-role="content" class="mainContent" data-template-filename="regions/details.handlebars.html" data-always-reload="true"></div>
+    </div>
+
+    <!-- COLLEAGUES -->
+    <div data-role="page" id="colleagues">
+        <div data-role="content" class="mainContent" data-template-filename="colleagues/home.handlebars.html"></div>
+    </div>
+
+    <!-- ABOUT -->
+    <div data-role="page" id="about">
+        <div data-role="content" class="mainContent" data-template-filename="about/about.handlebars.html"></div>
+    </div>
+
+    <!-- CONTACT -->
+    <div data-role="page" id="contact">
+        <div data-role="content" class="mainContent" data-template-filename="about/contact.handlebars.html"></div>
+    </div>
+
+    <!-- VIDEO TIPS -->
+    <div data-role="page" id="video-tips">
+        <div data-role="content" class="mainContent" data-template-filename="about/video-tips.handlebars.html"></div>
+    </div>
+
+    <!-- PRIVACY AND LEGAL -->
+    <div data-role="page" id="privacy">
+        <div data-role="content" class="mainContent" data-template-filename="about/privacy.handlebars.html"></div>
+    </div>
+
+    <div data-role="footer" data-position="fixed" class="footer_wrapper" data-enhance="false"></div>
+
+    <script>	
+        function handleOpenURL(url) {
+            regexp = /^dapinqing:\/\/([^\?]*)\?*(.*)$/;
+            if (url.match(regexp)) {
+                page = '#'+url.replace(regexp, '$1');
+                qs = url.replace(regexp, '$2');
+                location.href = page+'?'+qs;
+            }
+/*
+To debug, alerts/logs must be placed in a setTimeout...
+            setTimeout(function() {
+                alert('url: '+url);
+                console.log('url: '+url);
+            }, 1000);
+*/
+        }
+
+        if ($.core.is_cordova) {
+            // Running in cordova, load required stuff
+            $.getScript('cordova.js');
+            $.getScript('index.js');
+            app.initialize();
+        }
+    </script>
+</body>
+</html>

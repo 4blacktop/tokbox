@@ -1,0 +1,73 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if id}}
+    <h1 class="i18n singleSubject">{{subject}}</h1>
+
+	<div class="singleMessage">
+        <div class="messagePic" style="background-image: url('{{from_profile_pic}}');"></div>
+        <div class="messageDetails">
+            <div class="messageFromName">{{from_name}}</div>
+            <div class="messageToName">{{to_name}}</div>
+            <div class="messageTime">{{created_at_human}}</div>
+            <div class="messageContent">
+                <p>{{#equal from_id -1}}{{{message}}}{{else}}{{message}}{{/equal}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="replies">
+    {{#if replies}}
+        {{#each replies}}
+        <div class="messageThread">
+            <div class="messagePic" style="background-image: url('{{from_profile_pic}}');"></div>
+            <div class="messageDetails">
+                <div class="messageFromName">{{from_name}}</div>
+                <div class="messageToName">{{to_name}}</div>
+                <div class="messageTime">{{created_at_human}}</div>
+                <div class="messageContent">
+                    <p>{{message}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    {{else}}
+        <div class="messageThread" style="display: none;"><!-- dummy HTML for duplication via JS when a reply is created //-->
+            <div class="messagePic"></div>
+            <div class="messageDetails">
+                <div class="messageFromName"></div>
+                <div class="messageToName"></div>
+                <div class="messageTime"></div>
+                <div class="messageContent">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+    </div>
+
+    {{#equal from_id -1}}
+    {{else}}
+    <div class="messageReply">
+        <h2 class="i18n"><?=_('Reply');?></h2>
+        <form id="reply-form" action="messages/{{id}}/reply" method="post" data-after-submit="$.pages['messages.message'].reply_cb(response);">
+            <label for="message"></label>
+            <div data-role="fieldcontainer">
+                <textarea id="message" name="message" cols="30" rows="1" data-required="true" data-human-name="Message"></textarea>
+            </div>
+            <div data-role="fieldcontainer">
+                <input type="submit" value="<?=_('Send');?>" class="i18n">
+            </div>
+        </form>
+    </div>
+    {{/equal}}
+{{else}}
+    <div class="singleMessageNotFound">
+        <p class="i18n"><?=('Message not found.');?></p>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

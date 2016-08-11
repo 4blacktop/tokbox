@@ -1,0 +1,94 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+            <h1 class="i18n"><?php echo _('Complete your profile'); ?></h1>
+            <div class="register-form">
+                <form id="register-employees-2_form" action="users/" method="put" data-validate="{'rules': {'password_confirm': {'equalTo': '#password'}},'messages': {'password_confirm': {'equalTo': 'Your passwords must match.'}}}" data-before-submit="return $.pages['user.register-employees-2'].before_submit(data);" data-after-submit="$.pages['user.register-employees-2'].register_cb(response);">
+                    <h2 class="i18n"><?=_('Profile pic'); ?></h2>
+                    <label for="cover_photo" class="i18n"><?=_('Upload a profile pic'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <button id="profile_pic-select" class="i18n"><?=_('Select photo'); ?></button>
+                        <input type="file" id="cover_photo" name="cover_photo" accept="image/*; capture=camera" tabindex="1">
+                        <input type="hidden" id="profile_pic" name="profile_pic" />
+                        <progress max="100" value="0" id="profile_pic-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="profile_pic-upload-percentage">0</span>%</span>
+                    </div>
+
+                    <h2 class="i18n"><?=_('Your résumé video & PDF'); ?></h2>
+                    <p class="i18n"><?=_("Don't worry! You can always upload a video and PDF later on your My Account page.");?></p>
+                    <label for="resume" class="i18n"><?=_('Upload your résumé PDF'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <button id="resume_uri-select" class="i18n"><?=_('Select image or PDF'); ?></button>
+                        <input type="file" id="resume" name="resume" accept="image/*; capture=camera">
+                        <input type="hidden" id="resume_uri" name="resume_uri" value="{{me.resume_uri}}" / tabindex="2">
+                        <progress max="100" value="0" id="resume_uri-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="resume_uri-upload-percentage">0</span>%</span>
+                    </div>
+                    <label for="raw_video_uri" class="i18n"><?=_('Upload your résumé video'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <button id="raw_video_uri-select" class="i18n"><?=_('Select video'); ?></button>
+                        <input type="file" name="video" accept="video/*; capture=camera">
+                        <input type="hidden" id="raw_video_uri" name="raw_video_uri" />
+                        <progress max="100" value="0" id="raw_video_uri-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="raw_video_uri-upload-percentage">0</span>%</span>
+                    </div>
+
+                    <h2 class="i18n"><?=_('Details about you'); ?></h2>
+                    <label for="bio" class="i18n"><?=_('About you'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <textarea id="bio" name="bio" rows="2" placeholder="<?=_('Write a paragraph or two about yourself');?>" class="i18n" tabindex="3"></textarea>
+                    </div>
+
+                    <label for="region_id" class="i18n"><?=_('Current Location'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <select id="region_id" name="region_id" data-required="true" tabindex="4">
+                            <option value="" class="i18n"><?=_('Select your location...');?></option>
+                            {{#select me.region_id}}
+                                {{#each regions}}
+                                <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+
+                    <label for="gender" class="i18n"><?=_('Gender'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <select id="gender" name="gender" data-required="true" tabindex="5">
+                            <option value="" class="i18n"><?=_('Select your gender...');?></option>
+                            <option value="M" class="i18n"><?=_('Male');?></option>
+                            <option value="F" class="i18n"><?=_('Female');?></option>
+                        </select>
+                    </div>
+
+                    <label for="education" class="i18n"><?=_('Education'); ?></label>
+                    <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+                        <div class="dropdown no-input yamm-fw">
+                            <div class="dropdown-toggle" data-toggle="dropdown">
+                                <input type="text" name="education" class="i18n" placeholder="<?=_('Select your level of education...');?>" tabindex="6">
+                                <a href="#"><i class="fa fa-angle-down"></i></a>
+                            </div>
+                            <ul class="dropdown-menu fit search-form-dropdown education">
+                                <li class="actions">
+                                    <div class="row">
+                                        <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </li>
+{{#foreach education_requirements}}
+                                <li>
+                                    <div class="row">
+                                        <label>
+                                            <input type="radio" name="education_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                        </label>
+                                    </div>
+                                </li>
+{{/foreach}}
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <br>
+                    <input type="submit" class="i18n" value="<?php echo _('Save'); ?>" tabindex="7">
+                </form>
+            </div>
+
+    </div>
+</main>
+<!-- End Main -->

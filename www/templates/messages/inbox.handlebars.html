@@ -1,0 +1,32 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if data}}
+    {{#each data}}
+    <div id="message-{{id}}" class="messagesList {{#if read_at}}messageRead{{else}}messageUnread{{/if}}">
+        <a href="#message?id={{id}}&reply_id={{reply_id}}">
+            <div class="messagePic" style="background-image: url('{{from_profile_pic}}');"></div>
+            <div class="messageDetails info">
+                <div class="messageFromName">{{from_name}}</div>
+                <div class="messageToName">{{to_name}}</div>
+                <div class="messageTime">{{created_at_human}}</div>
+                <div class="messageSubject">
+                    <h2>{{subject}}</h2>
+                </div>
+                <div class="messageExcerpt">
+                    <p>{{excerpt}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+{{else}}
+    <div class="noMessages content">
+        <h2>You have 0 messages.</h2>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

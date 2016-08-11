@@ -1,0 +1,326 @@
+/* DROPDOWN
+-------------------------------------------------*/
+.search-filter .open > .dropdown-menu,
+.dropdown-container .open > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.dropdown-container {
+    &.search-form-container {
+        .dropdown {
+            a.dropdown-toggle,
+            &.no-input .dropdown-toggle > a {
+                margin-top: -43px;
+                height: 42px;
+                line-height: 42px;
+            }
+            &.no-input {
+                input[type="text"],
+                input[type="number"] {
+                    border: none;
+                    padding: 11px;
+                }
+            }
+        }
+    }
+    &.create-video-container,
+    &.register-container {
+        margin-top: 20px;
+
+        .dropdown {
+            a.dropdown-toggle,
+            &.no-input .dropdown-toggle > a {
+                margin-top: -60px;
+                margin-right: 1px;
+                height: 59px;
+                line-height: 59px;
+            }
+            &.no-input {
+                input[type="text"],
+                input[type="number"] {
+                    border: solid 2px #f6f6f6;
+                }
+            }
+        }
+    }
+    .dropdown {
+        float: right;
+
+        a.dropdown-toggle,
+        &.no-input .dropdown-toggle > a {
+            position: relative;
+            display: block;
+            width: 42px;
+            background: $colorBgLight;
+            text-align: center;
+        }
+
+        &.no-input {
+            float: none;
+
+            input[type="text"],
+            input[type="number"] {
+                cursor: pointer;
+                background-color: #f6f6f6;
+            }
+
+            .dropdown-toggle > a {
+                float: right;
+            }
+        }
+    }
+
+    &.search-form-container .dropdown-menu {
+        top: 100%;
+    }
+    &.create-video-container .dropdown-menu,
+    &.register-container .dropdown-menu {
+        margin-top: 10px;
+    }
+    &.banner .dropdown,
+    &.box .dropdown,
+    .dropdown-menu {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        float: left;
+        padding: 10px 0;
+        margin: 0;
+        list-style: none;
+        background: $white;
+        background-clip: padding-box;
+        border: solid 1px $colorBorder;
+        border-radius: 4px;
+
+        &:before {
+            display: none;
+        }
+
+        li.actions {
+            padding: 0 20px 10px 20px;
+
+            .any {
+                margin: 0;
+            }
+
+            .x {
+                padding: 0;
+                border: none;
+                background: none;
+                cursor: pointer;
+                float: right;
+
+                i {
+                    transform: rotate(45deg);
+                }
+
+                &:focus {
+                    outline: 0;
+                }
+            }
+        }
+    }
+
+    .dropdown-menu.positions {
+        .row {
+            .four-col:first-child {
+                height: 1em;
+                overflow: visible;
+            }
+        }
+    }
+
+    .dropdown-menu.industries {
+        .row {
+            .three-col:first-child {
+                height: 1em;
+                overflow: visible;
+            }
+        }
+    }
+}
+        
+.dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    @include fontSize(15);
+    text-align: left;
+    transition: 0.3s ease;
+    transition-delay: 0.2s; 
+    transform: translateY(20px);
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        left: 20px;
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-style: solid;
+        border-color: $colorBorder;
+        border-width: 1px 1px 0 0;
+        background: $colorBgLight;
+        transform: rotate(-45deg);
+    }
+
+    .search-filter & {
+        left: -1px;
+        box-sizing: content-box;
+        border: solid 1px $colorBorderLight;
+        background: $white;
+        transform: translateY(30px);
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.banner .dropdown {
+    @extend .dropdown-menu;
+
+    @include breakpoint(lsmall) {
+        display: block;
+    }
+}
+
+.banner:hover .dropdown {
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+    @include breakpoint(lsmall) {
+        display: block;
+    }
+}
+
+.dropdown-single {
+    .dropdown-links, .dropdown-footer {
+        width: 100%;
+
+        .dropdown-footer-col:first-child {
+            width: 100%;
+        }
+    }
+
+    .dropdown-bd:after {
+        display: none;
+    }
+}
+
+.dropdown-links {
+    @include span(5);
+}
+
+.dropdown-info {
+    @include span(7);
+    padding-left: 10px;
+}
+
+.dropdown-bd, .dropdown-footer {
+    padding: 10px;
+}
+
+.dropdown-bd {
+    ul {
+        @extend %clearfix;
+        @extend %noBullet;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: $colorLink;
+
+        &:hover, &:focus {
+            color: $colorBase;
+        }
+    }
+
+    &:after {
+        position: absolute;
+        top: 0;
+        left: 41.6666666667%;
+        content: '';
+        width: 1px;
+        height: 100%;
+        background: $white;
+
+        .search-filter & {
+            display: none;
+        }
+    }
+}
+
+.dropdown-footer {
+    position: relative;
+    z-index: 10;
+    background: #efefef;
+
+    .dropdown-footer-col {
+        @include span(7);
+        padding-left: 10px;
+
+        &:first-child {
+            @include span(5);
+        }
+    }
+}
+
+/* Mega dropdown
+-------------------------------*/
+.yamm {
+
+    .row {
+        position: relative;
+    }
+
+    // reset positions
+    .search-form-container, .dropdown {
+        @include breakpoint(small) {
+            position: static;
+        }
+    }
+
+    // propagate menu position under container for fw navbars
+    .container {
+        position: relative;
+    }
+
+    // by default aligns menu to left
+    .dropdown-menu {
+        left: auto;
+    }
+
+    // Content with padding
+    .yamm-content {
+        padding: 20px 30px;
+    }
+
+    // Fullwidth menu
+    .dropdown.yamm-fw .dropdown-menu {
+        left: 0; 
+        right: 0;
+    }
+
+}
+
+.dropdown-menu {
+    li {
+        padding: 3px 10px;
+        background: $white;
+    }
+}
+.create-video-dropdown li:nth-child(even),
+.create-video-container select option:nth-child(even),
+.register-dropdown li:nth-child(even),
+.register-container select option:nth-child(even) {
+    background: $colorBgLight;
+}

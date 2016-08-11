@@ -1,0 +1,85 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if mentor}}
+    <div class="mentor-header" style="background-image: url('{{mentor.profile_pic}}');">
+        <div class="overlay">
+            <img class="profile_pic" src="{{mentor.profile_pic}}" />
+            <div class="info">
+                <h1 class="title">{{mentor.first_name}}</h1>
+                {{#if mentor.resume_uri}}
+                <a href="{{user.resume_uri}}" onclick="window.open('{{user.resume_uri}}', '_blank', 'location=no,enableViewportScale=yes'); return false;" class="small-button br pdf i18n"><?=_('View PDF company introduction');?></a>
+                {{/if}}
+                <a href="#rate-mentor?id={{mentor.id}}" class="small-button review br i18n"><?=_('Write a review'); ?></a>
+                <div class="small-button br">
+                    <a href="#compose-message?to_id={{mentor.id}}" class="small-button write i18n"><?=_('Send message'); ?></a>
+                {{#isNotNull mentor.one_on_one_price_rmb}}
+                    <a href="#request-one-on-one?mentor_id={{mentor.id}}" class="small-button chat i18n"><?=_('Get 1-on-1'); ?></a>
+                {{/isNotNull}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mentor-video-container video-container">
+    {{#if mentor.video_uri}}
+    {{else}}
+        {{#if mentor.raw_video_uri}}
+        <p class="processing i18n"><?=_('The company introduction video for this company is still processing...');?></p>
+        {{/if}}    
+    {{/if}}
+    </div>
+
+    {{#if mentor.bio}}
+    <h2 class="i18n"><?=_('Company description');?></h2>
+    <div class="line-break">
+        <p>{{mentor.bio}}</p>
+    </div>
+    {{/if}}
+
+    <div class="content">
+        <div class="info-tiles">
+            <div class="info-tile">
+                <div class="info-tile-content{{#if mentor.num_reviews}} reviews{{/if}}">
+                    <a href="#mentor-reviews?id={{mentor.id}}">
+                        <span>{{mentor.num_reviews}}</span>
+                        <h2 class="i18n">{{#equal mentor.num_reviews 1}}<?=_('Review');?>{{else}}<?=_('Reviews');?>{{/equal}}</h2>
+                        {{#if mentor.num_reviews}}<span class="stars">{{#for 0 5 1}}<span class="star_15{{#compare index "<" ../mentor.avg_stars}} active{{/compare}}"></span>{{/for}}</span>{{/if}}
+                    </a>
+                </div>
+            </div>
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <a href="#videos?mentor_id={{mentor.id}}">
+                        <span>{{mentor.num_videos}}</span>
+                        <h2 class="i18n">{{#equal mentor.num_videos 1}}<?=_('Job');?>{{else}}<?=_('Jobs');?>{{/equal}}</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="info-tile">
+                <div class="info-tile-content">
+                    <span>{{mentor.num_proteges}}</span>
+                    <h2 class="i18n">{{#equal mentor.num_proteges 1}}<?=_('Protégés');?>{{else}}<?=_('Protégés');?>{{/equal}}</h2>
+                </div>
+            </div>
+        </div>
+
+        {{#if videos}}
+        <div class="content">
+            <h2 class="i18n"><?=_('Jobs'); ?></h2>
+            <div class="viewport videos">
+                <div class="flipsnap" id="mentor-videos">
+                    {{#each videos}}
+                        {{> video this}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

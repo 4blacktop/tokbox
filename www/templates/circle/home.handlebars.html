@@ -1,0 +1,48 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <div data-template-filename="circle/search-form.handlebars.html"></div>
+
+    <div class="content">
+        <h1 class="i18n"><?=_('My circle');?></h1>
+
+        <a href="#circle-requests" class="requests"><span id="pending-requests" style="{{#compare num_unread_requests.num_unread_requests ">" 0}}display: none;{{/compare}}" class="i18n"><?=_('Pending requests');?></span><span id="unread-circle-requests" style="{{#equal num_unread_requests.num_unread_requests 0}}display: none;{{/equal}}"><span class="unread-circle-requests">{{num_unread_requests.num_unread_requests}}</span> <span class="i18n"><?=_('new');?></span> <span class="i18n">{{#equal num_unread_requests.num_unread_requests 1}}<?=_('request');?>{{else}}<?=_('requests');?>{{/equal}}</span></span></a>
+
+        {{#if mentors}}
+        <h2 class="i18n"><?=_('My companies');?></h2>
+        <div class="viewport users">
+            <div class="flipsnap" id="circle-mentors">
+                {{#each mentors}}
+                    {{> profile this}}
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if proteges}}
+        <h2 class="i18n"><?=_('My protégés');?></h2>
+        <div class="viewport users">
+            <div class="flipsnap" id="circle-proteges">
+                {{#each proteges}}
+                    {{> profile this}}
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if friends}}
+        <h2 class="i18n"><?=_('My friends');?></h2>
+        <div class="viewport users">
+            <div class="flipsnap" id="circle-friends">
+                {{#each friends}}
+                    {{> profile this}}
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+    </div>
+
+    </div>
+</main>
+<!-- End Main -->

@@ -1,0 +1,17 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    {{#if data}}
+    <div>
+        {{#each data}}
+            {{> mentor_result this}}
+        {{/each}}
+    </div>
+    {{else}}
+    <p class="no-results i18n"><?=_('No companies found.');?></p>
+    {{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

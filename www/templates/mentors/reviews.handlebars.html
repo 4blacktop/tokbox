@@ -1,0 +1,54 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if mentor}}
+    <div class="mentor-header" style="background-image: url('{{mentor.profile_pic}}');">
+        <div class="overlay">
+            <img class="profile_pic" src="{{mentor.profile_pic}}" />
+            <div class="info">
+                <h1 class="title">{{mentor.first_name}}</h1>
+                <a href="#rate-mentor?id={{mentor.id}}" class="small-button review br i18n"><?=_('Write a review'); ?></a>
+                <div class="small-button br">
+                    <a href="#compose-message?to_id={{mentor.id}}" class="small-button write i18n"><?=_('Send message'); ?></a>
+                    <a href="#request-one-on-one?mentor_id={{mentor.id}}" class="small-button chat i18n"><?=_('Get 1-on-1'); ?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1 class="i18n">Reviews</h1>
+
+        <div class="bar-graph">
+            <div><span class="left i18n"><?=_('5 star');?></span><span class="bar"><span class="percent" style="width: {{mentor.percent_5star_reviews}}%;"></span></span><span class="right">{{mentor.percent_5star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('4 star');?></span><span class="bar"><span class="percent" style="width: {{mentor.percent_4star_reviews}}%;"></span></span><span class="right">{{mentor.percent_4star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('3 star');?></span><span class="bar"><span class="percent" style="width: {{mentor.percent_3star_reviews}}%;"></span></span><span class="right">{{mentor.percent_3star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('2 star');?></span><span class="bar"><span class="percent" style="width: {{mentor.percent_2star_reviews}}%;"></span></span><span class="right">{{mentor.percent_2star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('1 star');?></span><span class="bar"><span class="percent" style="width: {{mentor.percent_1star_reviews}}%;"></span></span><span class="right">{{mentor.percent_1star_reviews}}%</span></div>
+            <div><span class="left i18n"><?=_('0 star');?></span><span class="bar"><span class="percent" style="width: {{mentor.percent_0star_reviews}}%;"></span></span><span class="right">{{mentor.percent_0star_reviews}}%</span></div>
+        </div>
+
+        <div class="viewport reviews listView">
+        {{#if reviews}}
+            {{#each reviews}}
+                <div class="review item">
+                    <div class="pic" style="background-image: url('{{this.by_user_profile_pic}}');"></div>
+                    <div class="info">
+                        <span class="stars">{{#for 0 5 1}}<span class="star_20{{#compare index "<" ../this.stars}} active{{/compare}}"></span>{{/for}}</span>
+                        <div class="by_name"><span class="i18n"><?=_('by');?> {{this.by_user_first_name}}</div>
+                        <div class="created_at">{{this.created_at_human}}</div>
+                        <p class="content">{{this.review}}</p>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <p class="no-results"><span class="i18n"><?=_('No reviews found.');?></span> <a href="#rate-mentor?id={{mentor.id}}" class="i18n"><?=_('Write a review');?></a>.</p>
+        {{/if}}
+        </div>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

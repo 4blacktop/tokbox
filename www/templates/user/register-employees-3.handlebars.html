@@ -1,0 +1,253 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+            <h1 class="i18n"><?php echo _('Your work history'); ?></h1>
+            <div class="register-form">
+                <form id="register-employees-3_form" action="users/" method="put" data-validate="{'rules': {'password_confirm': {'equalTo': '#password'}},'messages': {'password_confirm': {'equalTo': 'Your passwords must match.'}}}" data-before-submit="return $.pages['user.register-employees-3'].before_submit(data);" data-after-submit="$.pages['user.register-employees-3'].register_cb(response);">
+                    <label for="region_id" class="i18n"><?=_('Have you ever worked before?'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <select id="has_worked" name="has_worked" data-required="true" onchange="if ($(this).val() == '1') { $('.current-work').show(); }else{ $('.current-work').hide(); }" tabindex="1">
+                            <option value="" class="i18n"><?=_('Please select one...');?></option>
+                            <option value="1" class="i18n"><?=_('Yes');?></option>
+                            <option value="0" class="i18n"><?=_('No');?></option>
+                        </select>
+                    </div>
+
+                    <div class="current-work" style="display: none;">
+                        <label for="experience_id" class="i18n"><?=_('How much have you worked?'); ?></label>
+                        <div class="register-container" data-role="fieldcontainer">
+                            <select name="experience_id" tabindex="7">
+                                <option class="i18n" value=""><?=_('Please select one...');?></option>
+{{#each experience_requirements}}
+                                <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</option>
+{{/each}}
+                            </select>
+                        </div>
+
+                        <h2 class="i18n"><?php echo _('Current job'); ?></h2>
+
+                        <label for="gender" class="i18n"><?=_('Current company name'); ?></label>
+                        <div data-role="fieldcontainer">
+                            <input type="text" id="current_company_name" name="current_company_name" class="i18n" placeholder="<?php echo _('e.g. Premier Business Solutions'); ?>" tabindex="2">
+                        </div>
+
+                        <label for="current_industry" class="i18n"><?=_('Current industry'); ?></label>
+                        <div class="dropdown-container create-video-container" data-role="fieldcontainer">
+                            <input type="text" name="current_industry" class="autocomplete i18n" data-autocomplete-src="industries" placeholder="<?=_('Current industry');?>" tabindex="3">
+
+                            <div class="dropdown yamm-fw">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu register-dropdown current_industry">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach industries}}
+                                    <li>
+                                        <div class="row">
+                                            <div class="three-col group" class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</div>
+    {{#foreach item.items}}
+                                            <div class="three-col item">
+                                                <label>
+                                                    <input type="radio" name="current_industry_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                                </label>
+                                            </div>
+    {{/foreach}}
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <label for="current_position" class="i18n"><?=_('Current position'); ?></label>
+                        <div class="dropdown-container register-container" data-role="fieldcontainer">
+                            <input type="text" name="current_position" class="autocomplete i18n" data-autocomplete-src="positions" placeholder="<?=_('Current position');?>" tabindex="4">
+
+                            <div class="dropdown yamm-fw">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu register-dropdown current_position">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach positions}}
+                                    <li>
+                                        <div class="row">
+                                            <div class="four-col i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</div>
+    {{#foreach item.items}}
+                                            <div class="four-col item">
+                                                <a href="?" class="toggle-btn"><i class="fa fa-plus"></i> <span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span></a>
+                                                <div class="toggle-content">
+        {{#foreach item.items}}
+                                                    <label>
+                                                        <input type="radio" name="current_position_id" value="{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                                    </label>
+        {{/foreach}}
+                                                </div>
+                                            </div>
+    {{/foreach}}
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="i18n"><?php echo _('Desired job'); ?></h2>
+                    <label for="desired_industrys" class="i18n"><?=_('Desired industries'); ?></label>
+                    <div class="dropdown-container register-container">
+                        <input type="text" name="desired_industries" class="autocomplete i18n" data-autocomplete-src="industries" placeholder="<?=_('Type one or select all that apply...');?>" tabindex="5">
+
+                        <div class="dropdown yamm-fw">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu register-dropdown desired_industries">
+                                <li class="actions">
+                                    <div class="row">
+                                        <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </li>
+{{#foreach industries}}
+                                <li>
+                                    <div class="row">
+                                        <div class="three-col group" class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</div>
+    {{#foreach item.items}}
+                                        <div class="three-col item">
+                                            <label>
+                                                <input type="checkbox" name="desired_industries-{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+                                        </div>
+    {{/foreach}}
+                                    </div>
+                                </li>
+{{/foreach}}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <label for="desired_positions" class="i18n"><?=_('Desired positions'); ?></label>
+                    <div class="dropdown-container register-container">
+                        <input type="text" name="desired_positions" class="autocomplete i18n" data-autocomplete-src="positions" placeholder="<?=_('Type one or select all that apply...');?>" tabindex="6">
+
+                        <div class="dropdown yamm-fw">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu register-dropdown desired_positions">
+                                <li class="actions">
+                                    <div class="row">
+                                        <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </li>
+{{#foreach positions}}
+                                <li>
+                                    <div class="row">
+                                        <div class="four-col i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</div>
+    {{#foreach item.items}}
+                                        <div class="four-col item">
+                                            <a href="?" class="toggle-btn"><i class="fa fa-plus"></i> <span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span></a>
+                                            <div class="toggle-content">
+        {{#foreach item.items}}
+                                                <label>
+                                                    <input type="checkbox" id="desired_positions-{{item.id}}" name="desired_positions-{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                                </label>
+        {{/foreach}}
+                                            </div>
+                                        </div>
+    {{/foreach}}
+                                    </div>
+                                </li>
+{{/foreach}}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <label for="desired_regions" class="i18n"><?=_('Desired locations'); ?></label>
+                    <div class="dropdown-container register-container">
+                        <input type="text" name="desired_regions" class="autocomplete i18n" data-autocomplete-src="regions" placeholder="<?=_('Type one or select all that apply...');?>" tabindex="3">
+
+                        <div class="dropdown yamm-fw">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu register-dropdown desired_regions">
+                                <li class="actions">
+                                    <div class="row">
+                                        <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+{{#foreach regions}}
+{{#isNotEmptyArray item}}
+    {{#foreach item}}
+                                        <div class="four-col">
+                                            <label>
+                                                <input type="checkbox" name="desired_regions-{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+                                        </div>
+    {{/foreach}}
+{{/isNotEmptyArray}}
+{{/foreach}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <label for="desired_wage_range_id" class="i18n"><?=_('Desired wage'); ?></label>
+                    <div class="register-container" data-role="fieldcontainer">
+                        <select name="desired_wage_range_id" tabindex="7">
+                            <option class="i18n" value=""><?=_('Please select one...');?></option>
+{{#each wage_ranges}}
+                            <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</option>
+{{/each}}
+                        </select>
+                    </div>
+
+                    <h2 class="i18n"><?php echo _('Availability & languages'); ?></h2>
+                    <label for="availability_id" class="i18n"><?=_('Availability'); ?></label>
+                    <div class="register-container" data-role="fieldcontainer">
+                        <select name="availability_id" tabindex="7">
+                            <option class="i18n" value=""><?=_('Please select one...');?></option>
+{{#each availabilities}}
+                            <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}">{{name_en}}</option>
+{{/each}}
+                        </select>
+                    </div>
+
+                    <label for="languages_spoken" class="i18n"><?=_('Languages spoken'); ?></label>
+                    <div class="dropdown-container register-container" data-role="fieldcontainer">
+                        <div class="dropdown no-input yamm-fw">
+                            <div class="dropdown-toggle" data-toggle="dropdown">
+                                <input type="text" name="languages_spoken" class="i18n" placeholder="<?=_('Please select all that apply...');?>" tabindex="8">
+                                <a href="#"><i class="fa fa-angle-down"></i></a>
+                            </div>
+                            <ul class="dropdown-menu fit register-dropdown languages_spoken">
+                                <li class="actions">
+                                    <div class="row">
+                                        <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </li>
+{{#foreach languages}}
+                                <li>
+                                    <div class="row">
+                                        <label>
+                                            <input type="checkbox" name="languages_spoken-{{item.id}}" data-role="none"><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                        </label>
+                                    </div>
+                                </li>
+{{/foreach}}
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <br>
+                    <input type="submit" class="i18n" value="<?php echo _('Save'); ?>" tabindex="9">
+                </form>
+            </div>
+
+    </div>
+</main>
+<!-- End Main -->

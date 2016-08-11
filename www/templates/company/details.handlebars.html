@@ -1,0 +1,44 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if id}}
+    <div class="company-header" style="background-image: url('{{profile_pic}}');">
+        <div class="overlay">
+            <img class="profile_pic" src="{{profile_pic}}" />
+            <div class="info">
+                <h1 class="title">{{name}}</h1>
+            </div>
+        </div>
+    </div>
+
+    {{#if videos}}
+    <div class="content">
+        <h2 class="i18n"><?=_('Jobs');?></h2>
+        <div class="viewport videos">
+            <div class="flipsnap" id="company-videos">
+            {{#each videos}}
+                {{> video this}}
+            {{/each}}
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if members}}
+    <div class="content">
+        <h2 class="i18n"><?=_('Members');?></h2>
+        <div class="viewport mentors bottom-divider">
+            <div class="flipsnap" id="company-members">
+            {{#each members}}
+                {{> member this}}
+            {{/each}}
+            </div>
+        </div>
+    </div>
+    {{/if}}
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

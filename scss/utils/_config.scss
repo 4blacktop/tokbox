@@ -1,0 +1,123 @@
+/* GONFIG
+-------------------------------------------------*/
+
+/* Fonts
+-------------------------------*/
+$fontFamilyPrimary: 'Neuton', serif;
+
+/* Font sizes */
+$baseFontSize: 16;
+
+/* Font weight */
+$fontWeightRegular: 400;
+$fontWeightBold: 700;
+
+/* Line height */
+$baseLineHeight: 1.4;
+$headingLineHeight: 1.2;
+
+
+/* Colors
+-------------------------------*/
+
+/* Descriptive colors */
+$white: #fff;
+$black: #000;
+$grey: #333;
+$greyLight: #666;
+$greyLightAlt: #575757;
+$salomie: #ffdd80;
+$alabaster: #f8f8f8;
+$silver: #c7c7c7;
+$gallery: #eee;
+$shakespear: #52b3d9;
+$monza: #cf000f;
+$logoBlue: #2ba8e1;
+.color-shakespear {
+    color: $shakespear;
+}
+.color-salomie {
+    color: $salomie;
+}
+
+/* Color usage */
+$colorBase: $grey;
+$colorBg: $greyLight;
+$colorBgLight: $alabaster;
+$colorBorder: $silver;
+$colorBorderLight: $gallery;
+$colorLink: $shakespear;
+$colorHighlight: $monza;
+
+/* Space
+-------------------------------*/
+
+/* Susy config
+-------------------------------*/
+$susy: (
+    columns: 12,
+    column-width: 30px,
+    gutters: 1/3,
+    gutter-position: inside-static
+);
+
+/* Breakpoints
+-------------------------------*/
+$screen-xs: 480px;
+$screen-lsm: 481px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+$screen-xlg: 1400px;
+
+$bpoints: (
+    'xsmall' : ( max-width: $screen-xs ),
+    'lsmall' : ( min-width: $screen-lsm ),
+    'small'  : ( min-width:  $screen-sm ),
+    'medium' : ( min-width:  $screen-md ),
+    'large'  : ( min-width: $screen-lg ),
+    'xlarge'  : ( min-width: $screen-xlg )
+);
+
+@mixin top-left-radius($radius) {
+  -webkit-border-top-left-radius: $radius;
+     -moz-border-top-left-radius: $radius;
+      -ms-border-top-left-radius: $radius;
+          border-top-left-radius: $radius;
+}
+@mixin top-right-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+     -moz-border-top-right-radius: $radius;
+      -ms-border-top-right-radius: $radius;
+          border-top-right-radius: $radius;
+}
+@mixin bottom-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+     -moz-border-bottom-right-radius: $radius;
+      -ms-border-bottom-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+}
+@mixin bottom-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+     -moz-border-bottom-left-radius: $radius;
+      -ms-border-bottom-left-radius: $radius;
+          border-bottom-left-radius: $radius;
+}
+@mixin rounded($radius) {
+	@include top-left-radius($radius);
+	@include top-right-radius($radius);
+	@include bottom-right-radius($radius);
+	@include bottom-left-radius($radius);
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}

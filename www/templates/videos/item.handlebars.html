@@ -1,0 +1,13 @@
+        <a href="#video?id={{id}}" class="item">
+            <div class="pic" style="background-image: url('{{cover_pic}}');"></div>
+            <div class="info">
+                <div class="content">
+                    <div class="name">{{title}}</div>
+                    <div class="small instructor"><span class="title i18n"><?=_('by');?></span> {{mentor_name}}</div>
+                    <div class="small category"><span class="i18n" data-i18n-zh_cn="{{position_name_zh}}">{{position_name_en}}</span></div>
+                    <div class="small category"><span class="i18n" data-i18n-zh_cn="{{industry_name_zh}}">{{industry_name_en}}</span></div>
+                    <div class="small">{{#if employment_type_name_en}}<span class="difficulty i18n" data-i18n-zh_cn="{{employment_type_name_zh}}">{{employment_type_name_en}}</span>{{/if}}{{#ifAnd employment_type_name_en wage_range_name_en}} | {{/ifAnd}}{{#if wage_range_name_en}}<span class="price i18n" data-i18n-zh_cn="{{wage_range_name_zh}}">{{wage_range_name_en}}</span>{{/if}}</div>
+                </div>
+            </div>
+        </a>
+

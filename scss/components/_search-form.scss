@@ -1,0 +1,160 @@
+/* SEARCH FORM
+-------------------------------------------------*/
+.search-form {
+    @extend %clearfix;
+    padding: 15px;
+    margin-bottom: 30px;
+    background: $colorBase;
+
+    h2 {
+        color: $white;
+        font-size: 1.2rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        @extend %formFields;
+        padding: 7px;
+        @include fontSize(16);
+    }
+    .ui-select .ui-btn {
+        padding: 11px;
+        text-align: left;
+    }
+}
+
+.search-col-three {
+    @extend %three-col;
+    margin-bottom: 10px;
+}
+
+.search-col-four {
+    @extend %four-col;
+    margin-bottom: 10px;
+}
+
+.search-form-container {
+    @extend %clearfix;
+    position: relative;
+
+    input[type="text"],
+    input[type="number"] {
+        height: 42px;
+        padding-right: 52px;
+        line-height: 42px;
+
+        &:focus {
+            border-color: $colorBgLight;
+        }
+    }
+
+    .ui-select {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .dropdown .row label,
+    select option {
+        margin-bottom: 0;
+        font-size: 16px;
+        font-weight: 400;
+        color: #333;
+    }
+}
+.search-col-three {
+    .dropdown-menu.fit {
+        width: 33%;
+    }
+}
+.search-col-four {
+    .dropdown-menu.fit {
+        width: 25%;
+    }
+
+    &:nth-child(2) .dropdown-menu.fit {
+        margin-left: 25%;
+    }
+    &:nth-child(3) .dropdown-menu.fit {
+        margin-left: 50%;
+    }
+    &:nth-child(4) .dropdown-menu.fit {
+        margin-left: 75%;
+    }
+}
+
+.search-form-dropdown {
+    .three-col,
+    .four-col {
+        margin-bottom: 0;
+        display: none;
+
+        &:first-child {
+            display: block;
+        }
+
+        @include breakpoint(small) {
+            display: block;
+        }
+    }
+}
+.search-form-dropdown li:nth-child(even),
+.search-form-container select option:nth-child(even) {
+    background: $colorBgLight;
+}
+
+.search-icon-container {
+    position: relative;
+    text-align: right;
+
+    .search-icon-btn {
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        width: 80px;
+        height: 40px;
+        padding: 0;
+        border: none;
+        color: $colorBase;
+        background: none;
+        @include fontSize(20);
+        cursor: pointer;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    .advanced-search-toggles {
+        a {
+            display: inline-block;
+            margin-top: 5px;
+            color: $silver;
+
+            &:hover, &:focus {
+                color: $white;
+            }
+
+            i {
+                margin-left: 3px;
+                @include fontSize(18);
+                vertical-align: bottom;
+            }
+        }
+
+        a.basic {
+            display: none;
+        }
+
+        &.advanced {
+            margin-bottom: 10px;
+
+            a.basic {
+                display: inline-block;
+            }
+            a.advanced {
+                display: none;
+            }
+        }
+    }
+}

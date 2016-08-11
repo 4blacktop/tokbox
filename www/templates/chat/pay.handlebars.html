@@ -1,0 +1,40 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if id}}
+    <h1 class="i18n"><?=_('Pay now');?></h1>
+
+    <div class="mentor-header" style="background-image: url('{{mentor_profile_pic}}');">
+        <div class="overlay">
+            <img class="profile_pic" src="{{mentor_profile_pic}}" />
+            <div class="info">
+                <h1 class="title"><span class="i18n"><?=_('1-on-1 chat with');?></span> {{mentor_name}}</h1>
+                <div class="posted">{{start_time_human}} - {{end_time_human}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="select-method">
+        <div class="contrent">
+            <div class="money-box" style="font-weight: bold;"><span class="i18n"><?=_('Pay this amount now');?></span><span class="i18n"><?=_(':');?></span> {{#if price_rmb}}¥ {{price_rmb}}{{else}}<span class="i18n"><?=_('FREE');?></span>{{/if}}</div>
+        </div>
+
+        <h1 class="i18n"><?=_('Select a payment method');?></h1>
+
+        <form id="one-on-one-pay-form" action="payments/" method="post" data-after-submit="$.pages['chat.pay'].after_submit(response);">
+            <input type="hidden" name="for_type" value="one-on-one-session">
+            <input type="hidden" name="for_id" value="{{id}}">
+            <input type="hidden" name="is_mobile" value="{{#if is_mobile}}1{{else}}0{{/if}}">
+
+            <input type="radio" name="method" id="method-alipay" value="alipay" checked="checked">
+            <label for="method-alipay"><span class="i18n"><?=_('Pay now with AliPay');?></span></label>
+            <input type="submit" value="<?=_('Pay Now');?>" class="submit i18n">
+            <img class="loading centered" style="display: none;" src="assets/images/loading.gif" alt="loading...">
+        </form>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

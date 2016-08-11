@@ -1,0 +1,37 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if id}}
+    <h1 class="i18n"><?=_('Send Message');?></h1>
+    <p><span class="i18n"><?_('To');?></span><span class="i18n"><?=_(':');?></span></p>
+    <div class="userInfo">
+        <div class="userHeadshot" style="background-image: url('{{profile_pic}}');"></div>
+        <div class="userDetails">
+            <p><span class="i18n">{{first_name}}</p>
+            <a href="#mentor?id={{id}}" class="small-button profile i18n"><?=_('View Profile');?></a>
+        </div>
+    </div>
+
+    <form id="compose-form" action="messages/" method="post" data-after-submit="$.pages['messages.compose'].cb(response);">
+        <input type="hidden" name="to_id" value="{{id}}">
+
+        <label for="subject" class="i18n"></label>
+        <div data-role="fieldcontainer">
+            <input type="text" id="subject" name="subject" placeholder="<?=_('Subject'); ?>" class="i18n" data-human-name="Subject">
+        </div>
+
+        <label for="message"></label>
+        <div data-role="fieldcontainer">
+            <textarea id="message" name="message" cols="30" rows="10" data-required="true" data-human-name="Message"></textarea>
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Send');?>" class="i18n">
+        </div>
+    </form>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

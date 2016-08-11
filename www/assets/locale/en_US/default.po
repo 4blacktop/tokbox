@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: My Kongzi App\n"
+"POT-Creation-Date: 2014-12-29 18:05-1000\n"
+"PO-Revision-Date: 2015-12-04 08:33-1000\n"
+"Last-Translator: Matt Rabe <matt@websolutionshack.com>\n"
+"Language-Team: Web Solution Shack <development@websolutionshack.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: locale/phrases_list.js:5
+msgid "Find Mentors"
+msgstr ""
+
+#: locale/phrases_list.js:6
+msgid "Find Courses"
+msgstr ""
+
+#: locale/phrases_list.js:7
+msgid "My Account"
+msgstr ""
+
+#: locale/phrases_list.js:8
+msgid "Circle"
+msgstr ""
+
+#: locale/phrases_list.js:9
+msgid "Username"
+msgstr ""
+
+#: locale/phrases_list.js:10
+msgid "Tests/prototypes"
+msgstr ""

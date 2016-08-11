@@ -1,0 +1,25 @@
+<div id="member-{{invitation_id}}" class="item">
+    <a href="#mentor?id={{id}}"><div class="pic" style="background-image: url('{{profile_pic}}');"></div></a>
+	<div class="info">
+		<div class="content">
+			<div class="name"><a href="#mentor?id={{id}}">{{first_name}}</a></div>
+            {{#if is_mentor}}
+                <div class="small reviews">{{num_reviews}} <span class="i18n">{{#equal num_reviews 1}}<?=_('review');?>{{else}}<?=_('reviews');?>{{/equal}}</span></div>
+                {{#if num_reviews}}<div class="stars">{{#for 0 5 1}}<span class="star_10{{#compare index "<" ../avg_stars}} active{{/compare}}"></span>{{/for}}</div>{{/if}}
+                <div class="small videosnumber">{{num_videos}} <span class="i18n">{{#equal num_videos 1}}<?=_('job'); ?>{{else}}<?=_('jobs'); ?>{{/equal}}</span></div>
+                <div class="small followers">{{num_proteges}} <span class="i18n">{{#equal num_proteges 1}}<?=_('protégé'); ?>{{else}}<?=_('protégés'); ?>{{/equal}}</span></div>
+            {{/if}}
+            {{#if i_am_company_admin}}
+                <div style="margin-top: 5px;">
+                {{#equal id my_id}}
+                    <a href="#mentor?id={{id}}" onclick="return false;" class="small-button disabled i18n"><?=_('You'); ?></a>
+                {{else}}
+                    <a href="#mentor?id={{id}}" onclick="$.pages['company.edit'].change_admin('remove', {{invitation_id}}); return false;" id="remove-admin-{{invitation_id}}" class="small-button no-admin i18n" style="{{#ifNot is_admin}}display: none;{{/ifNot}}"><?=_('Remove admin'); ?></a>
+                    <a href="#mentor?id={{id}}" onclick="$.pages['company.edit'].change_admin('add', {{invitation_id}}); return false;" id="add-admin-{{invitation_id}}" class="small-button admin i18n" style="{{#if is_admin}}display: none;{{/if}}"><?=_('Make admin'); ?></a>
+                    <a href="#mentor?id={{id}}" onclick="$.pages['company.edit'].remove_user({{invitation_id}}); return false;" class="small-button x i18n"><?=_('Remove'); ?></a>
+                {{/equal}}
+                </div>
+            {{/if}}
+        </div>
+	</div>
+</div>

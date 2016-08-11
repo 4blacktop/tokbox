@@ -1,0 +1,21 @@
+{
+  "name": "dapinqing",
+  "description": "",
+  "main": "Gruntfile.js",
+  "authors": [
+    "obaez <orlando@obaez.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "~2.2.12"
+  }
+}

@@ -1,0 +1,28 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <h1 class="i18n"><?=_('Create company'); ?></h1>
+
+    <form id="create-company-form" action="companies/" method="post" enctype="multipart/form-data" data-after-submit="$.pages['company.create'].after_submit(response);">
+        <label for="name" class="i18n"><?=_('Company name'); ?></label>
+        <div data-role="fieldcontainer">
+            <input type="text" id="name" name="name" placeholder="<?=_('e.g. CompuGlobalHyperMegaNet'); ?>" class="i18n" data-required="true">
+        </div>
+
+        <label for="cover_photo" class="i18n"><?=_('Select a profile pic'); ?></label>
+        <div data-role="fieldcontainer">
+            <button id="profile_pic-select" class="i18n"><?=_('Select photo'); ?></button>
+            <input type="file" id="cover_photo" name="cover_photo" accept="image/*; capture=camera">
+            <input type="hidden" id="profile_pic" name="profile_pic" />
+            <progress max="100" value="0" id="profile_pic-upload-progress" style=""></progress><span style="position: relative; margin-left: -50%;"><span id="profile_pic-upload-percentage">0</span>%</span>
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Save'); ?>" class="i18n">
+        </div>
+    </form>
+
+    </div>
+</main>
+<!-- End Main -->

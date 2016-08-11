@@ -1,0 +1,331 @@
+        <!-- Start Search form -->
+        <div class="search-form">
+            <h2 class="i18n"><?=_('Search jobs');?></h2>
+            <form id="videos-search-form" action="videos/" method="get" class="yamm search-top" data-before-submit="return $.pages['videos.search-form'].before_submit(data);">
+                <div class="row">
+
+                    <!-- Start Position -->
+                    <div class="search-col-three">
+                        <div class="dropdown-container search-form-container">
+                            <input type="text" name="q_position" class="autocomplete i18n" data-autocomplete-src="positions" placeholder="<?=_('Position');?>" value="{{post.q_position}}" tabindex="1">
+
+                            <div class="dropdown yamm-fw">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu search-form-dropdown positions">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach positions}}
+                                    <li>
+                                        <div class="row">
+                                            <div class="four-col i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</div>
+    {{#foreach item.items}}
+                                            <div class="four-col item">
+                                                <a href="?" class="toggle-btn"><i class="fa fa-plus"></i> <span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span></a>
+                                                <div class="toggle-content">
+        {{#foreach item.items}}
+                                                    <label>
+                                                        <input type="checkbox" id="position-{{item.id}}" name="position-{{item.id}}" data-role="none"{{#dropdown 'position' item.id ../../../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                                    </label>
+        {{/foreach}}
+                                                </div>
+                                            </div>
+    {{/foreach}}
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Position -->
+
+                    <!-- Start Industry -->
+                    <div class="search-col-three">
+                        <div class="dropdown-container search-form-container">
+                            <input type="text" name="q_industry" class="autocomplete i18n" data-autocomplete-src="industries" placeholder="<?=_('Industry');?>" value="{{post.q_industry}}" tabindex="2">
+
+                            <div class="dropdown yamm-fw">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu search-form-dropdown industries">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach industries}}
+                                    <li>
+                                        <div class="row">
+                                            <div class="three-col group" class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</div>
+    {{#foreach item.items}}
+                                            <div class="three-col item">
+                                                <label>
+                                                    <input type="checkbox" name="industry-{{item.id}}" data-role="none"{{#dropdown 'industry' item.id ../../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                                </label>
+                                            </div>
+    {{/foreach}}
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Industry -->
+
+                    <!-- Start Location -->
+                    <div class="search-col-three">
+                        <div class="dropdown-container search-form-container">
+                            <input type="text" name="q_location" class="autocomplete i18n" data-autocomplete-src="regions" placeholder="<?=_('Location');?>" value="{{post.q_location}}" tabindex="3">
+
+                            <div class="dropdown yamm-fw">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu search-form-dropdown locations">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+{{#foreach regions}}
+    {{#isNotEmptyArray item}}
+        {{#foreach item}}
+                                            <div class="four-col">
+                                                <label>
+                                                    <input type="checkbox" name="location-{{item.id}}" data-role="none"{{#dropdown 'location' item.id ../../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                                </label>
+                                            </div>
+        {{/foreach}}
+    {{/isNotEmptyArray}}
+{{/foreach}}
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div> 
+                        </div>
+                    </div>
+                    <!-- End Location -->
+                </div>
+
+                <div class="search-icon-container">
+                    <input type="text" name="q" class="i18n" placeholder="<?=_('Search');?>" value="{{post.q}}" tabindex="4">
+
+                    <button class="search-icon-btn"><span class="i18n"><?=_('Go');?></span> <i class="fa fa-search"></i></button>
+
+                    <div class="advanced-search-toggles">
+                        <a href="#videos?advanced-search=1" class="advanced" onclick="$('.advanced-search').toggle(); $(this).closest('.advanced-search-toggles').toggleClass('advanced'); return false;"><span class="i18n"><?=_('Advanced Search');?></span> <i class="fa fa-angle-right"></i></a>
+                        <a href="#videos" class="basic" onclick="$('.advanced-search').toggle(); $(this).closest('.advanced-search-toggles').toggleClass('advanced'); return false;"><i class="fa fa-angle-left"></i> <span class="i18n"><?=_('Basic Search');?></span></a>
+                    </div>
+                </div>
+
+                <div class="row advanced-search" style="display: none;">
+                    <!-- Start Experience -->
+                    <div class="search-col-three">
+                        <div class="dropdown-container search-form-container">
+                            <div class="dropdown no-input yamm-fw">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <input type="text" name="q_experience" class="i18n" placeholder="<?=_('Experience Required');?>" value="{{post.q_experience}}">
+                                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                                </div>
+                                <ul class="dropdown-menu fit search-form-dropdown experience">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach experience_requirements}}
+                                    <li>
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox" id="experience-{{item.id}}" name="experience-{{item.id}}" data-role="none"{{#dropdown 'experience' item.id ../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div> 
+                        </div>
+                    </div>
+                    <!-- End Experience -->
+
+                    <!-- Start Education Background -->
+                    <div class="search-col-three">
+                        <div class="dropdown-container search-form-container">
+                            <div class="dropdown no-input yamm-fw">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <input type="text" name="q_education_requirement" class="i18n" placeholder="<?=_('Education Background');?>" value="{{post.q_education_requirement}}">
+                                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                                </div>
+                                <ul class="dropdown-menu fit search-form-dropdown education_requirements">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach education_requirements}}
+                                    <li>
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox" name="education_requirement-{{item.id}}" data-role="none"{{#dropdown 'education_requirement' item.id ../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div> 
+                        </div> 
+                    </div>
+                    <!-- End Education Background -->
+
+                    <!-- Start Wage Range -->
+                    <div class="search-col-three">
+                        <div class="search-form-container">
+                            <select name="q_wage_range">
+                                <option class="i18n" value=""><?=_('Wage');?></option>
+                                {{#select post.q_wage_range}}
+                                    {{#each wage_ranges}}
+                                    <option value="{{id}}" class="i18n" data-i18n-zh_cn="{{name_zh}}"{{#equal post.q_wage_range id}} selected="selected"{{/equal}}>{{name_en}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                        </div> 
+                    </div>
+                    <!-- End Wage Range -->
+                </div>
+
+                <div class="row advanced-search" style="display: none;">
+                    <!-- Start Posted -->
+                    <div class="search-col-four">
+                        <div class="dropdown-container search-form-container">
+                            <div class="dropdown no-input yamm-fw">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <input type="text" name="q_posted" class="i18n" placeholder="<?=_('Posted');?>" value="{{post.q_posted}}">
+                                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                                </div>
+                                <ul class="dropdown-menu fit search-form-dropdown posted">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach posteds}}
+                                    <li>
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox" name="posted-{{item.id}}" data-role="none"{{#dropdown 'posted' item.id ../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div> 
+                        </div> 
+                    </div>
+                    <!-- End Posted -->
+
+                    <!-- Start Company Type -->
+                    <div class="search-col-four">
+                        <div class="dropdown-container search-form-container">
+                            <div class="dropdown no-input yamm-fw">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <input type="text" name="q_company_type" class="i18n" placeholder="<?=_('Company Type');?>" value="{{post.q_company_type}}">
+                                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                                </div>
+                                <ul class="dropdown-menu fit search-form-dropdown company_type">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach company_types}}
+                                    <li>
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox" name="company_type-{{item.id}}" data-role="none"{{#dropdown 'company_type' item.id ../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div> 
+                        </div> 
+                    </div>
+                    <!-- End Company Type -->
+
+                    <!-- Start Company Size -->
+                    <div class="search-col-four">
+                        <div class="dropdown-container search-form-container">
+                            <div class="dropdown no-input yamm-fw">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <input type="text" name="q_company_size" class="i18n" placeholder="<?=_('Company Size');?>" value="{{post.q_company_size}}">
+                                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                                </div>
+                                <ul class="dropdown-menu fit search-form-dropdown company_size">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach company_sizes}}
+                                    <li>
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox" name="company_size-{{item.id}}" data-role="none"{{#dropdown 'company_size' item.id ../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div> 
+                        </div> 
+                    </div>
+                    <!-- End Company Size -->
+
+                    <!-- Start Employment Type -->
+                    <div class="search-col-four">
+                        <div class="dropdown-container search-form-container">
+                            <div class="dropdown no-input yamm-fw">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <input type="text" name="q_employment_type" class="i18n" placeholder="<?=_('Employment Type');?>" value="{{post.q_employment_type}}">
+                                    <a href="#"><i class="fa fa-angle-down"></i></a>
+                                </div>
+                                <ul class="dropdown-menu fit search-form-dropdown employment_type">
+                                    <li class="actions">
+                                        <div class="row">
+                                            <a href="?" class="any small-button i18n"><?=_('Any');?></a>
+                                            <a href="?" class="x"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </li>
+{{#foreach employment_types}}
+                                    <li>
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox" name="employment_type-{{item.id}}" data-role="none"{{#dropdown 'employment_type' item.id ../post}} checked="checked"{{/dropdown}}><span class="i18n" data-i18n-zh_cn="{{item.name_zh}}">{{item.name_en}}</span>
+                                            </label>
+                                        </div>
+                                    </li>
+{{/foreach}}
+                                </ul>
+                            </div> 
+                        </div>
+                    </div>
+                    <!-- End Employment Type -->
+                </div>
+                <div class="advanced-search" style="display: none;">
+                    <button class="search-icon-btn"><span class="i18n"><?=_('Search');?></span> <i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+        <!-- End Search form -->

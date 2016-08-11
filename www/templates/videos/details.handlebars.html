@@ -1,0 +1,142 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if video}}
+    <div class="video-header" style="background-image: url('{{video.cover_pic}}');">
+        <div class="overlay">
+            <h1 class="title">{{video.title}}</h1>
+            <div class="posted">{{video.created_at_human}}</div>
+            <div class="rating"><p><a href="#video-reviews?id={{video.id}}" class="num_reviews">{{video.num_reviews}} <span class="i18n">{{#equal video.num_reviews 1}}<?=_('review');?>{{else}}<?=_('reviews');?>{{/equal}}</span></a>{{#if video.num_reviews}} | <span class="stars"><a href="#video-reviews?id={{video.id}}">{{#for 0 5 1}}<span class="star_15{{#compare index "<" ../video.avg_stars}} active{{/compare}}"></span>{{/for}}</a></span>{{/if}}</p></div>
+        </div>
+    </div>
+
+    {{#if video.video_uri}}
+    <div class="video-video-container video-container"></div>
+    {{else}}
+        {{#if video.raw_video_uri}}
+    <p class="processing i18n"><?=_('The video for this job is still processing...');?></p>
+        {{/if}}
+    {{/if}}
+
+    {{#if video.pdf_uri}}
+    <div class="pdf videoDescription">
+        <a href="{{video.pdf_uri}}" onclick="window.open('{{video.pdf_uri}}', '_blank', 'location=no,enableViewportScale=yes'); return false;" class="small-button br pdf i18n" style="font-size: 20px; text-shadow: 0 0 1px #666"><?=_('View PDF');?></a>
+    </div>
+    {{/if}}
+
+    <div class="videoDescription">
+        <p>{{video.description}}</p>
+    </div>
+
+    <div class="info-tiles">
+        <div class="info-tile">
+            <div class="info-tile-content">
+                <h2 class="i18n"><?=_('Position');?></h2>
+                <span class="i18n" data-i18n-zh_cn="{{video.position_name_zh}}">{{video.position_name_en}}</span>
+            </div>
+        </div>
+        <div class="info-tile">
+            <div class="info-tile-content">
+                <h2 class="i18n"><?=_('Experience Required');?></h2>
+                <span class="i18n" data-i18n-zh_cn="{{video.experience_requirement_name_zh}}">{{video.experience_requirement_name_en}}</span>
+            </div>
+        </div>
+        <div class="info-tile">
+            <div class="info-tile-content">
+                <h2 class="i18n"><?=_('Education Background');?></h2>
+                <span class="i18n" data-i18n-zh_cn="{{video.education_requirement_name_zh}}">{{video.education_requirement_name_en}}</span>
+            </div>
+        </div>
+        <div class="info-tile">
+            <div class="info-tile-content">
+                <h2 class="i18n"><?=_('Employment Type');?></h2>
+                <span class="i18n" data-i18n-zh_cn="{{video.employment_type_name_zh}}">{{video.employment_type_name_en}}</span>
+            </div>
+        </div>
+        <div class="info-tile">
+            <div class="info-tile-content">
+                <h2 class="i18n"><?=_('Wage');?></h2>
+                <span class="i18n" data-i18n-zh_cn="{{video.wage_range_name_zh}}">{{video.wage_range_name_en}}</span>
+            </div>
+        </div>
+        {{#if video.video_uri}}
+        <div class="info-tile" style="background-image: url('{{video.cover_pic}}'); background-size: 100%; background-position: center center;">
+            <a class="info-tile-content i18n" href="#video-respond?id={{video.id}}" data-role="button" style="top: 0; transform: none; height: 73px; line-height: 70px; padding-top: 0; padding-bottom: 0; border-radius: inherit !important; font-size: 30px; text-shadow: 0 0 20px #fff !important; font-weight: bold;"><?= _('Apply now'); ?></a>
+        </div>
+        {{/if}}
+    </div>
+
+    <div class="userInfo">
+        <div class="userHeadshot" style="background-image: url('{{video.mentor_pic}}');"></div>
+        <div class="userDetails">
+            <p style="font-size: 18px;"><span class="i18n"><?=_('Company');?></span><span class="i18n"><?=_(':');?></span> {{video.mentor_name}}</p>
+            <a href="#mentor?id={{video.mentor_id}}" class="small-button profile i18n"><?=_('View Profile');?></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <a href="#video-respond?id={{video.id}}" data-role="button" style="width: 50%; margin: 20px auto; border: solid 1px #ccc;" class="i18n"><?= _('Apply now'); ?></a>
+    {{#if responses}}
+        <h2 class="i18n" style="margin-top: 10px;"><?=_('Applicants');?></h2>
+        {{#each responses}}
+            {{#ifAndNotAndNot private is_accessible ../video.is_mine}}
+        <p><span class="i18n"><?=_('A private application has been added');?></span>. <a href="#" id="request-application-access-{{id}}" onclick="$.pages['videos.details'].request_application_access({{id}}); return false;" class="small-button key i18n"><?=_('Request access');?></a></p>
+            {{else}}
+        <div class="job-applicant">
+            <div class="userInfo">
+                <div class="userHeadshot" style="background-image: url('{{user_profile_pic}}');"></div>
+                <div class="userDetails">
+                    <div class="name"><span class="i18n">{{user_name}}</span> <span style="font-size: .7em;">(<span class="i18n"><?=_('applied');?></span> {{created_at_human}}</span>)</span></div>
+                    <a href="#mentor?id={{user_id}}" class="small-button profile i18n"><?=_('View Profile');?></a>
+                    <a href="#compose-message?to_id={{id}}" class="small-button write i18n"><?=_('Send message'); ?></a>
+                </div>
+            </div>
+                {{#if message}}
+            <div class="videoDescription">
+                <p>{{message}}</p>
+            </div>
+                {{/if}}
+            <div class="info-tiles">
+                    {{#if user_resume_uri}}
+                <div class="info-tile" style="height: 300px;">
+                    <div class="info-tile-content">
+                        <h2 class="i18n"><?=_('PDF Résumé');?></h2>
+                        <a href="{{user_resume_uri}}" onclick="window.open('{{user_resume_uri}}', '_blank', 'location=no,enableViewportScale=yes'); return false;" style="display: block; width: 150px; margin: 0 auto;"><img src="/img/pdf.png"></a>
+                    </div>
+                </div>
+                    {{/if}}
+                    {{#if user_video_uri}}
+                <div class="info-tile" style="height: 300px;">
+                    <div class="info-tile-content">
+                        <h2 class="i18n"><?=_('Video Résumé');?></h2>
+                        <div style="text-align: center;"><video class="video" style="width: 90%;" autobuffer controls="false" poster=""><source src="{{user_video_uri}}" type="video/mp4"></video></div>
+                    </div>
+                </div>
+                    {{/if}}
+            </div>
+        </div>
+
+        <hr>
+            {{/ifAndNotAndNot}}
+        {{/each}}
+    {{/if}}
+    </div>
+
+    {{#if related}}
+    <div class="content">
+        <h2 class="i18n"><?=_('Related jobs'); ?></h2>
+        <div class="viewport videos">
+            <div class="flipsnap" id="video-related">
+                {{#each related}}
+                    {{> video this}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    {{/if}}
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

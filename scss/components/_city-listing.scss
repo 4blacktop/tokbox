@@ -1,0 +1,25 @@
+/* CITY LISTING
+-------------------------------------------------*/
+.city-listing {
+    ul {
+        @extend %noBullet;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 5px 5px 0;
+
+        &.letter {
+            font-weight: $fontWeightBold;
+            text-transform: uppercase;
+        }
+    }
+
+    a {
+        color: $colorLink !important;
+
+        &:hover, &:focus {
+            color: $colorBase !important;
+        }
+    }
+}

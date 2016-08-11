@@ -1,0 +1,91 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+            <div class="register-blurb">
+                <p class="color-shakespear i18n" style="font-size: 70px; line-height: 1em;"><?=_('Dapinqing');?></p>
+                <p class="color-shakespear">
+                    <span style="font-size: 40px;"><span class="color-salomie i18n"><?=_('Helping');?></span> <span class="i18n"><?=_('you to find');?></span></span><br>
+                    <span style="font-size: 60px;"><span class="color-salomie i18n"><?=_('qualified talent');?></span>
+
+                    <div class="color-shakespear" style="text-align: right;">
+                        <div style="float: right;">
+                            <span style="font-size: 22px;"><span class="i18n"><?=_('receive video résumés');?></span><br>
+                            <span style="font-size: 22px;"><span class="i18n"><?=_('perform online interviews');?></span>
+                        </div>
+                        <div style="font-size: 40px;">&#8212;</div>
+                    </div>
+                </p>
+            </div>
+            <div class="register-login-form">
+                <h2 class="i18n"><?=_('Already have an account?');?></h2>
+                <p class="i18n" style="margin-top: 0;"><?php echo _('Log in'); ?></p>
+                <div class="login-form" data-template-filename="login/login.form.handlebars.html"></div>
+            </div>
+            <div style="clear: both;"></div>
+
+            <ul class="register-icons">
+                <li>
+                    <img src="/img/register-video.png" alt="">
+                    <span class="i18n"><?=_('Video résumé'); ?></span>
+                </li>
+                <li>
+                    <img src="/img/register-online.png" alt="">
+                    <span class="i18n"><?=_('Online interview'); ?></span>
+                </li>
+                <li>
+                    <img src="/img/register-efficient.png" alt="">
+                    <span class="i18n"><?=_('More efficient'); ?></span>
+                </li>
+            </ul>
+
+            <h1 class="i18n"><?php echo _('Join now'); ?></h1>
+            <p class="i18n"><?=_('Create an account and start hiring today!');?></p>
+            <div class="register-form">
+                <form id="register-employers_form" action="users/" method="post" data-validate="{'rules': {'password_confirm': {'equalTo': '#password'}},'messages': {'password_confirm': {'equalTo': 'Your passwords must match.'}}}" data-before-submit="return $.pages['user.register-employers'].before_submit(data);" data-after-submit="$.pages['user.register-employers'].register_cb(response);">
+                    <div>
+                        <label for="first_name" class="i18n"><?=_('Company name'); ?></label>
+                        <div data-role="fieldcontainer">
+                            <input type="text" id="first_name" name="first_name" placeholder="<?=_('e.g. Premier Business Solutions'); ?>" value="{{me.first_name}}" class="i18n" data-required="true">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="i18n"><?=_('Email'); ?></label>
+                        <div data-role="fieldcontainer">
+                            <input type="email" id="email" name="email" placeholder="<?=_('e.g. johndoe@gmail.com'); ?>" value="{{me.email}}" class="i18n" data-required="true">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone_number" class="i18n"><?=_('Phone number'); ?></label>
+                        <div data-role="fieldcontainer">
+                            <input type="tel" id="phone_number" name="phone_number" placeholder="<?php echo _('e.g. 555-555-1212'); ?>" value="{{me.phone_number}}" class="i18n">
+                        </div>
+                    </div>
+
+                    <label for="password" class="i18n"><?=_('Select a password'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <input type="password" id="password" name="password" class="i18n" placeholder="<?php echo _('Enter a password'); ?>" data-required="true">
+                    </div>
+                    <div data-role="fieldcontainer">
+                        <input type="password" id="password_confirm" name="password_confirm" class="i18n" placeholder="<?php echo _('Re-enter your password'); ?>">
+                    </div>
+
+                    <label for="lang" class="i18n"><?=_('Language'); ?></label>
+                    <div data-role="fieldcontainer">
+                        <select id="lang" name="lang" data-required="true">
+                            {{#select me.lang}}
+                            <option value="zh_CN">中文 - Chinese</option>
+                            <option value="en_US">English - 英文</option>
+                            {{/select}}
+                        </select>
+                    </div>
+
+                    <br>
+                    <input type="submit" class="i18n" value="<?php echo _('Join now'); ?>">
+                </form>
+            </div>
+
+    </div>
+</main>
+<!-- End Main -->

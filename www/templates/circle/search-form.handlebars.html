@@ -1,0 +1,19 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <form id="circle-search-form" action="#circle-search" method="get" class="search-top" data-ajax-submit="false" data-before-submit="$.pages['circle.search-form'].before_submit();" data-at-submit="$.pages['circle.search-form'].at_submit(location.href);">
+        <input type="search" name="q" placeholder="<?=_('Search');?>" value="{{search_q}}" class="i18n">
+
+        <div class="search-fields" style="display: none;">
+            <div class="search-spacer">.</div>
+
+            <div data-role="fieldcontainer">
+                <input type="submit" value="<?=_('Search'); ?>" class="i18n">
+            </div>
+        </div>
+    </form>
+
+    </div>
+</main>
+<!-- End Main -->

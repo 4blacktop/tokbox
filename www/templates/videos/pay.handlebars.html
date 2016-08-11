@@ -1,0 +1,39 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if id}}
+    <h1 class="i18n"><?=_('Enroll');?></h1>
+
+    <div class="video-header" style="background-image: url('{{cover_pic}}');">
+        <div class="overlay">
+            <h1 class="title">{{title}}</h1>
+            <div class="difficulty"><p><span class="i18n"><?=_('Level');?></span> {{difficulty_level}}</p></div>
+            <div class="category i18n" data-i18n-zh_cn="{{category_name_zh}}">{{category_name_en}}</div>
+            <div class="posted">{{created_at_human}}</div>
+        </div>
+    </div>
+
+    <div id="select-method">
+        <div class="contrent">
+            <div class="money-box" style="font-weight: bold;"><span class="i18n"><?=_('Pay this amount now');?></span><span class="i18n"><?=_(':');?></span> {{#if price_rmb}}¥ {{price_rmb}}{{else}}<span class="i18n"><?=_('FREE');?></span>{{/if}}</div>
+        </div>
+
+        <h1 class="i18n"><?=_('Select a payment method');?></h1>
+
+        <form id="video-pay-form" action="payments/" method="post" data-after-submit="$.pages['videos.pay'].after_submit(response);">
+            <input type="hidden" name="for_type" value="video">
+            <input type="hidden" name="for_id" value="{{id}}">
+            <input type="hidden" name="is_mobile" value="{{#if is_mobile}}1{{else}}0{{/if}}">
+
+            <input type="radio" name="method" id="method-alipay" value="alipay" checked="checked">
+            <label for="method-alipay"><span class="i18n"><?=_('Pay now with AliPay');?></span></label>
+            <input type="submit" value="<?=_('Pay Now');?>" class="submit i18n">
+            <img class="loading centered" style="display: none;" src="assets/images/loading.gif" alt="loading...">
+        </form>
+    </div>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

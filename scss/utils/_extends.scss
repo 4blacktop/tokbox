@@ -1,0 +1,56 @@
+/* PLACEHOLDERS
+-------------------------------------------------*/
+
+/* Clearfix
+-------------------------------*/
+%clearfix {
+    &:after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+}
+
+/* Buttons
+-------------------------------*/
+%btn {
+    display: inline-block;
+    border: none;
+    font-weight: $fontWeightBold;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+/* Space
+-------------------------------*/
+%space,
+.space {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* Form fields
+-------------------------------*/
+%formFields {
+    display: block;
+    width: 100%;
+    padding: 15px 10px;
+    border: solid 2px $white;
+    background: $white;
+    font-family: inherit;
+    @include fontSize(18);
+
+    &:focus {
+        border-color: $colorBorder;
+        outline: 0;
+    }
+}
+
+/* No bullet list
+-------------------------------*/
+%noBullet {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}

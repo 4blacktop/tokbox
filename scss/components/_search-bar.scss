@@ -1,0 +1,37 @@
+/* SEARCH BAR
+-------------------------------------------------*/
+.search-bar {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 60px;
+
+    input[type="text"],
+    input[type="number"] {
+        position: relative;
+        border-color: $colorBorder;
+        z-index: 10;
+    }
+}
+
+.search-bar-content {
+    position: relative;
+    max-height: 0;
+    top: -300px;
+    opacity: 0;
+    margin-top: 15px;
+    transition: all 0.3s;
+
+    .search-trigger & {
+        top: 0;
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    label {
+        margin-bottom: 3px;
+    }
+
+    select {
+        margin-bottom: 15px;
+    }
+}

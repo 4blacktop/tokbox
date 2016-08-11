@@ -1,0 +1,62 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if mentor.id}}
+    <h1 class="i18n">Request 1-on-1 Chat</h1>
+    <p><span class="i18n"><?_('With');?></span><span class="i18n"><?=_(':');?></span></p>
+    <div class="userInfo" style="margin-bottom: 10px;">
+        <div class="userHeadshot" style="background-image: url('{{mentor.profile_pic}}');"></div>
+        <div class="userDetails">
+            <p><span class="i18n">{{mentor.first_name}}</p>
+            <a href="#mentor?id={{mentor.id}}" class="small-button profile i18n"><?=_('View Profile');?></a>
+        </div>
+        <p style="float: right; margin-top: 7px; margin-right: 5px; text-align: center; font-size: 1.3em;">¥{{mentor.one_on_one_price_rmb}}<br /><span class="i18n"><?=_('per 30 minutes');?></span></p>
+    </div>
+
+    <div style="padding: 10px; background-color: #ccc; font-size: 1.3em; text-align: center;">
+        <span class="i18n"><?=_('Total price');?></span>: <span id="total_price">¥0</span>
+    </div>
+
+    <form id="request-chat-form" action="1-on-1-sessions/" method="post" data-after-submit="$.pages['chat.request'].after_submit(response);">
+        <input type="hidden" name="mentor_id" value="{{mentor.id}}">
+        
+        <h2 class="i18n"><?=_('Start'); ?></h2>
+        <div style="width: 48%; float: left;">
+            <label for="start_date" class="i18n"><?=_('Date'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="date" id="start_date" name="start_date" data-required="true">
+            </div>
+        </div>
+        <div style="width: 48%; float: right;">
+            <label for="start_time" class="i18n"><?=_('Time'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="time" step="1800" id="start_time" name="start_time" data-required="true">
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        
+        <h2 class="i18n"><?=_('End'); ?></h2>
+        <div style="width: 48%; float: left;">
+            <label for="end_date" class="i18n"><?=_('Date'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="date" id="end_date" name="end_date" data-required="true">
+            </div>
+        </div>
+        <div style="width: 48%; float: right;">
+            <label for="end_time" class="i18n"><?=_('Time'); ?></label>
+            <div data-role="fieldcontainer">
+                <input type="time" step="1800" id="end_time" name="end_time" data-required="true">
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Request'); ?>" class="i18n">
+        </div>
+    </form>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

@@ -1,0 +1,39 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+{{#if id}}
+    <h1 class="i18n">Rate {{first_name}}</h1>
+    <div class="userInfo" style="margin-bottom: 10px;">
+        <div class="userHeadshot" style="background-image: url('{{profile_pic}}');"></div>
+        <div class="userDetails">
+            <p><span class="i18n">{{first_name}}</p>
+            <a href="#mentor?id={{id}}" class="small-button profile i18n"><?=_('View Profile');?></a>
+        </div>
+    </div>
+
+    <form id="rate-mentor-form" action="mentor-reviews/{{id}}" method="post" data-after-submit="$.pages['mentors.rate'].cb(response);">
+        <input type="hidden" id="mentor_id" name="mentor_id" value="{{id}}">
+
+        <label for="stars" class="i18n"><?=_('Choose 0 to 5 stars');?></label>
+        <div data-role="fieldcontainer" style="margin-bottom: 10px;">
+            <input type="hidden" id="stars" name="stars" data-human-name="Stars">
+            {{#for 0 6 1}}
+                <a href="?" onclick="$('input#stars').val({{index}}); for (i = 1; i < 6; i++) { if (i <= {{index}}) { $('#star-'+i).addClass('active'); }else{ $('#star-'+i).removeClass('active'); } } return false;"><span id="star-{{index}}" class="star_32 i18n">{{index}}</span></a>
+            {{/for}}
+        </div>
+
+        <label for="review" class="i18n"><?=_('Write a review');?></label>
+        <div data-role="fieldcontainer">
+            <textarea id="review" name="review" cols="30" rows="5" placeholder="<?=_('Write a paragraph or two about this company');?>" class="i18n" data-required="true" data-human-name="Review"></textarea>
+        </div>
+
+        <div data-role="fieldcontainer">
+            <input type="submit" value="<?=_('Rate');?>" class="i18n">
+        </div>
+    </form>
+{{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

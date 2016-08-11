@@ -1,0 +1,17 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    {{#if data}}
+    <div>
+        {{#each data}}
+            {{> user_result this}}
+        {{/each}}
+    </div>
+    {{else}}
+    <p class="no-results i18n"><?=_('No users found.');?></p>
+    {{/if}}
+
+    </div>
+</main>
+<!-- End Main -->

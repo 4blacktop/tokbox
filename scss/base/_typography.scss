@@ -1,0 +1,157 @@
+/* TYPOGRAPHY
+-------------------------------------------------*/
+
+/* Font faces
+-------------------------------*/
+@font-face {
+	font-family: 'Neuton';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		local('Neuton Regular'),
+		local('Neuton-Regular'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/cVNn68S7F5XDg8YilesTjA.eot */
+		url('../fonts/Neuton_400.eot?#iefix') format('embedded-opentype'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/FWmpGWvJ4R8gbr0i3io5KQ.woff */
+		url('../fonts/Neuton_400.woff') format('woff'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/ZCHeepBpOu0e76AMO9CV8Q.woff2 */
+		url('../fonts/Neuton_400.woff2') format('woff2'),
+		/* from http://fonts.gstatic.com/l/font?kit=Kmql8DVuO3i3q0QIEoDEDA&skey=88f950a540847181&v=v8#Neuton */
+		url('../fonts/Neuton_400.svg#Neuton') format('svg'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/2yfL00UA7vu40fNHPnbJgw.ttf */
+		url('../fonts/Neuton_400.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Neuton';
+	font-style: normal;
+	font-weight: 700;
+	src:
+		local('Neuton Bold'),
+		local('Neuton-Bold'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/MK-qWv3o5LiGs6rxlk2eu_Y6323mHUZFJMgTvxaG2iE.eot */
+		url('../fonts/Neuton_700.eot?#iefix') format('embedded-opentype'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/MK-qWv3o5LiGs6rxlk2euz8E0i7KZn-EPnyo3HZu7kw.woff */
+		url('../fonts/Neuton_700.woff') format('woff'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/MK-qWv3o5LiGs6rxlk2eu1tXRa8TVwTICgirnJhmVJw.woff2 */
+		url('../fonts/Neuton_700.woff2') format('woff2'),
+		/* from http://fonts.gstatic.com/l/font?kit=MK-qWv3o5LiGs6rxlk2eu5bd9NUM7myrQQz30yPaGQ4&skey=2fa4dd900c5363d8&v=v8#Neuton */
+		url('../fonts/Neuton_700.svg#Neuton') format('svg'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/MK-qWv3o5LiGs6rxlk2eu6CWcynf_cDxXwCLxiixG1c.ttf */
+		url('../fonts/Neuton_700.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Neuton';
+	font-style: italic;
+	font-weight: 400;
+	src:
+		local('Neuton Italic'),
+		local('Neuton-Italic'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/Vq79GGOxYUIz-0o-wNXu2PesZW2xOQ-xsNqO47m55DA.eot */
+		url('../fonts/Neuton_400italic.eot?#iefix') format('embedded-opentype'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/6jMDFzuE3S_SN8y5pCCVKvesZW2xOQ-xsNqO47m55DA.woff */
+		url('../fonts/Neuton_400italic.woff') format('woff'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/MZZLPHJyYM2BWjeqYVWFb_esZW2xOQ-xsNqO47m55DA.woff2 */
+		url('../fonts/Neuton_400italic.woff2') format('woff2'),
+		/* from http://fonts.gstatic.com/l/font?kit=DBLiq4cc6aPmkgLgS1ZoNvesZW2xOQ-xsNqO47m55DA&skey=891dadfcf29cd902&v=v8#Neuton */
+		url('../fonts/Neuton_400italic.svg#Neuton') format('svg'),
+		/* from http://fonts.gstatic.com/s/neuton/v8/U9c6hBWGC7PQLFQPgrjaM_esZW2xOQ-xsNqO47m55DA.ttf */
+		url('../fonts/Neuton_400italic.ttf') format('truetype');
+}
+
+/* Headings & Paragraphs
+-------------------------------*/
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    margin: 10px 0;
+    font-weight: $fontWeightBold;
+    line-height: $headingLineHeight;
+}
+
+h1, .h1 {
+    @include fontSize(45);
+
+    &.site-title {
+        @include fontSize(72);
+    }
+}
+
+h2, .h2 {
+    @include fontSize(25);
+    margin-top: 30px;
+}
+
+h3, .h3 {
+    @include fontSize(24);
+}
+
+h4, .h4 {
+    @include fontSize(22);
+}
+
+h5, .h5 {
+    @include fontSize(20);
+}
+
+h6, .h6 {
+    @include fontSize(16);
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p {
+    margin-top: 0;
+}
+
+p { 
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Links
+-------------------------------*/
+a {
+    color: $greyLight;
+    text-decoration: none;
+    
+    &:hover {
+        color: $colorBase;
+        text-decoration: none;
+    }
+
+    img {
+        border: 0;
+    }
+}
+
+/* Lists
+-------------------------------*/
+.contact-list {
+    @extend %noBullet;
+    color: $black;
+    @include fontSize(22);
+    font-weight: $fontWeightBold;
+
+    li {
+        margin-top: 30px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+.double-col-list {
+    @extend %clearfix;
+    
+    li {
+        @include breakpoint(small) {
+            float: left;
+            width: 50%;
+        }
+    }
+}

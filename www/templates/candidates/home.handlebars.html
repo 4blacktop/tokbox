@@ -1,0 +1,64 @@
+<!-- Start Main -->
+<main>
+    <div class="container">
+
+    <div data-template-filename="candidates/search-form.handlebars.html"></div>
+
+    <div class="content">
+        <h1 class="i18n"><?=_('Candidates');?></h1>
+
+{{#if is_search}}
+        <h2 class="i18n"><?=_('Search results');?></h2>
+        <div class="viewport candidates listView">
+            {{#if users.data}}
+            <div>
+                {{#each users.data}}
+                    {{> candidate this}}
+                {{/each}}
+            </div>
+            {{else}}
+            <p class="no-results i18n"><?=_('No candidates found.');?></p>
+            {{/if}}
+        </div>
+        {{#compare users.meta.NumRecordsAvailable '>' users.meta.EndRecord}}
+        <div class="show-more"><a href="#candidates?{{qs}}&append_results=1&startrecord={{nextrecord}}" onclick="$.pages['candidates.home'].append_results('{{qs}}', {{nextrecord}}); return false;">Show more</a></div>
+        {{/compare}}
+{{else}}
+        {{#if users.popular}}
+        <h2 class="i18n"><?=_('Popular candidates');?></h2>
+        <div class="viewport students">
+            <div class="flipsnap" id="candidates-popular">
+            {{#each users.popular}}
+                {{> candidate this}}
+            {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if users.recommended}}
+        <h2 class="i18n"><?=_('Recommended candidates');?></h2>
+        <div class="viewport students">
+            <div class="flipsnap" id="candidates-recommended">
+            {{#each users.recommended}}
+                {{> candidate this}}
+            {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if users.new}}
+        <h2 class="i18n"><?=_('New candidates');?></h2>
+        <div class="viewport students">
+            <div class="flipsnap" id="candidates-new">
+            {{#each users.new}}
+                {{> candidate this}}
+            {{/each}}
+            </div>
+        </div>
+        {{/if}}
+{{/if}}
+    </div>
+
+    </div>
+</main>
+<!-- End Main -->
